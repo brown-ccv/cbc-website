@@ -104,10 +104,13 @@ export default async function ContactUs() {
           </CardContent>
         </Card>
 
-        <div className="content-wrapper flex justify-center px-0 md:px-40">
+        <div className="content-wrapper flex justify-center px-0 2xl:px-28">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 w-full">
             {pageContent?.data?.dataAnalysis?.map((card: DataAnalysisTypes) => (
-              <div key={card.title} className="flex-grow max-w-lg">
+              <div
+                key={card.title}
+                className="flex-grow max-w-full lg:max-w-sm xl:max-w-lg"
+              >
                 <div className="inline-flex items-center gap-2 w-full h-full">
                   <Card
                     className={cn(
@@ -118,7 +121,7 @@ export default async function ContactUs() {
                   >
                     <CardContent className="flex flex-col h-full">
                       <div className="relative border-b border-neutral-300">
-                        <CardHeader className="flex flex-row gap-4 items-center text-lg md:text-xl font-semibold">
+                        <CardHeader className="flex flex-row gap-4 items-center text-lg lg:text-xl font-semibold">
                           <Icon
                             iconName={card.icon}
                             className="text-3xl"
@@ -126,7 +129,7 @@ export default async function ContactUs() {
                           {card.title}
                         </CardHeader>
                       </div>
-                      <CardDescription className="text-md md:text-lg px-6 flex-grow pt-4">
+                      <CardDescription className="text-md lg:text-lg px-6 flex-grow pt-4">
                         {card.description}
                       </CardDescription>
                     </CardContent>
