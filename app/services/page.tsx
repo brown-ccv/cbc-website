@@ -31,6 +31,44 @@ const fileName = "services.yaml"
 const filePath = path.join("content/services", fileName)
 const pageContent = await readContentFile(filePath)
 
+function renderServiceCards(
+  cards: { title: string; icon?: string; description: string }[]
+) {
+  return (
+    <div className="content-wrapper flex justify-center px-0 2xl:px-28">
+      <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 w-full">
+        {cards?.map((card) => (
+          <div
+            key={card.title}
+            className="flex-grow max-w-full lg:max-w-sm xl:max-w-lg"
+          >
+            <div className="inline-flex items-center gap-2 w-full h-full">
+              <Card
+                className={cn(
+                  "overflow-hidden flex flex-col w-full h-full",
+                  cardVariants({ variant: "shadowless" })
+                )}
+              >
+                <CardContent className="flex flex-col h-full">
+                  <div className="relative border-b border-neutral-300">
+                    <CardHeader className="flex flex-row gap-4 items-center text-lg lg:text-xl font-semibold">
+                      <Icon iconName={card.icon} className="text-3xl" />
+                      {card.title}
+                    </CardHeader>
+                  </div>
+                  <CardDescription className="text-md lg:text-lg px-6 flex-grow pt-4">
+                    {card.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default async function ContactUs() {
   return (
     <div className="w-full">
@@ -103,42 +141,7 @@ export default async function ContactUs() {
             </p>
           </CardContent>
         </Card>
-
-        <div className="content-wrapper flex justify-center px-0 2xl:px-28">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 w-full">
-            {pageContent?.data?.dataAnalysis?.map((card: DataAnalysisTypes) => (
-              <div
-                key={card.title}
-                className="flex-grow max-w-full lg:max-w-sm xl:max-w-lg"
-              >
-                <div className="inline-flex items-center gap-2 w-full h-full">
-                  <Card
-                    className={cn(
-                      "overflow-hidden flex flex-col w-full h-full",
-                      cardVariants({ variant: "shadowless" })
-                      // "shadow-none"
-                    )}
-                  >
-                    <CardContent className="flex flex-col h-full">
-                      <div className="relative border-b border-neutral-300">
-                        <CardHeader className="flex flex-row gap-4 items-center text-lg lg:text-xl font-semibold">
-                          <Icon
-                            iconName={card.icon}
-                            className="text-3xl"
-                          ></Icon>
-                          {card.title}
-                        </CardHeader>
-                      </div>
-                      <CardDescription className="text-md lg:text-lg px-6 flex-grow pt-4">
-                        {card.description}
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {renderServiceCards(pageContent?.data?.dataAnalysis)}
         <div className="p-6 pt-10 max-w-[1440px] mx-auto px-6">
           <Button
             variant="primary_filled"
@@ -174,44 +177,7 @@ export default async function ContactUs() {
             </p>
           </CardContent>
         </Card>
-
-        <div className="content-wrapper flex justify-center px-0 2xl:px-28">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 w-full">
-            {pageContent?.data?.softwareDevelopment?.map(
-              (card: SoftwareDevelopmentTypes) => (
-                <div
-                  key={card.title}
-                  className="flex-grow max-w-full lg:max-w-sm xl:max-w-lg"
-                >
-                  <div className="inline-flex items-center gap-2 w-full h-full">
-                    <Card
-                      className={cn(
-                        "overflow-hidden flex flex-col w-full h-full",
-                        cardVariants({ variant: "shadowless" })
-                        // "shadow-none"
-                      )}
-                    >
-                      <CardContent className="flex flex-col h-full">
-                        <div className="relative border-b border-neutral-300">
-                          <CardHeader className="flex flex-row gap-4 items-center text-lg lg:text-xl font-semibold">
-                            <Icon
-                              iconName={card.icon}
-                              className="text-3xl"
-                            ></Icon>
-                            {card.title}
-                          </CardHeader>
-                        </div>
-                        <CardDescription className="text-md lg:text-lg px-6 flex-grow pt-4">
-                          {card.description}
-                        </CardDescription>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-        </div>
+        {renderServiceCards(pageContent?.data?.softwareDevelopment)}
         <Card className="w-full border-none shadow-none rounded-none pt-10">
           <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center gap-4">
             <p className="text-black text-md md:text-xl pb-4">
