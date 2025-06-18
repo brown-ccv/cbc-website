@@ -105,16 +105,17 @@ export default async function AboutUs() {
                   >
                     Center for Computation and Visualization (CCV)
                   </a>
-                  , which is part of the Office of Information and Technology.
-                  The CCV's mission is to foster an environment where
+                  , which is part of the Office of Information and Technology
+                  (OIT). The CCV's mission is to foster an environment where
                   computational best practices, innovative solutions, and expert
                   knowledge converge to build advanced research tools and enable
                   new discoveries. This affiliation with the CCV strengthens our
                   ability to provide cutting-edge computational solutions,
-                  drawing upon a diverse team of data scientists and research
-                  software engineers with extensive scientific backgrounds. We
-                  embody the CCV's commitment to partnering with researchers,
-                  often through long-term collaborations.
+                  taking full advantage of Brown’s super-computing resources,
+                  research software engineering experience, and IT
+                  infrastructure resources. We embody the CCV's commitment to
+                  partnering with researchers, often through long-term
+                  collaborations.
                 </li>
               </ul>
             </CardContent>
