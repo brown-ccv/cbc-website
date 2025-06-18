@@ -15,12 +15,7 @@ import { cardVariants } from "@/components/ui/variants"
 import { readContentFile } from "@/lib/content-utils"
 import Icon from "@/components/ui/render-icon"
 
-interface DataAnalysisTypes {
-  title: string
-  icon?: string
-  description: string
-}
-interface SoftwareDevelopmentTypes {
+interface CardDataTypes {
   title: string
   icon?: string
   description: string
@@ -140,7 +135,7 @@ export default async function Services() {
             </p>
           </CardContent>
         </Card>
-        {renderServiceCards(pageContent?.data?.dataAnalysis)}
+        {renderServiceCards(pageContent?.data?.dataAnalysis as CardDataTypes[])}
         <div className="p-6 pt-10 max-w-[1440px] mx-auto px-6">
           <Button
             variant="primary_filled"
@@ -176,7 +171,9 @@ export default async function Services() {
             </p>
           </CardContent>
         </Card>
-        {renderServiceCards(pageContent?.data?.softwareDevelopment)}
+        {renderServiceCards(
+          pageContent?.data?.softwareDevelopment as CardDataTypes[]
+        )}
         <Card className="w-full border-none shadow-none rounded-none pt-10">
           <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center gap-4">
             <p className="text-black text-md md:text-xl pb-4">
