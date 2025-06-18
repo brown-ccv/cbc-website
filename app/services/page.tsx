@@ -8,7 +8,6 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardTitle,
   CardDescription,
 } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
@@ -69,7 +68,7 @@ function renderServiceCards(
   )
 }
 
-export default async function ContactUs() {
+export default async function Services() {
   return (
     <div className="w-full">
       <div className="relative w-full flex flex-col">
