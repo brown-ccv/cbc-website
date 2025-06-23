@@ -24,17 +24,17 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="z-10 mt-6 md:-mt-[170px] mb-[50px] px-0 lg:px-6 flex justify-center relative">
+    <div className="z-10 mt-6 md:-mt-[170px] mb-[50px] px-0 2xl:px-5 flex justify-center relative">
       <Card
-        className={cn(cardVariants({ variant: "default" }), "w-full md:w-3/4")}
+        className={cn(
+          cardVariants({ variant: "default" }),
+          "w-full md:w-5/6 lg:w-4/5"
+        )}
       >
-        <CardContent className="py-10 px-2 lg:px-12">
-          <div className="flex justify-center items-start gap-8 lg:gap-12 xl:gap-24 flex-wrap">
+        <CardContent className="py-10 px-2 lg:px-6">
+          <div className="flex flex-wrap justify-center items-start gap-8 lg:gap-12 xl:gap-24 flex-wrap">
             {heroCards.map((card, index) => (
-              <div
-                key={index}
-                className="w-full px-4 md:px-0 md:w-5/6 lg:w-1/4"
-              >
+              <div key={index} className="w-full px-0 md:w-5/6 lg:w-1/4">
                 <div className="inline-flex items-center pb-4">
                   <div className="relative">
                     <CBCBars />
