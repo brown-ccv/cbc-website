@@ -84,19 +84,19 @@ export default async function AboutUs() {
                   </a>
                   , a center funded by a COBRE Institutional Development Award
                   (IDeA) grant from the National Institute of General Medical
-                  Science. The CBHD's primary goal is to support and mentor
+                  Science. The CBHD&apos;s primary goal is to support and mentor
                   junior investigators in human disease research that requires
-                  significant computational analysis of 'omics data. We work
-                  directly with CBHD project leaders and pilot award recipients,
-                  providing the computational expertise to help them achieve
-                  their research aims. This includes creating standard
+                  significant computational analysis of &apos;omics data. We
+                  work directly with CBHD project leaders and pilot award
+                  recipients, providing the computational expertise to help them
+                  achieve their research aims. This includes creating standard
                   analytical pipelines (e.g., for quality control and RNA Seq
                   analysis), developing customized analysis tools, and offering
                   guidance on experimental design to ensure optimal data
                   acquisition.
                 </li>
                 <li className="text-black md:text-xl pt-4 pl-4">
-                  The CBC is also a team within Brown University's{" "}
+                  The CBC is also a team within Brown University&apos;s{" "}
                   <a
                     href="https://ccv.brown.edu"
                     target="_blank"
@@ -106,16 +106,16 @@ export default async function AboutUs() {
                     Center for Computation and Visualization (CCV)
                   </a>
                   , which is part of the Office of Information and Technology
-                  (OIT). The CCV's mission is to foster an environment where
-                  computational best practices, innovative solutions, and expert
-                  knowledge converge to build advanced research tools and enable
-                  new discoveries. This affiliation with the CCV strengthens our
-                  ability to provide cutting-edge computational solutions,
-                  taking full advantage of Brown’s super-computing resources,
-                  research software engineering experience, and IT
-                  infrastructure resources. We embody the CCV's commitment to
-                  partnering with researchers, often through long-term
-                  collaborations.
+                  (OIT). The CCV&apos;s mission is to foster an environment
+                  where computational best practices, innovative solutions, and
+                  expert knowledge converge to build advanced research tools and
+                  enable new discoveries. This affiliation with the CCV
+                  strengthens our ability to provide cutting-edge computational
+                  solutions, taking full advantage of Brown&apos;s
+                  super-computing resources, research software engineering
+                  experience, and IT infrastructure resources. We embody the
+                  CCV&apos;s commitment to partnering with researchers, often
+                  through long-term collaborations.
                 </li>
               </ul>
             </CardContent>
