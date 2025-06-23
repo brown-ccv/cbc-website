@@ -209,7 +209,7 @@ export const Navbar: React.FC = () => {
                 href="https://sites.brown.edu/computational-biology-of-human-disease/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm md:text-md md:ml-3 text-white font-semibold hover:underline mt-0.5"
+                className="text-sm md:text-md text-white font-semibold hover:underline mt-0.5"
               >
                 COBRE-Center for Computational Biology of Human Disease
               </a>

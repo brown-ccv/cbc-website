@@ -23,7 +23,7 @@ export const BrownBanner: React.FC = () => {
                 href="https://sites.brown.edu/computational-biology-of-human-disease/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base lg:text-lg font-semibold hover:underline mt-1 ml-4"
+                className="text-base lg:text-lg font-semibold hover:underline mt-1"
               >
                 COBRE-Center for Computational Biology of Human Disease
               </a>
