@@ -27,8 +27,8 @@ const sourceSerif = Source_Serif_4({
 })
 
 export const metadata = {
-  title: "CCV",
-  description: "Center for Computation & Visualization",
+  title: "CBC",
+  description: "Computational Biology Core",
 }
 
 export default async function RootLayoutWrapper({
