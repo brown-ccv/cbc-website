@@ -3,6 +3,7 @@ import "@/app/globals.css"
 import { ReactNode } from "react"
 import { getOpenIssues } from "@/lib/getOpenIssues"
 import { unstable_cache } from "next/cache"
+import Script from "next/script"
 import BrownBanner from "@/components/BrownBanner"
 import Navbar from "@/components/Navbar"
 import Acknowledgement from "@/components/Acknowledgement"
@@ -31,6 +32,25 @@ export const metadata = {
   description: "Center for Computation & Visualization",
 }
 
+function GoogleAnalytics() {
+  return (
+    <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-FV92F5H1G4"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FV92F5H1G4');
+        `}
+      </Script>
+    </>
+  )
+}
+
 export default async function RootLayoutWrapper({
   children,
 }: {
@@ -44,6 +64,7 @@ export default async function RootLayoutWrapper({
       className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
     >
       <head />
+      <GoogleAnalytics />
       <body className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}>
         <BrownBanner />
         <Navbar />
