@@ -9,6 +9,7 @@ import { readContentFile } from "@/lib/content-utils"
 import { Workday } from "@/components/Workday"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
+import fs from "fs/promises"
 
 interface peopleTypes {
   name: string
@@ -29,6 +30,18 @@ function imagePath(imageName: string) {
 const fileName = "people.yaml"
 const filePath = path.join("content/about", fileName)
 const pageContent = await readContentFile(filePath)
+
+async function getImagePaths(imageName: string) {
+  const mainPath = imagePath(imageName)
+  const hoverName = imageName.replace("main", "hover")
+  const hoverPath = imagePath(hoverName)
+  try {
+    await fs.access(`public${hoverPath}`)
+    return { main: mainPath, hover: hoverPath }
+  } catch {
+    return { main: mainPath, hover: mainPath }
+  }
+}
 
 export default async function AboutUs() {
   try {
@@ -152,18 +165,22 @@ export default async function AboutUs() {
           <SectionHeader title="People" align="center"></SectionHeader>
           <div className="flex justify-center py-4 lg:py-10">
             <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
-              {pageContent?.data?.map((person: peopleTypes) => (
-                <div key={person.name}>
-                  <CardWithImage
-                    imagePath={imagePath(person?.image)}
-                    hoverImagePath={imagePath(
-                      person?.image.replace("main", "hover")
-                    )}
-                    name={person?.name}
-                    title={person?.title}
-                  />
-                </div>
-              ))}
+              {pageContent?.data &&
+                (await Promise.all(
+                  pageContent.data.map(async (person: peopleTypes) => {
+                    const { main, hover } = await getImagePaths(person.image)
+                    return (
+                      <div key={person.name}>
+                        <CardWithImage
+                          imagePath={main}
+                          hoverImagePath={hover}
+                          name={person?.name}
+                          title={person?.title}
+                        />
+                      </div>
+                    )
+                  })
+                ))}
             </div>
           </div>
         </div>
