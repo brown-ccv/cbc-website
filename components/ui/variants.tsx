@@ -7,10 +7,10 @@ export const buttonVariants = cva(
       variant: {
         // ————————————————————— Primary Filled —————————————————————
         primary_filled: [
-          "bg-keppel-700 text-white shadow-sm",
-          "hover:bg-keppel-500",
-          "focus-visible:ring-2 focus-visible:ring-keppel-600",
-          "active:bg-keppel-600",
+          "bg-blue-cbc text-white shadow-sm",
+          "hover:bg-blue-300",
+          "focus-visible:ring-2 focus-visible:ring-blue-500",
+          "active:bg-blue-500",
         ].join(" "),
         // ————————————————————— Secondary Filled ————————————————————
         secondary_filled: [
@@ -21,10 +21,10 @@ export const buttonVariants = cva(
         ].join(" "),
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
-          "bg-transparent border-2 border-keppel-700 text-keppel-700",
-          "hover:border-keppel-500 hover:text-keppel-500",
-          "focus-visible:ring-2 focus-visible:ring-keppel-600",
-          "active:bg-keppel-50 active:border-keppel-600 active:text-keppel-600",
+          "bg-transparent border-2 border-blue-cbc text-blue-cbc",
+          "hover:border-blue-300 hover:text-blue-300",
+          "focus-visible:ring-2 focus-visible:ring-blue-500",
+          "active:bg-blue-50 active:border-blue-500 active:text-blue-500",
         ].join(" "),
         // ————————————————————— Secondary Outlined ———————————————————
         secondary_outlined: [
@@ -60,10 +60,12 @@ export const buttonVariants = cva(
       },
 
       size: {
-        default: "h-9 px-6 text-xl",
-        sm: "h-8 px-3 text-xs",
-        md: "h-8 px-6 text-md",
-        lg: "h-10 px-8 text-2xl",
+        default: "h-9 px-6 py-6 text-xl",
+        sm: "h-8 px-3 py-3 text-xs",
+        md: "h-8 px-6 py-6 text-md",
+        lg: "h-10 px-8 py-8 text-2xl",
+        xl: "h-14 px-8 py-8 text-2xl",
+        xxl: "h-16 px-10 py-10 text-3xl",
         // big circle for icon-only
         icon: "h-12 w-12 p-0 text-xl",
         // small circle for icon-only
@@ -83,38 +85,39 @@ export const buttonVariants = cva(
       iconPosition: "none",
     },
   }
-);
+)
 
-
-export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full", {
-  variants: {
-    color: {
-      keppel: "bg-keppel-500 text-white",
-      sunglow: "bg-sunglow-400 text-black",
-      purple: "bg-purple-500 text-white",
-      sky: "bg-sky-500 text-white",
-      emerald: "bg-emerald-500 text-white",
-      lime: "bg-lime-500 text-black",
-      amber: "bg-amber-500 text-black",
-      rose: "bg-rose-500 text-white",
-      cyan: "bg-cyan-500 text-white",
-      blue: "bg-500 text-white",
+export const badgeVariants = cva(
+  "inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full",
+  {
+    variants: {
+      color: {
+        keppel: "bg-keppel-500 text-white",
+        sunglow: "bg-sunglow-400 text-black",
+        purple: "bg-purple-500 text-white",
+        sky: "bg-sky-500 text-white",
+        emerald: "bg-emerald-500 text-white",
+        lime: "bg-lime-500 text-black",
+        amber: "bg-amber-500 text-black",
+        rose: "bg-rose-500 text-white",
+        cyan: "bg-cyan-500 text-white",
+        blue: "bg-blue-cbc text-white",
+      },
     },
-  },
-  defaultVariants: {
-    color: "keppel",
-  },
-})
+    defaultVariants: {
+      color: "blue",
+    },
+  }
+)
 
 export const cardVariants = cva(
   "rounded-xl bg-white text-black transition-shadow",
   {
     variants: {
       variant: {
-        default: "border bg-card text-card-foreground shadow",
-        elevated: "shadow-lg border border-neutral-200 ", 
-        ghost: "border-none bg-transparent shadow-none",
-        outlined: "border border-gray-300",
+        default: "shadow-lg border border-neutral-200",
+        shadowless: "shadow-none border border-neutral-200",
+        people: "border-none shadow-none",
       },
     },
     defaultVariants: {
