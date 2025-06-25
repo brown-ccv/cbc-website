@@ -31,10 +31,31 @@ const fileName = "people.yaml"
 const filePath = path.join("content/about", fileName)
 const pageContent = await readContentFile(filePath)
 
-async function getImagePaths(imageName: string) {
+async function getImagePaths(imageName: string | null) {
+  const defaultPath = "/logos/cbc-logo.svg"
+
+  // If imageName is null, undefined, or empty, return default
+  if (!imageName) {
+    return { main: defaultPath, hover: defaultPath }
+  }
+
   const mainPath = imagePath(imageName)
   const hoverName = imageName.replace("main", "hover")
   const hoverPath = imagePath(hoverName)
+
+  // Check if the main image exists
+  // If it doesn't, return the default path for both main and hover
+  let mainExists = true
+  try {
+    await fs.access(`public${mainPath}`)
+  } catch {
+    mainExists = false
+  }
+
+  if (!mainExists) {
+    return { main: defaultPath, hover: defaultPath }
+  }
+  // Check if the hover image exists
   try {
     await fs.access(`public${hoverPath}`)
     return { main: mainPath, hover: hoverPath }
