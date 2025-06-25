@@ -4,7 +4,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 If this is your first time setting up the dev environment you will need to authenticate through google cloud. See [Set up ADC for a local development environment](https://cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) for directions.
 
-First, run the development server:
+First run the build step:
+```bash
+npm run build
+```
+
+Then run the development server:
 
 ```bash
 npm run dev
