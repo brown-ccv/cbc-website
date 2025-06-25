@@ -46,14 +46,14 @@ async function getImagePaths(imageName: string | null) {
   // Check if the main image exists
   // If it doesn't, return the default path for both main and hover
   try {
-    await fs.access(`public${mainPath}`)
+    await fs.access(path.join("public", mainPath))
   } catch {
     return { main: defaultPath, hover: defaultPath }
   }
 
   // Check if the hover image exists
   try {
-    await fs.access(`public${hoverPath}`)
+    await fs.access(path.join("public", hoverPath))
     return { main: mainPath, hover: hoverPath }
   } catch {
     return { main: mainPath, hover: mainPath }
