@@ -188,8 +188,7 @@ export const Navbar: React.FC = () => {
             ))}
           </NavigationMenu.List>
 
-          <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
-            {/* Search */}
+          {/* <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             <NavigationMenu.Item>
               <Button
                 variant="secondary_filled"
@@ -200,7 +199,7 @@ export const Navbar: React.FC = () => {
                 <FaSearch />
               </Button>
             </NavigationMenu.Item>
-          </NavigationMenu.List>
+          </NavigationMenu.List> */}
         </NavigationMenu.Root>
 
         {/* Mobile Header and Menu Hamburger Button */}
