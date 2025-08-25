@@ -13,7 +13,7 @@ import {
 import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 import { readContentFile } from "@/lib/content-utils"
-import Icon from "@/components/ui/render-icon"
+import Icon from "@/components/ui/RenderIcon"
 
 interface CardDataTypes {
   title: string
