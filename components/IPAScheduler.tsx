@@ -1,10 +1,10 @@
 "use client"
 
 import React from "react"
-import { Card, CardContent, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardTitle } from "@/components/ui/Card"
 import { GiDna2 } from "react-icons/gi"
 import CBCBars from "@/components/assets/CBCBars"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 
 const request_access_url =
   "https://docs.google.com/forms/d/e/1FAIpQLSdJwbhtMznPjR6QrobBG1u-n3AMLnWdigN-NqFepsC7gbb2tw/viewform"

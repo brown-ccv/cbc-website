@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useState } from "react"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { SectionHeader } from "@/components/ui/section-header"
+import { Button } from "@/components/ui/Button"
+import { Card, CardContent } from "@/components/ui/Card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
 import Provident from "@/components/assets/Provident"
 import BrownLogo from "@/components/assets/BrownLogo"
 import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react"
@@ -29,15 +29,17 @@ const featuredCarouselData = [
 
 export const FeaturedCarousel: React.FC = () => {
   const [idx, setIdx] = useState(0)
-  const { title, category, description, image: ImageComp } =
-    featuredCarouselData[idx]
+  const {
+    title,
+    category,
+    description,
+    image: ImageComp,
+  } = featuredCarouselData[idx]
 
   const prev = () =>
     setIdx((i) => (i === 0 ? featuredCarouselData.length - 1 : i - 1))
   const next = () =>
-    setIdx((i) =>
-      i === featuredCarouselData.length - 1 ? 0 : i + 1
-    )
+    setIdx((i) => (i === featuredCarouselData.length - 1 ? 0 : i + 1))
 
   return (
     <section className="mt-24 mb-24">
@@ -120,7 +122,6 @@ export const FeaturedCarousel: React.FC = () => {
             <ChevronRightIcon className="h-8 w-8" strokeWidth={2.5} />
           </Button>
         </div>
-
       </div>
     </section>
   )

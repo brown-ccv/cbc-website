@@ -1,19 +1,19 @@
 import React from "react"
 import path from "path"
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
-import { SectionHeader } from "@/components/ui/section-header"
-import { Button } from "@/components/ui/button"
+import { TextAnimate } from "@/components/magicui/TextAnimate"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { Button } from "@/components/ui/Button"
 import {
   Card,
   CardContent,
   CardHeader,
   CardDescription,
-} from "@/components/ui/card"
+} from "@/components/ui/Card"
 import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 import { readContentFile } from "@/lib/content-utils"
-import Icon from "@/components/ui/render-icon"
+import Icon from "@/components/ui/RenderIcon"
 
 interface CardDataTypes {
   title: string

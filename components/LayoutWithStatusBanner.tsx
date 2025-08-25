@@ -1,19 +1,21 @@
-"use client";
+"use client"
 
-import { usePathname } from "next/navigation";
-import "@/app/globals.css";
-import StatusBanner from "@/components/StatusBanner";
-import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation"
+import "@/app/globals.css"
+import StatusBanner from "@/components/StatusBanner"
+import { Button } from "@/components/ui/Button"
 
 interface LayoutWithStatusBannerProps {
-  issues: any[];
+  issues: any[]
 }
 
-export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBannerProps) {
-  const pathname = usePathname();
-  const showStatusBanner = pathname === "/";
-  const repoNames = issues.map((repo) => repo.name).join(", "); 
-  const isOperational = issues.length === 0;
+export default function LayoutWithStatusBanner({
+  issues,
+}: LayoutWithStatusBannerProps) {
+  const pathname = usePathname()
+  const showStatusBanner = pathname === "/"
+  const repoNames = issues.map((repo) => repo.name).join(", ")
+  const isOperational = issues.length === 0
 
   return (
     <div>
@@ -37,9 +39,7 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
               </>
             ) : (
               <>
-                <p className="text-xl">
-                  All Services Operational
-                </p>
+                <p className="text-xl">All Services Operational</p>
                 <Button variant="secondary_filled" size="md">
                   <a
                     href="https://status.ccv.brown.edu/"
@@ -55,5 +55,5 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
         </StatusBanner>
       )}
     </div>
-  );
+  )
 }

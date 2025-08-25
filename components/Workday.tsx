@@ -2,7 +2,7 @@
 
 import React from "react"
 import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/Card"
 
 interface PositionProps {
   title: string

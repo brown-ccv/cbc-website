@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority"
 
-export const buttonVariants = cva(
+export const ButtonVariants = cva(
   "inline-flex items-center justify-center flex-shrink-0 whitespace-nowrap w-auto rounded-full text-xl transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:h-4 [&_svg]:w-4",
   {
     variants: {
@@ -87,7 +87,7 @@ export const buttonVariants = cva(
   }
 )
 
-export const badgeVariants = cva(
+export const BadgeVariants = cva(
   "inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full",
   {
     variants: {
