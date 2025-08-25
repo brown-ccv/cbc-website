@@ -1,5 +1,5 @@
 import React from "react"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/Card"
 import { cardVariants } from "@/components/ui/variants"
 import CBCBars from "@/components/assets/CBCBars"
 import { cn } from "@/lib/utils"

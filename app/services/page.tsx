@@ -9,7 +9,7 @@ import {
   CardContent,
   CardHeader,
   CardDescription,
-} from "@/components/ui/card"
+} from "@/components/ui/Card"
 import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 import { readContentFile } from "@/lib/content-utils"
