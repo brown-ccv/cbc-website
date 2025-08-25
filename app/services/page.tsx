@@ -1,7 +1,7 @@
 import React from "react"
 import path from "path"
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
+import { TextAnimate } from "@/components/magicui/TextAnimate"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { Button } from "@/components/ui/Button"
 import {
