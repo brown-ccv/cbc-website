@@ -1,5 +1,5 @@
 import React from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 import { MessagesSquareIcon } from "lucide-react"
 import Image from "next/image"
 import OITLogo from "@/assets/oit-logo.png"

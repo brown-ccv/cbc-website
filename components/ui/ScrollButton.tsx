@@ -2,7 +2,7 @@
 
 import { scrollToID } from "@/lib/utils"
 import { ButtonVariants } from "@/components/ui/variants"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 import type { VariantProps } from "class-variance-authority"
 
 export interface ButtonProps
