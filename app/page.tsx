@@ -11,7 +11,7 @@ import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
 import { Button } from "@/components/button/Button"
-import { ScrollButton } from "@/components/ui/ScrollButton"
+import { ScrollButton } from "@/components/button/ScrollButton"
 
 export default async function Home() {
   try {
