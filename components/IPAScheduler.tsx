@@ -4,7 +4,7 @@ import React from "react"
 import { Card, CardContent, CardTitle } from "@/components/ui/Card"
 import { GiDna2 } from "react-icons/gi"
 import CBCBars from "@/components/assets/CBCBars"
-import { Button } from "@/components/button/Button"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 const request_access_url =
   "https://docs.google.com/forms/d/e/1FAIpQLSdJwbhtMznPjR6QrobBG1u-n3AMLnWdigN-NqFepsC7gbb2tw/viewform"
@@ -32,18 +32,14 @@ export const IPAScheduler = () => {
                   levels.
                 </p>
                 <div className="flex justify-center items-center p-2">
-                  <Button
+                  <ButtonLink
                     className="h-[55px] font-semibold"
                     variant="primary_filled"
+                    href={request_access_url}
+                    external={true}
                   >
-                    <a
-                      href={request_access_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Request Access to IPA
-                    </a>
-                  </Button>
+                    Request Access to IPA
+                  </ButtonLink>
                 </div>
                 <ul className="list-disc pl-6 space-y-2">
                   <h4 className="text-2xl font-semibold italic">Scheduling</h4>
