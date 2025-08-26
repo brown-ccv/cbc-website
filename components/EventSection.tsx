@@ -7,7 +7,7 @@ import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { Card, CardContent } from "@/components/ui/Card"
 import CBCBars from "@/components/assets/CBCBars"
 import { FaCalendarAlt } from "react-icons/fa"
-import { Button } from "@/components/button/Button"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 const events_url = "https://events.brown.edu/ccv/all"
 
@@ -51,11 +51,14 @@ const EventCard = () => {
         <p className="font-serif italic text-black text-xl mt-3 mb-3">
           What’s next at CBC
         </p>
-        <Button className="h-[55px] font-semibold" variant="primary_filled">
-          <a href={events_url} target="_blank" rel="noopener noreferrer">
-            View All Events
-          </a>
-        </Button>
+        <ButtonLink
+          className="h-[55px] font-semibold"
+          variant="primary_filled"
+          href={events_url}
+          external={true}
+        >
+          View All Events
+        </ButtonLink>
       </CardContent>
     </Card>
   )
