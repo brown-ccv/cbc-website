@@ -1,6 +1,6 @@
 import React from "react"
-import { Button } from "@/components/button/Button"
-import { MessagesSquareIcon } from "lucide-react"
+import { FaComments } from "react-icons/fa"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import Image from "next/image"
 import OITLogo from "@/assets/oit-logo.png"
 import CBCLogo from "@/components/assets/CBCLogo"
@@ -29,22 +29,16 @@ export const BrownBanner: React.FC = () => {
               </a>
             </div>
           </div>
-          <Button
-            variant="primary_outlined"
-            className="absolute right-[49px] h-[50px] top-1/2 transform -translate-y-1/2 my-auto
-            font-semibold rounded-none text-md
-            border-red-university text-red-university  
-            hover:bg-red-university hover:text-white hover:border-red-university
-            whitespace-nowrap w-fit px-4 py-4"
+          <ButtonLink
+            href="mailto:ccv-support@brown.edu"
+            external={true}
+            variant="red_outlined"
+            size="sm"
+            className={"px-2 py-6 sm:px-4"}
           >
-            <a
-              href="mailto:cbc-help@brown.edu"
-              className="flex items-center justify-center w-full h-full"
-            >
-              <MessagesSquareIcon className="mr-2" />
-              Work with Us
-            </a>
-          </Button>
+            <FaComments className="text-xl sm:text-2xl mr-2" />
+            Work with Us
+          </ButtonLink>
         </div>
       </div>
     </header>
