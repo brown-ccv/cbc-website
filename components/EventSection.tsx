@@ -7,7 +7,7 @@ import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { Card, CardContent } from "@/components/ui/Card"
 import CBCBars from "@/components/assets/CBCBars"
 import { FaCalendarAlt } from "react-icons/fa"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 
 const events_url = "https://events.brown.edu/ccv/all"
 

@@ -1,8 +1,8 @@
 "use client"
 
 import { scrollToID } from "@/lib/utils"
-import { ButtonVariants } from "@/components/ui/variants"
-import { Button } from "@/components/ui/Button"
+import { ButtonVariants } from "@/components/button/variants"
+import { Button } from "@/components/button/Button"
 import type { VariantProps } from "class-variance-authority"
 
 export interface ButtonProps

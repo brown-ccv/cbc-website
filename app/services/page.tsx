@@ -1,9 +1,10 @@
 import React from "react"
 import path from "path"
+import Link from "next/link"
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
 import { SectionHeader } from "@/components/ui/SectionHeader"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import {
   Card,
   CardContent,
@@ -106,7 +107,7 @@ export default async function Services() {
                 variant="primary_filled"
                 className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
               >
-                <a href="/#events">View Office Hours</a>
+                <Link href="/#events">View Office Hours</Link>
               </Button>
               <Button
                 variant="primary_filled"
