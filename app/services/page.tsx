@@ -2,7 +2,6 @@ import React from "react"
 import path from "path"
 import Link from "next/link"
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/TextAnimate"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import {
