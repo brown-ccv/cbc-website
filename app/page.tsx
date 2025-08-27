@@ -9,7 +9,6 @@ import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
-import { TextAnimate } from "@/components/magicui/TextAnimate"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { ButtonLink } from "@/components/button/ButtonLink"
 
@@ -28,36 +27,26 @@ export default async function Home() {
       <div className="w-full">
         <div className="relative w-full flex flex-col">
           <div className="bg-blue-navbar">
-            <Hero image={"/images/dna-dark-mirror.svg"}>
-              <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-                <div className="absolute top-[12%] flex flex-col text-white space-y-6">
-                  <TextAnimate className="font-bold text-5xl md:text-8xl">
-                    Computational Biology Core
-                  </TextAnimate>
-
-                  <p className="text-2xl md:text-4xl font-semibold">
-                    {`Supporting Brown's biological research using high-throughput DNA/RNA sequencing data.`}
-                  </p>
-
-                  <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
-                    <ButtonLink
-                      variant="secondary_filled"
-                      className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
-                      href="mailto:cbc-help@brown.edu"
-                      external={true}
-                    >
-                      Work with Us
-                    </ButtonLink>
-                    <ScrollButton
-                      id="events"
-                      variant="secondary_outlined"
-                      className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
-                    >
-                      View Events
-                    </ScrollButton>
-                  </div>
-                </div>
-              </div>
+            <Hero
+              image={"/images/dna-dark-mirror.svg"}
+              title="Computational Biology Core"
+              description="Supporting Brown's biological research using high-throughput DNA/RNA sequencing data."
+            >
+              <ButtonLink
+                variant="secondary_filled"
+                className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
+                href="mailto:cbc-help@brown.edu"
+                external={true}
+              >
+                Work with Us
+              </ButtonLink>
+              <ScrollButton
+                id="events"
+                variant="secondary_outlined"
+                className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
+              >
+                View Events
+              </ScrollButton>
             </Hero>
           </div>
           <HeroCard />
