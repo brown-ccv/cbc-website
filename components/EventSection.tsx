@@ -56,6 +56,7 @@ const EventCard = () => {
           variant="primary_filled"
           href={events_url}
           external={true}
+          isCalendarEvent={false}
         >
           View All Events
         </ButtonLink>
