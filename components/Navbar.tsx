@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import CBCLogo from "@/components/assets/CBCLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
