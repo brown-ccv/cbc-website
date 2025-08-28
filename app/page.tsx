@@ -1,6 +1,6 @@
 // app/page.tsx
 import { Hero } from "@/components/Hero"
-import { HeroCard } from "@/components/HeroCard"
+import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import { FeaturedCarousel } from "@/components/FeaturedCarousel"
 import { IPAScheduler } from "@/components/IPAScheduler"
@@ -10,8 +10,8 @@ import { getStringDate } from "@/components/calendar/utils"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
-import { Button } from "@/components/ui/Button"
-import { ScrollButton } from "@/components/ui/ScrollButton"
+import { ScrollButton } from "@/components/button/ScrollButton"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 export default async function Home() {
   try {
@@ -40,12 +40,14 @@ export default async function Home() {
                   </p>
 
                   <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
-                    <Button
+                    <ButtonLink
                       variant="secondary_filled"
                       className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
+                      href="mailto:cbc-help@brown.edu"
+                      external={true}
                     >
-                      <a href="mailto:cbc-help@brown.edu">Work with Us</a>
-                    </Button>
+                      Work with Us
+                    </ButtonLink>
                     <ScrollButton
                       id="events"
                       variant="secondary_outlined"

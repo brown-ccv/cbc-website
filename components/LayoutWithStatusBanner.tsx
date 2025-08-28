@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation"
 import "@/app/globals.css"
 import StatusBanner from "@/components/StatusBanner"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 
 interface LayoutWithStatusBannerProps {
   issues: any[]

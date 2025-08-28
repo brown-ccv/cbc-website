@@ -1,9 +1,10 @@
 import React from "react"
 import path from "path"
+import Link from "next/link"
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
 import { SectionHeader } from "@/components/ui/SectionHeader"
-import { Button } from "@/components/ui/Button"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import {
   Card,
   CardContent,
@@ -102,18 +103,22 @@ export default async function Services() {
               consultation with us.
             </p>
             <div className="flex flex-row flex-wrap gap-4 pt-10">
-              <Button
+              <ButtonLink
                 variant="primary_filled"
                 className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
+                href="/#events"
+                external={false}
               >
-                <a href="/#events">View Office Hours</a>
-              </Button>
-              <Button
+                View Office Hours
+              </ButtonLink>
+              <ButtonLink
                 variant="primary_filled"
                 className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
+                href="mailto:cbc-help@brown.edu"
+                external={true}
               >
-                <a href="mailto:cbc-help@brown.edu">Request Support</a>
-              </Button>
+                Request Support
+              </ButtonLink>
             </div>
           </CardContent>
         </Card>
@@ -137,12 +142,14 @@ export default async function Services() {
         </Card>
         {renderServiceCards(pageContent?.data?.dataAnalysis as CardDataTypes[])}
         <div className="p-6 pt-10 max-w-[1440px] mx-auto px-6">
-          <Button
+          <ButtonLink
             variant="primary_filled"
             className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
+            href="mailto:cbc-help@brown.edu"
+            external={true}
           >
-            <a href="mailto:cbc-help@brown.edu">Contact Us</a>
-          </Button>
+            Contact Us
+          </ButtonLink>
         </div>
       </section>
 
@@ -180,12 +187,14 @@ export default async function Services() {
               Have an idea of how a collaboration with CBC can help achieve your
               computational research goals? We’d love to hear from you.
             </p>
-            <Button
+            <ButtonLink
               variant="primary_filled"
               className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
+              href="mailto:cbc-help@brown.edu"
+              external={true}
             >
-              <a href="mailto:cbc-help@brown.edu">Contact Us</a>
-            </Button>
+              Contact Us
+            </ButtonLink>
           </CardContent>
         </Card>
       </section>

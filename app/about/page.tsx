@@ -4,7 +4,7 @@ import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { Card, CardContent } from "@/components/ui/Card"
-import { CardWithImage } from "@/components/ui/PeopleCard"
+import { PeopleCard } from "@/components/card/PeopleCard"
 import { readContentFile } from "@/lib/content-utils"
 import { Workday } from "@/components/Workday"
 import { getWorkdayData } from "@/app/about/queries"
@@ -188,11 +188,12 @@ export default async function AboutUs() {
                     const { main, hover } = await getImagePaths(person.image)
                     return (
                       <div key={person.name}>
-                        <CardWithImage
+                        <PeopleCard
                           imagePath={main}
                           hoverImagePath={hover}
                           name={person?.name}
                           title={person?.title}
+                          personDetails={person}
                         />
                       </div>
                     )
