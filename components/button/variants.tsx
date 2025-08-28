@@ -22,14 +22,14 @@ export const ButtonVariants = cva(
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
           "bg-transparent border-2 border-blue-cbc text-blue-cbc",
-          "hover:border-blue-300 hover:text-blue-300",
+          "hover:bg-blue-300 hover:border-blue-300 hover:text-white",
           "focus-visible:ring-2 focus-visible:ring-blue-500",
           "active:bg-blue-50 active:border-blue-500 active:text-blue-500",
         ].join(" "),
         // ————————————————————— Secondary Outlined ———————————————————
         secondary_outlined: [
           "bg-transparent border-2 border-sunglow-400 text-sunglow-400",
-          "hover:border-sunglow-200 hover:text-sunglow-200",
+          "hover:bg-sunglow-200 hover:border-sunglow-200 hover:text-black",
           "focus-visible:ring-2 focus-visible:ring-sunglow-400",
           "active:bg-sunglow-50 active:border-sunglow-300 active:text-sunglow-300",
         ].join(" "),
