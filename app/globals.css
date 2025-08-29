@@ -69,6 +69,12 @@
       @apply text-2xl;
     }
   }
+
+  @layer components {
+    .content-wrapper {
+      @apply w-full px-8 md:px-14;
+    }
+  }
 }
 
 @layer utilities {
