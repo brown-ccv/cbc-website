@@ -22,7 +22,7 @@
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `name` | string | ✅ | Developer name |
-| `github_user` | string | ✅ | GitHub username |
+| `github_user` | string | ❌ | GitHub username |
 
 ### Link Object
 | Field | Type | Required | Description |
