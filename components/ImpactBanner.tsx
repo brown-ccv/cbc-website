@@ -1,7 +1,7 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/Card"
 
-export const ImpactBanner = (): JSX.Element => {
+export const ImpactBanner = (): React.JSX.Element => {
   const impactMetrics = [
     { count: "700+", label: "Publications" },
     { count: "2,000+", label: "HCP Users" },
