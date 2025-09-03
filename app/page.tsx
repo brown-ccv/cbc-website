@@ -1,5 +1,5 @@
 // app/page.tsx
-import { Hero } from "@/components/Hero"
+import { MainHero } from "@/components/Hero"
 import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import { FeaturedCarousel } from "@/components/FeaturedCarousel"
@@ -27,7 +27,7 @@ export default async function Home() {
       <div className="w-full">
         <div className="relative w-full flex flex-col">
           <div className="bg-blue-navbar">
-            <Hero
+            <MainHero
               image={"/images/dna-dark-mirror.svg"}
               title="Computational Biology Core"
               description="Supporting Brown's biological research using high-throughput DNA/RNA sequencing data."
@@ -47,7 +47,7 @@ export default async function Home() {
               >
                 View Events
               </ScrollButton>
-            </Hero>
+            </MainHero>
           </div>
           <HeroCard />
           {/* <ImpactBanner /> */}
