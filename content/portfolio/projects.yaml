@@ -23,5 +23,5 @@ projects:
       - javascript
       - reactjs
     links:
-      - category: "website"
+      - display_text: "website"
         url: https://biomedical.brown.edu/diversity
