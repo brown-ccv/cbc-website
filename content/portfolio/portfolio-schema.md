@@ -5,7 +5,7 @@
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `title` | string | ✅ | Project title |
-| `image` | string | ✅ | Image path/URL |
+| `image` | string | ❌ | Image path/URL |
 | `slug` | string | ✅ | URL slug for the project |
 | `description` | string | ✅ | Project description |
 | `project-type` | string | ✅ | Type of project (Software Engineering, Data Science, etc.) |
