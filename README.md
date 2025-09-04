@@ -1,26 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CBC Website
+
+This is the website for the Center for Computational Biology at Brown University.
 
 ## Getting Started
 
-If this is your first time setting up the dev environment you will need to authenticate through google cloud. See [Set up ADC for a local development environment](https://cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) for directions.
+### 1. Install Dependencies
 
-First, run the development server:
+```bash
+npm install
+```
+
+### 2. Authenticate with Google Cloud
+
+This project interacts with Google Cloud services (e.g., Google Cloud Secret Manager). To allow your local development
+environment to access these services, we
+use [Application Default Credentials (ADC)](https://cloud.google.com/docs/authentication/application-default-credentials).
+ADC enables your application to automatically find credentials without requiring hardcoded keys.
+
+You'll need the gcloud-cli (Google Cloud CLI) installed. If you don't have it, you can install it. For macOS/Linux
+users, Homebrew is a convenient option:
+
+```bash
+# For macOS
+# https://formulae.brew.sh/cask/gcloud-cli
+brew install gcloud-cli
+```
+
+Once `gcloud-cli` is installed, log in to set up your Application Default Credentials for your user account:
+
+```
+gcloud auth application-default login
+```
+
+> [!IMPORTANT]
+> Important Note on Service Accounts: While gcloud auth application-default login sets up user credentials for ADC, in
+> production environments (like Firebase App Hosting), a dedicated service account is typically used for authentication.
+> This ensures your application has only the necessary permissions and improves security. Your local setup emulates this
+> access pattern.
+
+### 3. Build
+
+Before running the development server, it's recommended to build the project. This compiles the Next.js application for
+production and can help catch configuration errors or issues early.
+
+This step also copies images from the content folder into the public directory. You don't need to run this command every
+time you develop locally, but if you make changes to images in the content folder, you'll want to rebuild.
+
+```bash
+npm run build
+```
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Hosting
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Hosting created from [CCV Hosting Preview Repo](https://github.com/brown-ccv/test-app-hosting-preview)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Containerized in Docker, stored in an image on Google Container Registry, and run via Google Cloud run (Project
+ID: `ccv-website-next`).
+Secrets are in [Google Cloud Secret Manager](https://console.cloud.google.com/security/secret-manager).
 
 ## Learn More
 
@@ -30,9 +72,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
