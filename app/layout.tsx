@@ -1,17 +1,11 @@
 import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
 import { ReactNode } from "react"
-import { getOpenIssues } from "@/lib/getOpenIssues"
-import { unstable_cache } from "next/cache"
 import Script from "next/script"
 import BrownBanner from "@/components/BrownBanner"
 import Navbar from "@/components/Navbar"
 import Acknowledgement from "@/components/Acknowledgement"
 import Footer from "@/components/Footer"
-
-const getCachedOpenIssues = unstable_cache(getOpenIssues, ["open-issues"], {
-  revalidate: 60,
-})
 
 const inter = Inter({ subsets: ["latin"] })
 const sourceSans = Source_Sans_3({
@@ -56,8 +50,6 @@ export default async function RootLayoutWrapper({
 }: {
   children: ReactNode
 }) {
-  const issues = await getCachedOpenIssues()
-
   return (
     <html
       lang="en"
