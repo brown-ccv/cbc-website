@@ -10,6 +10,8 @@
 | `description` | string | ✅ | Project description |
 | `project-type` | string | ✅ | Type of project (Software Engineering, Data Science, etc.) |
 | `starred` | boolean | ✅ | Boolean for featured projects |
+| `start_year` | number | ❌ | Start year of project or workshop | 
+| `end_year` | number | ❌ | End year or most recent year of project or workshop | 
 | `groups` | string[] | ❌ | Array of group affiliations |
 | `languages` | string[] | ❌ | Array of programming languages used |
 | `tags` | string[] | ❌ | Array of tags |

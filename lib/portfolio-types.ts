@@ -20,6 +20,8 @@ export interface PortfolioEntry {
   description: string;
   'project-type': string;
   starred: boolean;
+  start_year?: number;
+  end_year?: number;
   developers?: Developer[]; 
   languages?: string[];
   tags?: string[];
