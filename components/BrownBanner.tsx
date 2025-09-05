@@ -7,39 +7,42 @@ import CBCLogo from "@/components/assets/CBCLogo"
 
 export const BrownBanner: React.FC = () => {
   return (
-    <header className="content-wrapper bg-white relative flex items-center py-4">
-      <div className="flex flex-row items-center w-full">
-        <a href="https://it.brown.edu">
-          <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />
-        </a>
-        <div className="ml-6 w-full flex flex-row justify-between items-center">
-          <div className="py-7 pl-6 h-full sm:text-xl lg:text-2xl font-semibold border-l border-black hidden lg:flex items-center lg:visible space-x-4">
-            <CBCLogo width={60} />
-            <div className="flex flex-col">
-              <h1 className="text-2xl lg:text-3xl font-semibold">
-                Computational Biology Core
-              </h1>
-              <a
-                href="https://sites.brown.edu/computational-biology-of-human-disease/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-base lg:text-lg font-semibold hover:underline mt-1"
-              >
-                COBRE-Center for Computational Biology of Human Disease
-              </a>
-            </div>
+    <header className="flex flex-row items-center justify-between bg-white px-4 py-2 lg:py-4">
+      <a
+        href="https://it.brown.edu"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-shrink-0 lg:border-r lg:border-neutral-900 lg:p-4"
+      >
+        <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />
+      </a>
+      <div className="pl-4 w-full flex flex-row justify-end lg:justify-between items-center">
+        <div className="sm:text-xl lg:text-2xl font-semibold hidden lg:flex items-center lg:visible space-x-4">
+          <CBCLogo width={60} />
+          <div className="flex flex-col">
+            <h1 className="text-2xl lg:text-3xl font-semibold">
+              Computational Biology Core
+            </h1>
+            <a
+              href="https://sites.brown.edu/computational-biology-of-human-disease/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base lg:text-lg font-semibold hover:underline mt-1"
+            >
+              COBRE-Center for Computational Biology of Human Disease
+            </a>
           </div>
-          <ButtonLink
-            href="mailto:ccv-support@brown.edu"
-            external={true}
-            variant="red_outlined"
-            size="sm"
-            className={"px-2 py-6 sm:px-4"}
-          >
-            <FaComments className="text-xl sm:text-2xl mr-2" />
-            Work with Us
-          </ButtonLink>
         </div>
+        <ButtonLink
+          href="mailto:ccv-support@brown.edu"
+          external={true}
+          variant="red_outlined"
+          size="sm"
+          className={"px-2 py-6 sm:px-4"}
+        >
+          <FaComments className="text-xl sm:text-2xl mr-2" />
+          Work with Us
+        </ButtonLink>
       </div>
     </header>
   )
