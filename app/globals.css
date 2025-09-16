@@ -74,6 +74,11 @@
     .content-wrapper {
       @apply w-full px-8 md:px-14;
     }
+
+    .prose pre code {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
   }
 }
 
