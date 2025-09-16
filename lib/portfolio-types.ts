@@ -1,0 +1,32 @@
+export interface Developer {
+    name: string;
+    github_user?: string;
+}
+
+export interface Link {
+    display_text: string;
+    url: string;
+}
+
+export interface Investigator {
+    name: string;
+    link: string;
+}
+
+export interface PortfolioEntry {
+  title: string;
+  image?: string;
+  slug: string;
+  description: string;
+  'project-type': string;
+  starred: boolean;
+  start_year?: number;
+  end_year?: number;
+  developers?: Developer[]; 
+  languages?: string[];
+  tags?: string[];
+  groups?: string[];
+  department?: string[];
+  links?: Link[];
+  investigators?: Investigator[];
+}

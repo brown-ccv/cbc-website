@@ -1,0 +1,23 @@
+carousel:
+  - title: "CCV AI Tools"
+    categories: ["Web Development", "LLMs", "AI"]
+    description: |
+      CCV AI Tools provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
+
+      - LibreChat (currently under construction): A unified chat interface that provides the community free and private access to a mix of state-of-the-art open-source and commercial large language models (LLMs), including GPT-5 and Gemini-2.5-Pro.
+      - Transcribe: A web app that provides fast and accurate audio transcription through open-source and enterprise-level models, including the OpenAI Whisper model and Google Gemini models.
+      - Ask Oscar (currently under construction): An AI assistant that can answer questions based on documentation of CCV and other Brown services.
+    image: "/images/home/featured-carousel/ccv-ai-services.png"
+    organizations:
+      - name: "Department of Sociology"
+        organization: "Population Studies and Training Center"
+        pi: ["David Lindstrom"]
+        icon: "FaUser"
+      - name: "Center for Demographic, Urban and Environmental Studies"
+        organization: "El Colegio de México"
+        pi: ["Silvia Giorguli Saucedo", "Jéssica Natalie Nájera Aguirre"]
+        icon: "FaUser"
+    buttons:
+      - text: "MMP Website"
+        url: "https://mmp.research.brown.edu/mmp"
+        variant: "primary_filled"
