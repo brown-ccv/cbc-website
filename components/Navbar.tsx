@@ -131,11 +131,6 @@ const routes: NavSection[] = [
             href: "/#events",
             description: "",
           },
-          {
-            name: "IPA Scheduler",
-            href: "/#ipa-scheduler",
-            description: "",
-          },
         ],
       },
     ],
