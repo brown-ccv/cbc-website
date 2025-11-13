@@ -2,7 +2,7 @@ import { StyledCard } from "@/components/card/StyledCard"
 import React from "react"
 import { DataProps } from "@/components/EventSection"
 import Icon from "@/components/ui/RenderIcon"
-import sanitizeHtml from "sanitize-html";
+import sanitizeHtml from "sanitize-html"
 
 export const EventsCard: React.FC<DataProps> = ({
   date_time,
@@ -12,7 +12,10 @@ export const EventsCard: React.FC<DataProps> = ({
   date_utc,
   description_long,
 }) => {
-  const descriptionLong = sanitizeHtml(description_long, { allowedTags: [], allowedAttributes: {} })
+  const descriptionLong = sanitizeHtml(description_long, {
+    allowedTags: [],
+    allowedAttributes: {},
+  })
   const dateTime = new Date(date_utc.replace(/-/g, "/"))
   const normalDate =
     new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(dateTime) +

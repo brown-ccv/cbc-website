@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react"
 
 interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
