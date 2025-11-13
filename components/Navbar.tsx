@@ -130,7 +130,7 @@ const routes: NavSection[] = [
             name: "Office Hours",
             href: "/#events",
             description: "",
-          }
+          },
         ],
       },
     ],
