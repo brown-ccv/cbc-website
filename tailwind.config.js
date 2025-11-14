@@ -4,7 +4,6 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  presets: [],
   darkMode: "media", // or 'class'
   theme: {
     accentColor: ({ theme }) => ({
