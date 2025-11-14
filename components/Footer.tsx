@@ -1,6 +1,8 @@
 import CBCLogo from "@/components/assets/CBCLogo"
 import { FaArrowRight } from "react-icons/fa"
-import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
+import { MdEmail, MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
+import ButtonLink from "@/components/button/ButtonLink"
+import { CopyableEmail } from "@/components/CopyableEmail"
 
 // Footer link component
 interface FooterLinkProps {
@@ -11,15 +13,14 @@ interface FooterLinkProps {
 const FooterLink = ({ href, label }: FooterLinkProps) => {
   return (
     <li>
-      <a
+      <ButtonLink
         href={href}
-        className="flex items-center text-sm tracking-wider uppercase transition-colors duration-300 text-sunglow-400 hover:text-white"
-        target="_blank"
-        rel="noopener noreferrer"
+        size="sm"
+        className="flex items-center text-sm uppercase tracking-wider text-sunglow-400 transition-colors duration-300 hover:text-white"
       >
         {label}
-        <FaArrowRight className="block ml-2" />
-      </a>
+        <FaArrowRight className="ml-2 block" />
+      </ButtonLink>
     </li>
   )
 }
@@ -82,30 +83,42 @@ const Footer = () => {
               <MdOutlinePhoneInTalk className="inline-block mr-2 text-stone-400" />
               401-863-1000
             </div>
+            <div className="font-serif text-md text-white sm:text-lg xl:text-xl">
+              <MdEmail
+                aria-label="Email Icon"
+                className="mr-2 inline-block text-stone-400"
+              />
+              <CopyableEmail
+                email="support@ccv.brown.edu"
+                className="font-normal text-white hover:text-white"
+              />
+            </div>
           </div>
         </div>
-        <div className="flex flex-col w-full text-sunglow-400">
+        <nav className="flex flex-col w-full text-sunglow-400">
           {/* Quick Navigation */}
           <FooterSection links={quickNavLinks} />
 
           {/* Footer Navigation */}
           <FooterSection links={footerNavLinks} className="lg:border-b-0" />
-        </div>
+        </nav>
         <div className="flex flex-row w-full sm:justify-center sm:items-center">
-          <a
+          <ButtonLink
             href="https://alumni-friends.brown.edu/giving"
-            className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
+            variant="secondary_outlined"
+            size="sm"
+            className="group uppercase tracking-widest text-white"
           >
             Give to Brown
-            <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-black" />
-          </a>
+            <FaArrowRight className="ml-2 text-sunglow-400 group-hover:text-black" />
+          </ButtonLink>
         </div>
       </div>
 
       {/* Copyright Section */}
       <div className="w-full flex flex-row items-center justify-between bg-black px-6 py-4 font-serif text-cream sm:flex-row sm:px-8 md:px-12 md:text-lg lg:px-20">
-        <div>&copy; Brown University</div>
         <CBCLogo width={40} fillColor="white" />
+        <p className="font-serif text-sm">&copy; Brown University</p>
       </div>
     </footer>
   )
