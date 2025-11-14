@@ -63,36 +63,36 @@ const routes: NavSection[] = [
       },
     ],
   },
-  // {
-  //   name: "Portfolio",
-  //   groups: [
-  //     {
-  //       name: "",
-  //       routes: [
-  //         {
-  //           name: "Collaborations",
-  //           href: "/portfolio/collaborations",
-  //           description: "*Coming soon*",
-  //         },
-  //         {
-  //           name: "Software",
-  //           href: "/portfolio/software",
-  //           description: "*Coming soon*",
-  //         },
-  //         {
-  //           name: "Workshops and Talks",
-  //           href: "/portfolio/workshops-and-talks",
-  //           description: "*Coming soon*",
-  //         },
-  //         {
-  //           name: "Publications",
-  //           href: "https://publications.ccv.brown.edu",
-  //           description: "*Coming soon*",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // },
+  {
+    name: "Portfolio",
+    groups: [
+      {
+        name: "",
+        routes: [
+          {
+            name: "Collaborations",
+            href: "/portfolio/collaborations",
+            description: "*Coming soon*",
+          },
+          {
+            name: "Software",
+            href: "/portfolio/software",
+            description: "*Coming soon*",
+          },
+          {
+            name: "Workshops and Talks",
+            href: "/portfolio/workshops-and-talks",
+            description: "*Coming soon*",
+          },
+          {
+            name: "Publications",
+            href: "https://publications.ccv.brown.edu",
+            description: "*Coming soon*",
+          },
+        ],
+      },
+    ],
+  },
   {
     name: "About",
     groups: [
