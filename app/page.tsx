@@ -28,7 +28,7 @@ export default async function Home() {
         <div className="relative w-full flex flex-col">
           <div className="bg-blue-navbar">
             <MainHero
-              image={"/images/dna-dark-mirror.svg"}
+              image={"/images/dna-dark-mirror.webp"}
               title="Computational Biology Core"
               description="Supporting Brown's biological research using high-throughput DNA/RNA sequencing data."
             >
