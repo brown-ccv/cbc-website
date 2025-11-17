@@ -1,115 +1,38 @@
-@import "prismjs/themes/prism-okaidia.css";
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --color-cream: #b7b09c;
 
-@layer base {
-  :root {
-    @apply font-sans;
-    @apply text-neutral-700;
-    --accent: 0, 128, 108;
-    --accent-light: 0, 230, 195;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
+  --color-purple-900: #5a0e72;
 
-  html,
-  body {
-    @apply bg-white;
-  }
+  --color-red-university: #c00404;
 
-  h1 {
-    @apply text-4xl font-bold;
-  }
+  --color-blue-900: #2c3e50;
+  --color-blue-700: #002b52;
+  --color-blue-500: #003c70;
+  --color-blue-300: #527da1;
+  --color-blue-50: #a3b8ca;
+  --color-blue-navbar: #060839;
+  --color-blue-cbc: #27236a;
 
-  h2,
-  h3,
-  h4 {
-    @apply font-semibold;
-  }
+  --color-keppel-800: #0a6559;
+  --color-keppel-700: #00947d;
+  --color-keppel-600: #00b398;
+  --color-keppel-500: #04c8a6;
+  --color-keppel-400: #1de4bf;
+  --color-keppel-300: #51f7d3;
+  --color-keppel-200: #90ffe2;
+  --color-keppel-100: #c7fff1;
+  --color-keppel-50: #effefa;
 
-  h2 {
-    @apply text-3xl;
-  }
+  --color-sunglow-700: #b75506;
+  --color-sunglow-600: #dd7a02;
+  --color-sunglow-500: #f9a207;
+  --color-sunglow-400: #ffc72c;
+  --color-sunglow-300: #ffd74a;
+  --color-sunglow-200: #ffe888;
+  --color-sunglow-100: #fff5c6;
+  --color-sunglow-50: #fffbeb;
 
-  h3 {
-    @apply text-2xl;
-  }
-
-  h4 {
-    @apply text-xl;
-  }
-
-  @media (width >= 64rem) {
-    h1 {
-      @apply text-5xl font-bold;
-    }
-
-    h2,
-    h3,
-    h4 {
-      @apply font-semibold;
-    }
-
-    h2 {
-      @apply text-4xl;
-    }
-
-    h3 {
-      @apply text-3xl;
-    }
-
-    h4 {
-      @apply text-2xl;
-    }
-  }
-
-  @layer components {
-    .content-wrapper {
-      @apply w-full px-8 md:px-14;
-    }
-
-    .prose pre code {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-  }
-}
-
-@layer utilities {
-  .toggle-btn {
-    position: absolute;
-    top: -8px;
-    right: 4px;
-    padding: 4px;
-    border-radius: 9px;
-    background-color: white;
-  }
-
-  .toggle-btn p:hover {
-    cursor: pointer;
-  }
-
-  .toggle-btn .selected {
-    background-color: white;
-    border: 2px solid #00b398;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  .calendar-container {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
-}
-
-.cbc-logo {
-  fill: #27236a;
+  --color-ruby: #450a0a;
 }

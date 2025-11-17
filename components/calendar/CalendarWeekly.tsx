@@ -171,7 +171,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       <div
         ref={container}
-        className="isolate border-white border-t-2 shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-white"
+        className="isolate border-white border-t-2 shadow-sm ring-1 ring-black/5 flex flex-auto flex-col overflow-auto bg-white"
       >
         <div
           style={{ width: "165%" }}
@@ -179,7 +179,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         >
           <div
             ref={containerNav}
-            className="sticky top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
+            className="sticky top-0 z-30 flex-none bg-gray border-white shadow-sm ring-1 ring-black/5 sm:pr-8"
           >
             <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-500 sm:grid">
               <div className="col-end-1 w-14 bg-white" />
@@ -216,7 +216,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}
-                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-sunglow-100 bg-opacity-30" : ""}`}
+                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-sunglow-100/30" : ""}`}
                   />
                 ))}
               </div>

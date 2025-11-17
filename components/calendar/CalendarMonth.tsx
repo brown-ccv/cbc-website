@@ -332,7 +332,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       <p className="flex text-sm mx-1 mb-2 lg:hidden">
         Click on a date to see a list of its events!
       </p>
-      <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
+      <div className="shadow-sm ring-1 ring-black/5 lg:flex lg:flex-auto lg:flex-col">
         <div className="grid grid-cols-7 gap-[3px] border-b border-gray-300 bg-gray-200 text-center text-lg font-semibold text-gray-700 lg:flex-none">
           <div className="bg-white py-2">
             S<span className="sr-only sm:not-sr-only">un</span>
@@ -369,7 +369,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       {/*Events List for Selected Day*/}
       {selectedDate && (
         <div className="px-4 py-10 sm:px-6 lg:hidden">
-          <ol className="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow ring-1 ring-black ring-opacity-5">
+          <ol className="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow-sm ring-1 ring-black/5">
             {generateEventsForCurrentDay(selectedDate, true)}
           </ol>
         </div>

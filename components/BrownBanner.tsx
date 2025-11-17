@@ -12,7 +12,7 @@ export const BrownBanner: React.FC = () => {
         href="https://it.brown.edu"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-shrink-0 lg:border-r lg:border-neutral-900 lg:p-4"
+        className="shrink-0 lg:border-r lg:border-neutral-900 lg:p-4"
       >
         <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />
       </a>
