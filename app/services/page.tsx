@@ -1,6 +1,5 @@
 import React from "react"
 import path from "path"
-import Link from "next/link"
 import { Hero } from "@/components/Hero"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -68,7 +67,6 @@ export default async function Services() {
     <div className="w-full">
       <div className="relative w-full flex flex-col bg-blue-navbar">
         <Hero
-          image={"/images/hero/about-2.png"}
           title="Services"
           description="From office hours to collaborations, the CBC provides a range of services to support Brown's genomic research community."
         />

@@ -1,7 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -19,10 +18,13 @@ export const tagColors = [
   "lime",
 ] as const
 
-export type TagColor = typeof tagColors[number]
+export type TagColor = (typeof tagColors)[number]
 
 export const getColorForTag = (tag: string): TagColor => {
-  const hash = Array.from(tag).reduce((acc, char) => acc + char.charCodeAt(0), 0)
+  const hash = Array.from(tag).reduce(
+    (acc, char) => acc + char.charCodeAt(0),
+    0
+  )
   return tagColors[hash % tagColors.length]
 }
 
