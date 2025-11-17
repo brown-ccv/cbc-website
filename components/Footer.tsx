@@ -68,7 +68,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-linear-to-b from-gradient-light to-gradient-dark text-neutral-800">
+    <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-linear-to-b from-stone-700 to-stone-900 text-neutral-800">
       <div className="px-6 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
         <div className="flex flex-col justify-start items-start mb-8 space-y-2 sm:justify-center sm:items-center md:mb-16">
           <div className="text-xs tracking-widest uppercase text-cream">
