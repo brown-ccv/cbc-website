@@ -60,7 +60,7 @@ export default async function RootLayoutWrapper({
       <body className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}>
         <BrownBanner />
         <Navbar />
-        <div className="flex-grow">{children}</div>
+        <div className="grow">{children}</div>
         <Acknowledgement />
         <Footer />
       </body>

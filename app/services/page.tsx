@@ -34,7 +34,7 @@ function renderServiceCards(
         {cards?.map((card) => (
           <div
             key={card.title}
-            className="flex-grow max-w-full lg:max-w-sm xl:max-w-lg"
+            className="grow max-w-full lg:max-w-sm xl:max-w-lg"
           >
             <div className="inline-flex items-center gap-2 w-full h-full">
               <Card
@@ -50,7 +50,7 @@ function renderServiceCards(
                       {card.title}
                     </CardHeader>
                   </div>
-                  <CardDescription className="text-md lg:text-lg px-6 flex-grow pt-4">
+                  <CardDescription className="text-md lg:text-lg px-6 grow pt-4">
                     {card.description}
                   </CardDescription>
                 </CardContent>

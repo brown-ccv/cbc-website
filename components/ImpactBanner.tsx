@@ -12,7 +12,7 @@ export const ImpactBanner = (): React.JSX.Element => {
     <div className="content-wrapper h-auto bg-gray-100">
       <Card className="w-full border-none shadow-none rounded-none bg-transparent">
         <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-          <div className="flex flex-wrap flex-col lg:flex-row justify-between flex-grow">
+          <div className="flex flex-wrap flex-col lg:flex-row justify-between grow">
             <div className="flex flex-col items-center">
               <h2 className="font-semibold text-black text-[28px] font-sans">
                 The CCV Impact

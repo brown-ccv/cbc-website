@@ -53,9 +53,9 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           onBlur={() => setIsHovered(false)}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-keppel-600"
+          className="rounded-xl focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-keppel-600"
         >
-          <Card className="h-[525px] w-[350px] flex-shrink-0 border-none shadow-none sm:h-[600px] sm:w-[400px]">
+          <Card className="h-[525px] w-[350px] shrink-0 border-none shadow-none sm:h-[600px] sm:w-[400px]">
             <CardContent className="flex h-full flex-col items-center">
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}

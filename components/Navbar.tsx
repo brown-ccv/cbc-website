@@ -176,7 +176,7 @@ export const Navbar: React.FC = () => {
           <NavigationMenu.List className="flex h-full items-center">
             {routes.map((section) => (
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-sunglow-400 xl:px-6">
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-sunglow-400 xl:px-6">
                   {section.name}
                   <FaChevronDown
                     className="relative top-[1px] h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180 xl:ml-1"
@@ -193,7 +193,7 @@ export const Navbar: React.FC = () => {
             {/* <NavigationMenu.Item> */}
             {/* TODO: Add blog */}
             {/* <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-hidden disabled:pointer-events-none disabled:opacity-50"
                 href="/blog">
                 Blog
               </NavigationMenu.Link>
@@ -322,7 +322,7 @@ const NavigationSectionContent: React.FC<{
                       target: "_blank",
                       rel: "noopener noreferrer",
                     })}
-                    className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                    className="flex items-start focus:outline-hidden focus-visible:ring-2 focus-visible:ring-sunglow-400"
                   >
                     {route.icon && (
                       <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
