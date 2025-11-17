@@ -4,7 +4,8 @@
 # Images should be stored in the content/images/about/people directory and
 # resized to a square aspect ratio.
 
-- name: David Rand, PhD
+- display_name: David Rand, PhD
+  last_name: Rand
   type: Full Time
   team: Leadership
   title: Co-Director, Department of Ecology and Evolutionary Biology
@@ -13,7 +14,8 @@
   bio:
   image: david_main.jpg
 
-- name: Zhijin Wu, PhD
+- display_name: Zhijin Wu, PhD
+  last_name: Wu
   type: Full Time
   team: Leadership
   title: Co-Director, Department of Biostatistics
@@ -22,7 +24,8 @@
   bio:
   image: zhijin_main.jpg
 
-- name: Paul Stey
+- display_name: Paul Stey
+  last_name: Stey
   type: Full Time
   team: Leadership
   title: Assistant CIO Research Software Engineering and Data Science
@@ -34,7 +37,8 @@
     He has a PhD in Developmental Psychology.
   image: stey_main.jpg
 
-- name: Ashok Ragavendran
+- display_name: Ashok Ragavendran
+  last_name: Ragavendran
   type: Full Time
   team: Leadership
   subteam: Computational Biology Core
@@ -52,6 +56,7 @@
   image: ashok_main.jpg
 
 - name: August Guang
+  last_name: Guang
   type: Full Time
   team: Advanced Research Computing
   subteam: Computational Biology Core
@@ -66,7 +71,8 @@
     how change happens.
   image: august_main.jpg
 
-- name: Eric Salomaki
+- display_name: Eric Salomaki
+  last_name:  Salomaki
   type: Full Time
   team: Advanced Research Computing
   subteam: Computational Biology Core
@@ -76,7 +82,8 @@
   bio: Eric is a genomics data scientist at the CCV. Before coming to Brown, he was a postdoc investigating genome evolution, organellar metabolism, and biodiversity of protists at the Czech Academy of Sciences. He earned his PhD from the University of Rhode Island studying the evolution of parasitism in red algae.
   image: eric_main.jpg
 
-- name: Jordan Lawson
+- display_name: Jordan Lawson
+  last_name: Lawson
   type: Full Time
   team: Advanced Research Computing
   title: Senior Research Software Engineer
@@ -89,7 +96,8 @@
     loves learning about natural and formal languages, superhero movies, boxing, and basketball.
   image: jordan_main.jpg
 
-- name: Joselynn Wallace
+- display_name: Joselynn Wallace
+  last_name: Wallace
   type: Full Time
   team: Advanced Research Computing
   title: Senior Genomics Data Scientist
@@ -102,7 +110,8 @@
     microbes.
   image: joselynn_main.jpg
 
-- name: Paul Cao
+- display_name: Paul Cao
+  last_name: Cao
   type: Full Time
   team: Advanced Research Computing
   title: Genomics Data Scientist
