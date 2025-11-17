@@ -67,7 +67,6 @@ export default async function AboutUs() {
       <div className="w-full">
         <div className="relative w-full flex flex-col bg-blue-navbar">
           <Hero
-            image={"/images/hero-subroutes.jpeg"}
             title="About Us"
             description="We empower genomic discovery through expert data analysis and investigator support."
           />
