@@ -83,7 +83,7 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
           />
         )}
         {/* Gradient Overlay - Black to transparent */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-0 z-0 bg-linear-to-t from-black to-transparent" />
         <div className="relative z-10 mt-auto">{children}</div>
       </div>
     )
@@ -94,7 +94,7 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
     >
       {/* Gradient Overlays */}
       <div className={"absolute inset-0 z-0 bg-blue-navbar"}>
-        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black to-transparent" />
         {/* Dark blue radial gradient - top left */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,_rgba(6,8,57,0.8)_0%,_transparent_85%)]" />
 

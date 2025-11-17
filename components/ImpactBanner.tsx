@@ -28,7 +28,7 @@ export const ImpactBanner = (): React.JSX.Element => {
                 className="flex flex-col items-center mt-6 lg:mt-0"
               >
                 <div
-                  className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text text-transparent
+                  className="bg-linear-to-br from-purple-900 to-pink-500 bg-clip-text text-transparent
                     font-bold text-6xl text-center font-sans"
                 >
                   {metric.count}
