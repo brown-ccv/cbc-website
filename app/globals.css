@@ -71,6 +71,25 @@
   }
 
   @layer components {
+    .px-page {
+      @apply px-12 sm:px-16 lg:px-14 xl:px-20;
+    }
+
+    .px-none {
+      @apply px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0;
+    }
+
+    .prose ul:not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+      @apply list-disc;
+      @apply pl-6;
+    }
+
+    .prose li::marker {
+      @apply text-current;
+    }
+  }
+
+  /* @layer components {
     .content-wrapper {
       @apply w-full px-8 md:px-14;
     }
@@ -79,7 +98,7 @@
       white-space: pre-wrap;
       word-wrap: break-word;
     }
-  }
+  } */
 }
 
 @layer utilities {
