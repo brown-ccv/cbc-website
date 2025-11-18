@@ -12,10 +12,10 @@
     --accent-light: 0, 230, 195;
     --accent-dark: 49, 10, 101;
     --accent-gradient: linear-gradient(
-            45deg,
-            rgb(var(--accent)),
-            rgb(var(--accent-light)) 30%,
-            white 60%
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
     );
   }
 
@@ -88,7 +88,6 @@
   section[data-align="center"] div[data-align="inherit"] {
     @apply items-center;
   }
-
 }
 
 .cbc-logo {
