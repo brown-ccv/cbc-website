@@ -69,16 +69,42 @@
       @apply text-2xl;
     }
   }
+}
 
-  @layer components {
-    .content-wrapper {
-      @apply w-full px-8 md:px-14;
-    }
+@layer components {
+  .content-wrapper {
+    @apply w-full px-8 md:px-14;
+  }
 
-    .prose pre code {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
+  .prose pre code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .px-page {
+    @apply px-12 sm:px-16 lg:px-14 xl:px-20;
+  }
+
+  .px-none {
+    @apply px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0;
+  }
+
+  .prose ul:not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    @apply list-disc;
+    @apply pl-6;
+  }
+
+  .prose li::marker {
+    @apply text-current;
+  }
+
+  section[data-align="left"] div[data-align="inherit"] {
+    @apply max-w-[1/2];
+    @apply items-center;
+    @apply lg:items-start;
+  }
+
+  section[data-align="center"] div[data-align="inherit"] {
+    @apply items-center;
   }
 }
 
