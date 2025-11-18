@@ -1,8 +1,51 @@
 /** @type {import('tailwindcss').Config} */
+
+function getCustomColors(config) {
+  const colors = config.theme?.colors || {}
+  const customColorNames = []
+
+  for (const key in colors) {
+    if (
+      ![
+        "inherit",
+        "current",
+        "transparent",
+        "black",
+        "white",
+        "slate",
+        "gray",
+        "zinc",
+        "stone",
+        "orange",
+        "amber",
+        "yellow",
+        "lime",
+        "green",
+        "emerald",
+        "teal",
+        "cyan",
+        "sky",
+        "blue",
+        "indigo",
+        "violet",
+        "purple",
+        "fuchsia",
+        "pink",
+        "rose",
+      ].includes(key) &&
+      !/^\d+$/.test(key)
+    ) {
+      customColorNames.push(key)
+    }
+  }
+  return customColorNames
+}
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./mdx-components.tsx",
   ],
   presets: [],
   darkMode: "media", // or 'class'
@@ -148,6 +191,7 @@ module.exports = {
       gray: colors.gray,
       zinc: colors.zinc,
       stone: colors.stone,
+      neutral: colors.neutral,
       ruby: "#450a0a",
       orange: colors.orange,
       amber: colors.amber,
@@ -176,22 +220,14 @@ module.exports = {
       red: {
         university: "#C00404",
       },
-      neutral: {
-        900: "#242424",
-        700: "#282E33",
-        500: "#2F363C",
-        300: "#98A4AE",
-        100: "#ACB6BE",
-        50: "#F5F5F5",
-      },
       blue: {
         900: "#2c3e50",
         700: "#002B52",
+        600: "#27236a",
         500: "#003c70",
         300: "#527da1",
         50: "#a3b8ca",
         navbar: "#060839",
-        cbc: "#27236a",
       },
       keppel: {
         800: "#0A6559",
@@ -363,6 +399,7 @@ module.exports = {
       xs: ["0.75rem", { lineHeight: "1rem" }],
       sm: ["0.875rem", { lineHeight: "1.25rem" }],
       base: ["1rem", { lineHeight: "1.5rem" }],
+      md: ["1rem", { lineHeight: "1.5rem" }],
       lg: ["1.125rem", { lineHeight: "1.75rem" }],
       xl: ["1.25rem", { lineHeight: "1.75rem" }],
       "2xl": ["1.5rem", { lineHeight: "2rem" }],
@@ -855,7 +892,7 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1280px",
-      "2xl": "1536px",
+      xxl: "1536px",
     },
     scrollMargin: ({ theme }) => ({
       ...theme("spacing"),
@@ -1096,6 +1133,65 @@ module.exports = {
       40: "40",
       50: "50",
     },
+    extend: {
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            // overriding prose's styling for markdown - use !important to override
+            a: {
+              color: theme("colors.keppel.800"),
+              "&:hover": {
+                color: theme("colors.keppel.600"),
+              },
+              "&:focus": {
+                color: theme("colors.keppel.700"),
+                outline: "2px solid",
+                outlineColor: theme("colors.keppel.700"),
+              },
+            },
+            "&": {
+              maxWidth: "none !important",
+            },
+            p: {
+              marginTop: theme("spacing.4"), // equivalent to mt-4
+              marginBottom: theme("spacing.4"), // equivalent to mb-4
+            },
+            h1: {
+              marginTop: "0 !important",
+            },
+            "p, ul, ol, pre, td, th, blockquote, h1, h2, h3, h4, h5, h6": {
+              maxWidth: "none !important",
+            },
+            ul: {
+              listStyleType: "disc",
+              paddingLeft: theme("spacing.6"), // pl-6
+            },
+            ol: {
+              listStyleType: "decimal",
+              paddingLeft: theme("spacing.6"), // pl-6
+            },
+          },
+        },
+      }),
+    },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
+  //   1. Tailwind's Purge/Tree-Shaking (Most Common Cause)
+  // Tailwind CSS works by scanning your code for utility classes and generating only the CSS you actually use. This process is called "purging" or "tree-shaking."
+
+  // The Problem: When you construct class names dynamically, like using featureColorMap[featureClassLower], Tailwind's build process often can't "see" these dynamically generated strings. It only looks for literal strings that match its class patterns.
+
+  // Example:
+  // If you have 'text-red-university' in your map, Tailwind's purger won't necessarily know that this string is intended to be a CSS class unless it's explicitly present elsewhere in your static HTML/JSX/TSX files.
+
+  // The Fix (Safelist Classes):
+  // The most robust solution is to explicitly tell Tailwind to include these dynamic classes in its generated CSS by "safelisting" them in your tailwind.config.js file.
+  safelist: [
+    "text-red-university",
+    "text-amber-600",
+    "text-keppel-600",
+    "text-sunglow-400",
+    "text-cyan-500",
+    { pattern: /text-(red|amber|keppel|sunglow|cyan)-\d{3,}/ },
+  ],
 }

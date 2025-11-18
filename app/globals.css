@@ -7,15 +7,15 @@
 @layer base {
   :root {
     @apply font-sans;
-    @apply text-neutral-700;
+    @apply text-slate-800;
     --accent: 0, 128, 108;
     --accent-light: 0, 230, 195;
     --accent-dark: 49, 10, 101;
     --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
+            45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%
     );
   }
 
@@ -24,62 +24,44 @@
     @apply bg-white;
   }
 
-  h1 {
-    @apply text-4xl font-bold;
+  p > a {
+    @apply text-keppel-800 underline;
   }
 
-  h2,
-  h3,
-  h4 {
-    @apply font-semibold;
+  p > a:hover {
+    @apply text-keppel-500 underline;
+  }
+
+  p > a:focus {
+    @apply text-keppel-600 underline outline-2 outline-keppel-400;
+  }
+
+  h1 {
+    @apply text-3xl font-semibold leading-tight lg:text-4xl;
   }
 
   h2 {
-    @apply text-3xl;
+    @apply text-2xl font-semibold leading-tight lg:text-3xl;
   }
 
   h3 {
-    @apply text-2xl;
+    @apply text-xl font-semibold leading-tight lg:text-2xl;
   }
 
   h4 {
-    @apply text-xl;
+    @apply text-lg font-semibold leading-tight lg:text-xl;
   }
 
-  @media (width >= 64rem) {
-    h1 {
-      @apply text-5xl font-bold;
-    }
+  h5 {
+    @apply text-md font-semibold leading-tight lg:text-lg;
+  }
 
-    h2,
-    h3,
-    h4 {
-      @apply font-semibold;
-    }
-
-    h2 {
-      @apply text-4xl;
-    }
-
-    h3 {
-      @apply text-3xl;
-    }
-
-    h4 {
-      @apply text-2xl;
-    }
+  h6 {
+    @apply text-sm font-semibold leading-tight lg:text-md;
   }
 }
 
 @layer components {
-  .content-wrapper {
-    @apply w-full px-8 md:px-14;
-  }
-
-  .prose pre code {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
   .px-page {
     @apply px-12 sm:px-16 lg:px-14 xl:px-20;
   }
@@ -106,34 +88,7 @@
   section[data-align="center"] div[data-align="inherit"] {
     @apply items-center;
   }
-}
 
-@layer utilities {
-  .toggle-btn {
-    position: absolute;
-    top: -8px;
-    right: 4px;
-    padding: 4px;
-    border-radius: 9px;
-    background-color: white;
-  }
-
-  .toggle-btn p:hover {
-    cursor: pointer;
-  }
-
-  .toggle-btn .selected {
-    background-color: white;
-    border: 2px solid #00b398;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  .calendar-container {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
 }
 
 .cbc-logo {
