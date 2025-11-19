@@ -1,10 +1,29 @@
 import type { MDXComponents } from "mdx/types"
 import Image from "next/image"
-import { ContentSection } from "@/components/ContentSection"
+import {
+  ContentSection,
+  ContentHeader,
+  ContentTitle,
+} from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
+
+const MDXContentSection = ({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) => (
+  <ContentSection>
+    <ContentHeader>
+      <ContentTitle className="not-prose" title={title} />
+    </ContentHeader>
+    {children}
+  </ContentSection>
+)
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -26,7 +45,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ButtonGroup,
     StyledCard,
     CardGroup,
-    ContentSection,
+    ContentSection: (props: { title: string; children: React.ReactNode }) => (
+      <MDXContentSection {...props} />
+    ),
     img: (props) => (
       <Image
         {...props}
