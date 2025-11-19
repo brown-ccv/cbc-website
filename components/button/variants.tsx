@@ -7,7 +7,7 @@ export const ButtonVariants = cva(
       variant: {
         // ————————————————————— Primary Filled —————————————————————
         primary_filled: [
-          "bg-blue-cbc text-white shadow-sm",
+          "bg-blue-600 text-white shadow-sm",
           "hover:bg-blue-300",
           "focus-visible:ring-2 focus-visible:ring-blue-500",
           "active:bg-blue-500",
