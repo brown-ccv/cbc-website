@@ -80,7 +80,7 @@
   }
 
   section[data-align="left"] div[data-align="inherit"] {
-    @apply max-w-[1/2];
+    @apply max-w-[50%];
     @apply items-center;
     @apply lg:items-start;
   }
