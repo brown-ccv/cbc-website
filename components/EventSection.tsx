@@ -22,7 +22,7 @@ interface EventSectionProps {
   streamedDataFuture: DataProps[]
   streamedDataPast: DataProps[]
   today: string
-  currentDate: Date
+  currentDate: Date | null
 }
 
 export function EventSection({

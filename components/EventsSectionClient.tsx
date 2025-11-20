@@ -11,6 +11,7 @@ export default function EventSectionClient() {
   const [currentDate, setCurrentDate] = useState<Date | null>(null)
   const [today, setToday] = useState<string>("")
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   async function fetchData(today: string) {
     const [past, future] = await Promise.all([
@@ -27,14 +28,33 @@ export default function EventSectionClient() {
     setToday(todayStr)
 
     setLoading(true)
-    fetchData(todayStr).then(([past, future]) => {
-      setPastDates(past)
-      setFutureDates(future)
-      setLoading(false)
-    })
+    fetchData(todayStr)
+      .then(([past, future]) => {
+        setPastDates(past)
+        setFutureDates(future)
+        setLoading(false)
+        setError(null)
+      })
+      .catch((err) => {
+        console.error(err)
+        setError(
+          "Failed to load event data. Please check your internet connection and try again."
+        )
+        setLoading(false)
+      })
   }, [])
-
-  if (loading || !currentDate) return <Spinner />
+  // TODO: make a skeleton for the Events section for error/loading
+  if (loading) return <Spinner />
+  if (error)
+    return (
+      <div
+        role="alert"
+        aria-live="polite"
+        className="p-4 mb-4 text-red-university"
+      >
+        <strong>Error:</strong> {error}
+      </div>
+    )
 
   return (
     <EventSection

@@ -2,6 +2,6 @@ import { DataProps } from "@/components/EventSection"
 
 export interface CalendarProps {
   events: Array<DataProps>
-  currentDate: Date
-  today: string
+  currentDate: Date | null
+  today: string | null
 }
