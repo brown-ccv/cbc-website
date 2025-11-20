@@ -2,11 +2,16 @@
 import { MainHero } from "@/components/Hero"
 import { HeroCard } from "@/components/card/HeroCard"
 import EventSectionClient from "@/components/EventsSectionClient"
-import React, { Suspense } from "react"
-import Spinner from "@/components/assets/Spinner"
+import React from "react"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { ButtonLink } from "@/components/button/ButtonLink"
-import { ContentSection } from "@/components/ContentSection"
+import {
+  ContentSection,
+  ContentHeader,
+  ContentTitle,
+  ContentSubHeader,
+} from "@/components/ContentSection"
+import { FaCalendarAlt } from "react-icons/fa"
 
 export default async function Home() {
   return (
@@ -34,7 +39,25 @@ export default async function Home() {
       </MainHero>
       <HeroCard />
       <div id="main-content">
-        <ContentSection title={"Events"} align={"left"} id={"events"}>
+        <ContentSection id="Events" align="left">
+          <ContentHeader>
+            <ContentTitle title="Events" icon={<FaCalendarAlt />} />
+            <ContentSubHeader>
+              <>
+                <h3 className="font-serif font-normal italic">
+                  What&#39;s next at CBC
+                </h3>
+                <ButtonLink
+                  variant="primary_filled"
+                  size="lg"
+                  href="https://events.brown.edu/ccv/all"
+                  external={true}
+                >
+                  View All Events
+                </ButtonLink>
+              </>
+            </ContentSubHeader>
+          </ContentHeader>
           <EventSectionClient />
         </ContentSection>
       </div>

@@ -1,12 +1,9 @@
 "use client"
 
-import { JSX, use } from "react"
+import { JSX } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
-import { SectionHeader } from "@/components/SectionHeader"
-import ButtonLink from "@/components/button/ButtonLink"
-import { FaCalendarAlt } from "react-icons/fa"
 import { StyledTabs } from "@/components/StyledTabs"
 
 export interface DataProps {
@@ -38,22 +35,7 @@ export function EventSection({
   const dataPast = streamedDataPast
 
   return (
-    <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
-      <div className="flex flex-col items-center gap-4">
-        <SectionHeader title={"Events"} icon={<FaCalendarAlt />} />
-        <h3 className="font-serif font-normal italic">
-          What&#39;s next at CBC
-        </h3>
-        <ButtonLink
-          variant="primary_filled"
-          size="lg"
-          href="https://events.brown.edu/ccv/all"
-          external={true}
-        >
-          View All Events
-        </ButtonLink>
-      </div>
-
+    <div className="flex w-full flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
       {/* Mobile: Show only upcoming events */}
       <div className="md:hidden">
         <UpcomingEvents events={dataFuture} />
