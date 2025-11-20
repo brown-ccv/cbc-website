@@ -1,11 +1,10 @@
 "use client"
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
+
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/Tooltip"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/Popover"
 import { ClockIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid"
 import React, { useState } from "react"
 import { CalendarProps } from "@/components/calendar/types"
@@ -25,16 +24,14 @@ import {
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
+import ButtonLink from "@/components/button/ButtonLink"
+import { Button } from "@/components/button/Button"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-const CalendarMonth: React.FC<CalendarProps> = ({
-  events,
-  currentDate,
-  today,
-}) => {
+const CalendarMonth: React.FC<CalendarProps> = ({ events, currentDate }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [activeDate, setActiveDate] = useState(new Date())
 
@@ -105,45 +102,44 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     const formattedCalEvents = validDayEvents.map((event: DataProps) => {
       return (
         <li key={self.crypto.randomUUID()}>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger
-                asChild
-                className="rounded-md max-w-full px-2 hover:bg-neutral-50"
+          <Popover>
+            <PopoverTrigger
+              asChild
+              className="max-w-full rounded-md px-2 hover:bg-neutral-50"
+            >
+              <Button variant="unstyled">
+                <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
+                  {event.title}
+                </p>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="bg-neutral-50">
+              <p className="pb-2 font-semibold">{event.date}</p>
+              <ButtonLink
+                href={event.url}
+                external={true}
+                className="flex gap-1 text-blue-500"
+                isCalendarEvent={true}
               >
-                <a href={event.url} target="_blank">
-                  <p className="flex-auto min-w-0 truncate text-lg text-blue-500 font-semibold">
-                    {event.title}
-                  </p>
-                </a>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p className="font-semibold pb-2">{event.date}</p>
-                <a
-                  href={event.url}
-                  target="_blank"
-                  className="flex gap-1 text-blue-500"
-                >
-                  <p className="font-semibold hover:underline">{event.title}</p>
-                  <ArrowTopRightOnSquareIcon
-                    className="mr-2 h-3 w-3"
-                    aria-hidden="true"
-                  />
-                </a>
+                <p className="font-semibold hover:underline">{event.title}</p>
+                <ArrowTopRightOnSquareIcon
+                  className="mr-2 h-3 w-3"
+                  aria-hidden="true"
+                />
+              </ButtonLink>
 
-                <time
-                  dateTime={event.date_utc}
-                  className="hidden flex-none text-keppel-700 group-hover:text-keppel-700 group-hover:font-semibold xl:flex xl:items-center"
-                >
-                  <ClockIcon
-                    className="mr-1 h-4 w-4 text-keppel-700"
-                    aria-hidden="true"
-                  />
-                  {event.date_time}
-                </time>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+              <time
+                dateTime={event.date_utc}
+                className="hidden flex-none text-keppel-700 group-hover:font-semibold group-hover:text-keppel-700 xl:flex xl:items-center"
+              >
+                <ClockIcon
+                  className="mr-1 h-4 w-4 text-keppel-700"
+                  aria-hidden="true"
+                />
+                {event.date_time}
+              </time>
+            </PopoverContent>
+          </Popover>
         </li>
       )
     })
@@ -155,23 +151,24 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           className="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50"
         >
           <div className="flex-auto">
-            <a
+            <ButtonLink
               href={event.url}
-              target="_blank"
+              external={true}
               className="flex gap-1 text-blue-500"
+              isCalendarEvent={true}
             >
               <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
                 className="mr-2 h-4 w-4"
                 aria-hidden="true"
               />
-            </a>
+            </ButtonLink>
             <time
               dateTime={event.date_utc}
-              className="mt-2 flex items-center text-keppel-500"
+              className="mt-2 flex items-center text-keppel-700"
             >
               <ClockIcon
-                className="mr-2 h-5 w-5 text-keppel-500"
+                className="mr-2 h-5 w-5 text-keppel-700"
                 aria-hidden="true"
               />
               {event.date_time}
@@ -209,7 +206,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             dateTime={day.dateString}
             className={
               day.isToday
-                ? "flex h-9 w-9 items-center justify-center rounded-full bg-sunglow-400 font-semibold text-lg"
+                ? "flex h-9 w-9 items-center justify-center rounded-full bg-sunglow-400 text-lg font-semibold"
                 : "flex h-9 w-9 items-center justify-center text-lg"
             }
           >
@@ -245,7 +242,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             isSameDay(day.date, selectedDate) && "text-white",
             !isSameDay(day.date, selectedDate) &&
               day.isToday &&
-              "text-blue-500 bg-sunglow-400",
+              "bg-sunglow-400 text-blue-500",
             !isSameDay(day.date, selectedDate) &&
               day.isCurrentMonth &&
               !day.isToday &&
@@ -278,7 +275,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               {validDayEvents.map((event) => (
                 <span
                   key={event.id}
-                  className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-700"
+                  className="bg-700 mx-0.5 mb-1 h-1.5 w-1.5 rounded-full"
                 />
               ))}
             </span>
@@ -329,7 +326,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         prevButtonFunction={() => setActiveDate(subMonths(activeDate, 1))}
         todayButtonFunction={() => setActiveDate(currentDate)}
       />
-      <p className="flex text-sm mx-1 mb-2 lg:hidden">
+      <p className="mx-1 mb-2 flex text-sm lg:hidden">
         Click on a date to see a list of its events!
       </p>
       <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
