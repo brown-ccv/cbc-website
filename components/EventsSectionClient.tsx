@@ -8,7 +8,7 @@ import Spinner from "@/components/assets/Spinner"
 export default function EventSectionClient() {
   const [futureDates, setFutureDates] = useState<any>(null)
   const [pastDates, setPastDates] = useState<any>(null)
-  const [currentDate, setCurrentDate] = useState<Date | null>(null)
+  const [currentDate, setCurrentDate] = useState<Date>(new Date())
   const [today, setToday] = useState<string>("")
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)

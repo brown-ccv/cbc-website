@@ -3,7 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
 import React from "react"
 
 interface CalendarHeadingProps {
-  date: Date
+  date: Date | null
   srButtonText: string
   nextButtonFunction: Function
   prevButtonFunction: Function
@@ -19,11 +19,13 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
 }) => {
   return (
     <header className="mb-2 flex items-center justify-between rounded-md border border-gray-200 bg-gray-50 p-2 px-6 lg:flex-none">
-      <p className="text-2xl font-semibold text-blue-navbar">
-        <time dateTime={date.toISOString()}>
-          {`${ALL_MONTHS[date.getMonth()]} ${date.getFullYear()}`}
-        </time>
-      </p>
+      {date && (
+        <p className="text-2xl font-semibold text-blue-navbar">
+          <time dateTime={date.toISOString()}>
+            {`${ALL_MONTHS[date.getMonth()]} ${date.getFullYear()}`}
+          </time>
+        </p>
+      )}
       <div className="flex items-center">
         <div className="relative flex items-center rounded-md bg-white shadow-sm md:items-stretch">
           <button
