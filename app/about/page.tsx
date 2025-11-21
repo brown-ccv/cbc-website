@@ -1,7 +1,5 @@
 import React, { Suspense } from "react"
 import { Hero } from "@/components/Hero"
-import { SectionHeader } from "@/components/ui/SectionHeader"
-import { Card, CardContent } from "@/components/ui/Card"
 import { Workday } from "@/components/Workday"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
@@ -17,106 +15,93 @@ export default async function AboutUs() {
     const workdayData = await getWorkdayData()
 
     return (
-      <div className="w-full">
-        <div className="relative w-full flex flex-col bg-blue-navbar">
-          <Hero
-            title="About Us"
-            description="We empower genomic discovery through expert data analysis and investigator support."
-          />
-        </div>
+      <>
+        <Hero
+          title="About Us"
+          description="We empower genomic discovery through expert data analysis and investigator support."
+        />
 
         {/* About */}
-        <section id="about" className="content-wrapper py-12 lg:py-24">
-          <SectionHeader title="About Us" align="center" />
-          <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto flex flex-col items-start px-2 py-4 lg:px-6 lg:py-10">
-              <p className="text-black md:text-xl">
-                The Computational Biology Core (CBC) at Brown University
-                provides essential computational support and expertise to
-                advance research in human disease. We are a team dedicated to
-                empowering researchers with the tools and knowledge needed to
-                analyze complex biological data and make groundbreaking
-                discoveries.
-              </p>
-              <p className="text-black md:text-xl pt-4">
-                The CBC operates within a unique and collaborative structure at
-                Brown, allowing us to leverage diverse resources and expertise:
-              </p>
-              <ul className="pl-4 lg:pl-10 list-disc">
-                <li className="text-black md:text-xl pt-4 pl-4">
-                  The CBC was established by the{" "}
-                  <a
-                    href="https://sites.brown.edu/computational-biology-of-human-disease/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold underline hover:text-blue-700"
-                  >
-                    Center for Computational Biology of Human Disease (CBHD)
-                  </a>
-                  , a center funded by a COBRE Institutional Development Award
-                  (IDeA) grant from the National Institute of General Medical
-                  Science. The CBHD&apos;s primary goal is to support and mentor
-                  junior investigators in human disease research that requires
-                  significant computational analysis of &apos;omics data. We
-                  work directly with CBHD project leaders and pilot award
-                  recipients, providing the computational expertise to help them
-                  achieve their research aims. This includes creating standard
-                  analytical pipelines (e.g., for quality control and RNA Seq
-                  analysis), developing customized analysis tools, and offering
-                  guidance on experimental design to ensure optimal data
-                  acquisition.
-                </li>
-                <li className="text-black md:text-xl pt-4 pl-4">
-                  The CBC is also a team within Brown University&apos;s{" "}
-                  <a
-                    href="https://ccv.brown.edu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold underline hover:text-blue-700"
-                  >
-                    Center for Computation and Visualization (CCV)
-                  </a>
-                  , which is part of the Office of Information and Technology
-                  (OIT). The CCV&apos;s mission is to foster an environment
-                  where computational best practices, innovative solutions, and
-                  expert knowledge converge to build advanced research tools and
-                  enable new discoveries. This affiliation with the CCV
-                  strengthens our ability to provide cutting-edge computational
-                  solutions, taking full advantage of Brown&apos;s
-                  super-computing resources, research software engineering
-                  experience, and IT infrastructure resources. We embody the
-                  CCV&apos;s commitment to partnering with researchers, often
-                  through long-term collaborations.
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
-        </section>
+        <ContentSection id="about">
+          <ContentHeader>
+            <ContentTitle title="About Us" />
+          </ContentHeader>
+          <p className="text-black md:text-xl">
+            The Computational Biology Core (CBC) at Brown University provides
+            essential computational support and expertise to advance research in
+            human disease. We are a team dedicated to empowering researchers
+            with the tools and knowledge needed to analyze complex biological
+            data and make groundbreaking discoveries.
+          </p>
+          <p className="text-black md:text-xl pt-4">
+            The CBC operates within a unique and collaborative structure at
+            Brown, allowing us to leverage diverse resources and expertise:
+          </p>
+          <ul className="pl-4 lg:pl-10 list-disc">
+            <li className="text-black md:text-xl pt-4 pl-4">
+              The CBC was established by the{" "}
+              <a
+                href="https://sites.brown.edu/computational-biology-of-human-disease/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline hover:text-blue-700"
+              >
+                Center for Computational Biology of Human Disease (CBHD)
+              </a>
+              , a center funded by a COBRE Institutional Development Award
+              (IDeA) grant from the National Institute of General Medical
+              Science. The CBHD&apos;s primary goal is to support and mentor
+              junior investigators in human disease research that requires
+              significant computational analysis of &apos;omics data. We work
+              directly with CBHD project leaders and pilot award recipients,
+              providing the computational expertise to help them achieve their
+              research aims. This includes creating standard analytical
+              pipelines (e.g., for quality control and RNA Seq analysis),
+              developing customized analysis tools, and offering guidance on
+              experimental design to ensure optimal data acquisition.
+            </li>
+            <li className="text-black md:text-xl pt-4 pl-4">
+              The CBC is also a team within Brown University&apos;s{" "}
+              <a
+                href="https://ccv.brown.edu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline hover:text-blue-700"
+              >
+                Center for Computation and Visualization (CCV)
+              </a>
+              , which is part of the Office of Information and Technology (OIT).
+              The CCV&apos;s mission is to foster an environment where
+              computational best practices, innovative solutions, and expert
+              knowledge converge to build advanced research tools and enable new
+              discoveries. This affiliation with the CCV strengthens our ability
+              to provide cutting-edge computational solutions, taking full
+              advantage of Brown&apos;s super-computing resources, research
+              software engineering experience, and IT infrastructure resources.
+              We embody the CCV&apos;s commitment to partnering with
+              researchers, often through long-term collaborations.
+            </li>
+          </ul>
+        </ContentSection>
 
         {/* Our Mission */}
-        <section
-          id="mission"
-          className="content-wrapper py-12 lg:py-24 bg-gray-100"
-        >
-          <SectionHeader title="Our Mission" align="center" />
-          <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto flex items-center px-2 py-4 lg:px-6 lg:py-10">
-              <p className="text-black md:text-xl">
-                The primary mission of the Computational Biology Core (CBC) is
-                to provide support to junior investigators in the analysis and
-                interpretation of high-throughput DNA/RNA sequencing datasets,
-                encompassing both internally generated and publicly accessible
-                data. The Core is also committed to facilitating scientific
-                collaboration among COBRE projects. The long-term objective of
-                the CBC is to establish a sustainable resource that addresses
-                the evolving data analysis needs of genomic research across
-                Brown University and its affiliated hospitals, complemented by
-                training initiatives to develop the next cohort of junior
-                investigators.
-              </p>
-            </CardContent>
-          </Card>
-        </section>
+        <ContentSection id="mission">
+          <ContentHeader>
+            <ContentTitle title="Our Mission" />
+          </ContentHeader>
+          <p className="text-black md:text-xl">
+            The primary mission of the Computational Biology Core (CBC) is to
+            provide support to junior investigators in the analysis and
+            interpretation of high-throughput DNA/RNA sequencing datasets,
+            encompassing both internally generated and publicly accessible data.
+            The Core is also committed to facilitating scientific collaboration
+            among COBRE projects. The long-term objective of the CBC is to
+            establish a sustainable resource that addresses the evolving data
+            analysis needs of genomic research across Brown University and its
+            affiliated hospitals, complemented by training initiatives to
+            develop the next cohort of junior investigators.
+          </p>
+        </ContentSection>
 
         {/* People */}
         <ContentSection id="people">
@@ -127,20 +112,15 @@ export default async function AboutUs() {
         </ContentSection>
 
         {/* Careers */}
-        <section
-          id="careers"
-          className="content-wrapper py-12 lg:py-24 bg-gray-100"
-        >
-          <SectionHeader title="Careers" align="center" />
-          <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center gap-8">
-              <Suspense fallback={<Spinner />}>
-                <Workday careers={workdayData} />
-              </Suspense>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+        <ContentSection id="careers">
+          <ContentHeader>
+            <ContentTitle title="Careers" />
+          </ContentHeader>
+          <Suspense fallback={<Spinner />}>
+            <Workday careers={workdayData} />
+          </Suspense>
+        </ContentSection>
+      </>
     )
   } catch (err: any) {
     console.error(err)
