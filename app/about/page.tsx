@@ -1,63 +1,16 @@
 import React, { Suspense } from "react"
-import path from "path"
 import { Hero } from "@/components/Hero"
 import { SectionHeader } from "@/components/ui/SectionHeader"
 import { Card, CardContent } from "@/components/ui/Card"
-import { PeopleCard } from "@/components/card/PeopleCard"
-import { readContentFile } from "@/lib/content-utils"
 import { Workday } from "@/components/Workday"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
-import fs from "fs/promises"
-
-interface peopleTypes {
-  name: string
-  type: string
-  team: string
-  subteam: string
-  title: string
-  github_username: string
-  brown_directory_uuid: string
-  bio: string
-  image: string
-}
-
-function imagePath(imageName: string) {
-  return path.join("/images/people", imageName)
-}
-
-const fileName = "people.yaml"
-const filePath = path.join("content/about", fileName)
-const pageContent = await readContentFile(filePath)
-
-async function getImagePaths(imageName: string | null) {
-  const defaultPath = "/logos/cbc-logo.svg"
-
-  // If imageName is null, undefined, or empty, return default
-  if (!imageName) {
-    return { main: defaultPath, hover: defaultPath }
-  }
-
-  const mainPath = imagePath(imageName)
-  const hoverName = imageName.replace("main", "hover")
-  const hoverPath = imagePath(hoverName)
-
-  // Check if the main image exists
-  // If it doesn't, return the default path for both main and hover
-  try {
-    await fs.access(path.join("public", mainPath))
-  } catch {
-    return { main: defaultPath, hover: defaultPath }
-  }
-
-  // Check if the hover image exists
-  try {
-    await fs.access(path.join("public", hoverPath))
-    return { main: mainPath, hover: hoverPath }
-  } catch {
-    return { main: mainPath, hover: mainPath }
-  }
-}
+import { PeopleSection } from "@/components/PeopleSection"
+import {
+  ContentHeader,
+  ContentSection,
+  ContentTitle,
+} from "@/components/ContentSection"
 
 export default async function AboutUs() {
   try {
@@ -166,30 +119,12 @@ export default async function AboutUs() {
         </section>
 
         {/* People */}
-        <div id="people" className="content-wrapper py-12 lg:py-24">
-          <SectionHeader title="People" align="center"></SectionHeader>
-          <div className="flex justify-center py-4 lg:py-10">
-            <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
-              {pageContent?.data &&
-                (await Promise.all(
-                  pageContent.data.map(async (person: peopleTypes) => {
-                    const { main, hover } = await getImagePaths(person.image)
-                    return (
-                      <div key={person.name}>
-                        <PeopleCard
-                          imagePath={main}
-                          hoverImagePath={hover}
-                          name={person?.name}
-                          title={person?.title}
-                          personDetails={person}
-                        />
-                      </div>
-                    )
-                  })
-                ))}
-            </div>
-          </div>
-        </div>
+        <ContentSection id="people">
+          <ContentHeader>
+            <ContentTitle title="Our Team" />
+          </ContentHeader>
+          <PeopleSection />
+        </ContentSection>
 
         {/* Careers */}
         <section
