@@ -11,7 +11,7 @@ const CBCLogo: React.FC<LogoProps> = ({
   return (
     <>
       <svg
-        className="cbc-logo"
+        className="fill-blue-600"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -24,13 +24,13 @@ const CBCLogo: React.FC<LogoProps> = ({
       >
         <g>
           <path
-            className="cbc-logo"
+            className="fill-blue-600"
             d="M20.2,87.9c1.2-2.2,3.5-3.5,6-3.6L56,84.1l12.6-22.3L53.4,36.1c-0.3-0.6-0.6-1.2-0.7-1.8l-33,19.1
 		c-4.5,2.6-7.2,7.4-7.2,12.5v36L20.2,87.9z"
             style={fillStyle}
           />
           <path
-            className="cbc-logo"
+            className="fill-blue-600"
             d="M185.3,151.7c-1.2,2.2-3.5,3.5-6,3.6l-29.5,0.3l-14.7,26c-1.3,2.3-3.7,3.6-6.1,3.6c-1.2,0-2.4-0.3-3.4-0.9
 		c-3.4-1.9-4.6-6.2-2.6-9.5l14.6-25.9l-13.1-22.1l-14.5,0.1c0,0,0,0-0.1,0c-3.8,0-7-3.1-7-6.9c0-3.9,3-7,6.9-7.1l14.5-0.1l12.7-22.4
 		l-15.1-25.6c-2-3.4-0.8-7.6,2.5-9.6c3.4-2,7.6-0.8,9.6,2.5l15.2,25.7l29.5-0.3c0,0,0,0,0.1,0c2.5,0,4.8,1.3,6,3.4l8.9,15.1V65.9
@@ -43,7 +43,7 @@ const CBCLogo: React.FC<LogoProps> = ({
             style={fillStyle}
           />
           <polygon
-            className="cbc-logo"
+            className="fill-blue-600"
             points="149.1,97.3 136.5,119.6 149.5,141.6 175.1,141.4 187.7,119.1 174.7,97 	"
             style={fillStyle}
           />
