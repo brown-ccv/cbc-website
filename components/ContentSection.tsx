@@ -1,6 +1,6 @@
 import React from "react"
 import { cn } from "@/lib/utils"
-import CCVBars from "@/components/assets/CCVBars"
+import CBCBars from "@/components/assets/CBCBars"
 
 interface ContentSectionProps {
   align?: "left" | "center"
@@ -48,7 +48,7 @@ const ContentTitle = React.forwardRef<
   ContentTitleProps & React.HTMLAttributes<HTMLDivElement>
 >(({ bars = true, title, icon, className, ...props }, ref) => (
   <>
-    {bars && <CCVBars />}
+    {bars && <CBCBars />}
     <h2
       ref={ref} // Make sure to forward the ref
       className={cn("pb-2 tracking-tighter", icon ? "flex" : "", className)}
