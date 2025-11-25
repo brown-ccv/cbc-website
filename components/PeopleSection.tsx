@@ -113,7 +113,7 @@ async function PeopleSectionData({
 }
 
 /**
- * Client component wrapper for MDX compatibility
+ * Component wrapper for MDX compatibility
  */
 export const PeopleSection = (
   props: PeopleSectionProps
