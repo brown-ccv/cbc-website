@@ -10,7 +10,7 @@ import {
   StyledDialogTitle,
   StyledDialogTrigger,
 } from "@/components/StyledDialog"
-
+import { PeopleTypes } from "@/lib/about-types"
 import { FaGithub, FaInfoCircle } from "react-icons/fa"
 import ButtonLink from "@/components/button/ButtonLink"
 
@@ -20,17 +20,7 @@ interface PeopleCardProps {
   hoverImagePath?: string
   name: string
   title: string
-  personDetails?: {
-    display_name: string
-    title: string
-    team?: string
-    subteam?: string
-    type?: string
-    github_username?: string
-    brown_directory_uuid?: string
-    bio?: string
-    image?: string
-  }
+  personDetails?: PeopleTypes
 }
 
 export const PeopleCard: React.FC<PeopleCardProps> = ({
@@ -53,7 +43,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
         >
           <StyledCard
             size="custom"
-            className="w-80 border-none shadow-none sm:w-96"
+            className="w-80 border-none shadow-none sm:w-96 bg-inherit"
           >
             <div className="flex h-full flex-col items-center">
               <Image
