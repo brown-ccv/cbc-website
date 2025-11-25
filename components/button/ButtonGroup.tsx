@@ -7,7 +7,7 @@ interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
   return (
     <div
-      className="not-prose flex w-full flex-col flex-wrap items-start gap-4 sm:flex-row"
+      className="flex w-full flex-col flex-wrap items-start gap-4 sm:flex-row"
       {...props}
     >
       {children}
