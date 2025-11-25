@@ -9,6 +9,16 @@ import { ButtonLink } from "@/components/button/ButtonLink"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
+import React from "react"
+import { cn } from "@/lib/utils"
+
+const withNotProse = <T extends { className?: string }>(
+  Component: React.ComponentType<T>
+) => {
+  return (props: T) => (
+    <Component {...props} className={cn("not-prose", props.className)} />
+  )
+}
 
 const MDXContentSection = ({
   title,
@@ -29,7 +39,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Wrapper component for all MDX content
     wrapper: ({ children }) => (
-      <div className="prose max-w-none text-xl">{children}</div>
+      <div className="prose prose-sm max-w-none lg:prose-base">{children}</div>
     ),
 
     // Global MDX components
@@ -37,13 +47,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <ButtonLink
         variant="primary_filled"
         size="lg"
-        className="my-4"
+        className="my-4 not-prose"
         external
         {...props}
       />
     ),
     ButtonGroup,
-    StyledCard,
+    StyledCard: withNotProse(StyledCard),
     CardGroup,
     ContentSection: (props: { title: string; children: React.ReactNode }) => (
       <MDXContentSection {...props} />
