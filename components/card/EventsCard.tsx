@@ -43,7 +43,9 @@ export const EventsCard: React.FC<DataProps> = ({
     </StyledCard>
   )
 }
-function sanitizeHtml(description_long: string, arg1: { allowedTags: never[]; allowedAttributes: {} }) {
+function sanitizeHtml(
+  description_long: string,
+  arg1: { allowedTags: never[]; allowedAttributes: {} }
+) {
   throw new Error("Function not implemented.")
 }
-
