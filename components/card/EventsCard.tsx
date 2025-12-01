@@ -11,7 +11,10 @@ export const EventsCard: React.FC<DataProps> = ({
   date_utc,
   description_long,
 }) => {
-  const descriptionLong = description_long.replace(/<(.|\n)*?>/g, "")
+  const descriptionLong = sanitizeHtml(description_long, {
+    allowedTags: [],
+    allowedAttributes: {},
+  })
   const dateTime = new Date(date_utc.replace(/-/g, "/"))
   const normalDate =
     new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(dateTime) +
@@ -40,3 +43,7 @@ export const EventsCard: React.FC<DataProps> = ({
     </StyledCard>
   )
 }
+function sanitizeHtml(description_long: string, arg1: { allowedTags: never[]; allowedAttributes: {} }) {
+  throw new Error("Function not implemented.")
+}
+
