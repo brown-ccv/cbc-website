@@ -1,7 +1,8 @@
-import { StyledCard } from "@/components/card/StyledCard"
 import React from "react"
+import sanitizeHtml from "sanitize-html"
 import { DataProps } from "@/components/EventSection"
 import Icon from "@/components/ui/RenderIcon"
+import { StyledCard } from "@/components/card/StyledCard"
 
 export const EventsCard: React.FC<DataProps> = ({
   date_time,
@@ -42,10 +43,4 @@ export const EventsCard: React.FC<DataProps> = ({
       </div>
     </StyledCard>
   )
-}
-function sanitizeHtml(
-  description_long: string,
-  arg1: { allowedTags: never[]; allowedAttributes: {} }
-) {
-  throw new Error("Function not implemented.")
 }
