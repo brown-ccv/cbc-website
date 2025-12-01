@@ -1,6 +1,6 @@
 import React from "react"
-import { Card, CardContent } from "@/components/ui/Card"
-import CBCBars from "@/components/assets/CBCBars"
+import { StyledCard } from "@/components/card/StyledCard"
+import { SectionHeader } from "@/components/SectionHeader"
 
 const heroCards = [
   {
@@ -16,24 +16,28 @@ const heroCards = [
   {
     title: "Collaborative Growth",
     description:
-      "We cultivate scientific connections within the COBRE and equip the broader research community with essential training for long-term data analysis success across Brown University and its affiliates.",
+      "We maintain secure, high‑performance computing infrastructure, along with storage solutions and virtual computing environments to support research and innovation.",
   },
 ]
 
 export const HeroCard: React.FC = () => {
   return (
-    <Card className="relative z-10 -mt-[170px] mb-[120px] flex justify-center bg-white px-6 lg:mx-12 lg:px-8">
-      <CardContent className="flex flex-col gap-10 lg:flex-row lg:gap-20">
+    <StyledCard
+      className="relative z-10 mx-6 -mt-[170px] mb-16 flex justify-center px-2 sm:p-6 lg:mx-12 lg:p-8"
+      size="custom"
+    >
+      <div className="flex flex-col gap-10 pt-6 lg:flex-row lg:gap-20">
         {heroCards.map((card, index) => (
-          <div key={index} className="relative">
-            <CBCBars />
-            <h3 className="py-2 text-xl font-semibold leading-tight tracking-tight">
-              {card.title}
-            </h3>
-            <p className="text-lg">{card.description}</p>
+          <div key={index} className="relative space-y-4">
+            <SectionHeader
+              titleClassName="text-2xl"
+              title={card.title}
+              align="left"
+            />
+            <p>{card.description}</p>
           </div>
         ))}
-      </CardContent>
-    </Card>
+      </div>
+    </StyledCard>
   )
 }

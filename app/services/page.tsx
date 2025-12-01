@@ -1,7 +1,7 @@
 import React from "react"
 import path from "path"
 import { Hero } from "@/components/Hero"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { SectionHeader } from "@/components/SectionHeader"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import {
   Card,

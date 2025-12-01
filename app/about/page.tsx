@@ -1,7 +1,7 @@
 import React, { Suspense } from "react"
 import path from "path"
 import { Hero } from "@/components/Hero"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { SectionHeader } from "@/components/SectionHeader"
 import { Card, CardContent } from "@/components/ui/Card"
 import { PeopleCard } from "@/components/card/PeopleCard"
 import { readContentFile } from "@/lib/content-utils"
