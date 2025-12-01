@@ -38,7 +38,7 @@ export const EventsCard: React.FC<DataProps> = ({
           View Event <Icon iconName="FaExternalLinkAlt" size={16} />
         </a>
         {description_long && (
-          <p className="line-clamp-[8]"> {descriptionLong} </p>
+          <p className="line-clamp-[8]">{descriptionLong}</p>
         )}
       </div>
     </StyledCard>
