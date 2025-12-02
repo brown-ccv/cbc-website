@@ -39,7 +39,7 @@ export default async function Home() {
       </MainHero>
       <HeroCard />
       <div id="main-content">
-        <ContentSection id="Events" align="left">
+        <ContentSection id="events" align="left">
           <ContentHeader>
             <ContentTitle title="Events" icon={<FaCalendarAlt />} />
             <ContentSubHeader>
