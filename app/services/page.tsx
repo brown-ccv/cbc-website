@@ -92,8 +92,8 @@ export default async function Services() {
               <ButtonLink
                 variant="primary_filled"
                 className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
-                href="/#events"
-                external={false}
+                href="https://events.brown.edu/ccv/week"
+                external={true}
               >
                 View Office Hours
               </ButtonLink>
