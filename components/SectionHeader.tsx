@@ -1,40 +1,50 @@
 import React from "react"
 import CCVBars from "@/components/assets/CCVBars"
+import { cn } from "@/lib/utils"
 
 interface SectionHeaderProps {
   title: string
   align?: "left" | "center"
   bars?: boolean
   icon?: React.ReactNode
+  subHeader?: React.ReactNode
   className?: string
+  titleClassName?: string
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   align = "center",
   bars = true,
+  subHeader,
   icon,
   className,
+  titleClassName,
 }) => {
-  const isCentered = align === "center"
-
   return (
     <div
-      className={`${isCentered ? "mb-16 text-center" : "text-left"} ${className || ""}`}
+      className={cn(
+        `not-prose flex flex-col ${align === "center" ? "items-center" : "items-center lg:items-start"}`,
+        className
+      )}
     >
-      <div
-        className={`flex flex-col ${isCentered ? "items-center" : "items-start"}`}
-      >
-        {bars && (
-          <div className="pt-4">
-            <CCVBars />
-          </div>
+      {bars && <CCVBars />}
+      <h2
+        className={cn(
+          "pb-2 tracking-tighter",
+          icon ? "flex" : "",
+          titleClassName
         )}
-        <h2 className="flex items-center text-4xl font-semibold tracking-tighter text-black">
-          {icon && <span className="mr-3">{icon}</span>}
-          {title}
-        </h2>
-      </div>
+        aria-label={title}
+      >
+        {icon && (
+          <span className="mr-3" aria-hidden="true">
+            {icon}
+          </span>
+        )}
+        {title}
+      </h2>
+      {subHeader && <div className="space-y-6 pt-4">{subHeader}</div>}
     </div>
   )
 }
