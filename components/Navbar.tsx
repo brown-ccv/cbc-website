@@ -127,7 +127,7 @@ const routes: NavSection[] = [
         routes: [
           {
             name: "Office Hours",
-            href: "/#events",
+            href: "https://events.brown.edu/ccv/week",
             description: "",
           },
         ],

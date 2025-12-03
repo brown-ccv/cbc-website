@@ -1,7 +1,7 @@
 import React from "react"
 import path from "path"
 import { Hero } from "@/components/Hero"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { SectionHeader } from "@/components/SectionHeader"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import {
   Card,
@@ -92,8 +92,8 @@ export default async function Services() {
               <ButtonLink
                 variant="primary_filled"
                 className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
-                href="/#events"
-                external={false}
+                href="https://events.brown.edu/ccv/week"
+                external={true}
               >
                 View Office Hours
               </ButtonLink>

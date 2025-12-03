@@ -1,8 +1,8 @@
-import { StyledCard } from "@/components/card/StyledCard"
 import React from "react"
+import sanitizeHtml from "sanitize-html"
 import { DataProps } from "@/components/EventSection"
 import Icon from "@/components/ui/RenderIcon"
-import sanitizeHtml from "sanitize-html"
+import { StyledCard } from "@/components/card/StyledCard"
 
 export const EventsCard: React.FC<DataProps> = ({
   date_time,
@@ -22,24 +22,24 @@ export const EventsCard: React.FC<DataProps> = ({
     ", " +
     date
   return (
-    <StyledCard title={title}>
+    <StyledCard title={title} size="sm">
       <div className="space-y-2">
-        <p className="text-lg font-semibold text-neutral-900 md:text-xl">
-          {normalDate}
-        </p>
-        <div className="flex items-center gap-2 text-keppel-800 md:text-lg">
+        <p className="font-semibold text-slate-900">{normalDate}</p>
+        <div className="flex items-center gap-2 text-keppel-800">
           <Icon iconName="FaClock" />
           {date_time}
         </div>
         <a
-          className="flex gap-2 text-xl font-bold leading-6 text-blue-500 hover:underline md:text-2xl"
+          className="flex gap-2 font-bold leading-6 text-blue-500 hover:underline"
           href={url}
           target="_blank"
           rel="noopener noreferrer"
         >
           View Event <Icon iconName="FaExternalLinkAlt" size={16} />
         </a>
-        {description_long && <p>{descriptionLong}</p>}
+        {description_long && (
+          <p className="line-clamp-[8]">{descriptionLong}</p>
+        )}
       </div>
     </StyledCard>
   )
