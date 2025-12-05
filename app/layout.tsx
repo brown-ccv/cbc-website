@@ -3,7 +3,7 @@ import "@/app/globals.css"
 import { ReactNode } from "react"
 import Script from "next/script"
 import BrownBanner from "@/components/BrownBanner"
-import Navbar from "@/components/Navbar"
+import Navbar from "@/components/navbar/Navbar"
 import Acknowledgement from "@/components/Acknowledgement"
 import Footer from "@/components/Footer"
 
