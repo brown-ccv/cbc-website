@@ -57,10 +57,7 @@ export const Navbar: React.FC = () => {
                     aria-hidden="true"
                   />
                 </NavigationMenu.Trigger>
-                <NavigationSectionContent
-                  groups={section.groups}
-                  parentTitle={section.name}
-                />
+                <NavigationSectionContent groups={section.groups} />
               </NavigationMenu.Item>
             ))}
           </NavigationMenu.List>
@@ -107,7 +104,6 @@ export const Navbar: React.FC = () => {
 
 const NavigationSectionContent: React.FC<{
   groups: RouteGroup[]
-  parentTitle: string
 }> = ({ groups }) => {
   const hasMultipleGroups = groups.length > 1
 
@@ -206,13 +202,14 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
                       {route.href.startsWith("http") ? (
                         <NavLink
                           href={route.href}
-                          key={route.name}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           onClick={handleNavigation}
                         >
                           {route.name}
                         </NavLink>
                       ) : (
-                        <NavLink href={route.href} key={route.name} asChild>
+                        <NavLink href={route.href} asChild>
                           <Link href={route.href} onClick={handleNavigation}>
                             {route.name}
                           </Link>
@@ -237,8 +234,8 @@ const NavLink = React.forwardRef<
   <NavigationMenu.Link
     {...props}
     className={cn(
-      className,
-      "focus-visible:ring-ring focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+      "focus-visible:ring-ring focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400",
+      className
     )}
     ref={ref}
   />
@@ -247,4 +244,3 @@ const NavLink = React.forwardRef<
 NavLink.displayName = "NavigationLink"
 
 export default Navbar
-export { routes }
