@@ -38,6 +38,9 @@ async function getWorkdayData() {
 export async function GET(): Promise<Response> {
   const data = await getWorkdayData()
   return new Response(JSON.stringify(data), {
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "public, max-age=300"
+    },
   })
 }
