@@ -7,17 +7,35 @@ import Spinner from "@/components/assets/Spinner"
 export default function CareerData() {
   const [careers, setCareers] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchCareers() {
-      const res = await fetch("/api/workday")
-      const data = await res.json()
-      setCareers(data)
-      setLoading(false)
+      try {
+        const res = await fetch("/api/workday")
+        if (!res.ok) {
+          throw new Error(`Failed to fetch careers: ${res.status}`)
+        }
+        const data = await res.json()
+        setCareers(data)
+      } catch (err) {
+        console.error("Error fetching careers:", err)
+        setError(
+          "Unable to load job postings at this time. Please try again later."
+        )
+      } finally {
+        setLoading(false)
+      }
     }
     fetchCareers()
   }, [])
 
   if (loading) return <Spinner />
+  if (error)
+    return (
+      <div className="rounded-md bg-red-50 p-4">
+        <p className="text-sm text-red-800">{error}</p>
+      </div>
+    )
   return <Workday careers={careers} />
 }
