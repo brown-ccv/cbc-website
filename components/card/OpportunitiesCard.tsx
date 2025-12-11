@@ -21,6 +21,7 @@ export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({
       href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
       className="w-full"
       size="md"
+      aria-label={`View position: ${position.title}`}
     >
       <StyledCard size="custom" className="mb-16 w-full">
         <div className="flex justify-between">
