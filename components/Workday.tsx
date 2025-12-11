@@ -10,7 +10,7 @@ interface PositionProps {
 
 export function Workday({ careers }: { careers: any[] }) {
   return (
-    <div>
+    <>
       {careers?.length > 0 ? (
         careers.map((position: PositionProps) => (
           <div key={position.externalPath} className="mb-4 last:mb-0">
@@ -23,6 +23,6 @@ export function Workday({ careers }: { careers: any[] }) {
           future. We appreciate your interest!
         </p>
       )}
-    </div>
+    </>
   )
 }
