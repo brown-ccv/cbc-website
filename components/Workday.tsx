@@ -12,7 +12,7 @@ export function Workday({ careers }: { careers: any[] }) {
   return (
     <div>
       {careers?.length > 0 ? (
-        careers.map((position: PositionProps, index) => (
+        careers.map((position: PositionProps) => (
           <div key={position.externalPath} className="mb-4 last:mb-0">
             <OpportunitiesCard position={position} />
           </div>
