@@ -17,7 +17,6 @@ export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({
 }) => {
   return (
     <ButtonLink
-
       external
       href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
       className="w-full"
