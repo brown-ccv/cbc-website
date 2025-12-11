@@ -137,8 +137,7 @@ const NavigationSectionContent: React.FC<{
                 >
                   <NavigationMenu.Link
                     href={route.href}
-                    {...(route.href ===
-                      "https://publications.ccv.brown.edu" && {
+                    {...(route.href.startsWith("http") && {
                       target: "_blank",
                       rel: "noopener noreferrer",
                     })}
