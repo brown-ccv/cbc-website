@@ -1,19 +1,15 @@
-import React, { Suspense } from "react"
+import React from "react"
 import { Hero } from "@/components/Hero"
-import { Workday } from "@/components/Workday"
-import { getWorkdayData } from "@/app/about/queries"
-import Spinner from "@/components/assets/Spinner"
 import { PeopleSection } from "@/components/PeopleSection"
 import {
   ContentHeader,
   ContentSection,
   ContentTitle,
 } from "@/components/ContentSection"
+import CareerData from "@/components/CareerData"
 
 export default async function AboutUs() {
   try {
-    const workdayData = await getWorkdayData()
-
     return (
       <>
         <Hero
@@ -116,9 +112,7 @@ export default async function AboutUs() {
           <ContentHeader>
             <ContentTitle title="Careers" />
           </ContentHeader>
-          <Suspense fallback={<Spinner />}>
-            <Workday careers={workdayData} />
-          </Suspense>
+          <CareerData />
         </ContentSection>
       </>
     )
