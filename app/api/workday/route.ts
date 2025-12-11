@@ -35,7 +35,7 @@ async function getWorkdayData() {
   }
 }
 
-export async function GET(req: Request): Promise<Response> {
+export async function GET(): Promise<Response> {
   const data = await getWorkdayData()
   return new Response(JSON.stringify(data), {
     headers: { "Content-Type": "application/json" },
