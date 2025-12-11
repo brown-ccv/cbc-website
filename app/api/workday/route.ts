@@ -28,7 +28,10 @@ async function getWorkdayData() {
     }
 
     const data = await response.json()
-    return data.jobPostings || []
+    if (data && Array.isArray(data.jobPostings)) {
+      return data.jobPostings
+    }
+    return []
   } catch (error) {
     console.error("Error fetching Workday data:", error)
     // Return empty array as fallback to prevent component crashes
