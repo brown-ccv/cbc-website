@@ -11,6 +11,7 @@ export default function CareerData() {
 
   useEffect(() => {
     async function fetchCareers() {
+      setError(null)
       try {
         const res = await fetch("/api/workday")
         if (!res.ok) {
@@ -19,7 +20,9 @@ export default function CareerData() {
         const data = await res.json()
         setCareers(data)
       } catch (err) {
-        console.error("Error fetching careers:", err)
+        const errorMessage =
+          err instanceof Error ? err.message : "Unknown error"
+        console.error("Error fetching careers:", errorMessage)
         setError(
           "Unable to load job postings at this time. Please try again later."
         )
