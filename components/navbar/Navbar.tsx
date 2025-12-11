@@ -115,7 +115,7 @@ const NavigationSectionContent: React.FC<{
       >
         {groups.map((group, index) => (
           <div
-            key={group.name}
+            key={`${index}-${group.name}`}
             className={`${
               hasMultipleGroups && index > 0
                 ? "border-t border-slate-700 py-1 xl:border-l xl:border-t-0 xl:py-0 xl:pl-6"
@@ -194,8 +194,8 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
               <FaChevronDown className="h-8 w-8 transition-transform group-data-[state=open]:rotate-180" />
             </NavigationMenu.Trigger>
             <NavigationMenu.Content className="ml-12 mr-3 flex flex-col gap-4 py-3 text-lg text-white">
-              {route.groups.map((group) => (
-                <React.Fragment key={group.name}>
+              {route.groups.map((group, index) => (
+                <React.Fragment key={`${index}-${group.name}`}>
                   {group.routes.map((route) => (
                     <React.Fragment key={route.name}>
                       {route.href.startsWith("http") ? (
