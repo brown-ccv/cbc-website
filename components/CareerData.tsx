@@ -34,9 +34,6 @@ export default function CareerData() {
   }, [])
 
   if (loading) return <Spinner />
-  if (error)
-    return (
-      <p>{error}</p>
-    )
+  if (error) return <p>{error}</p>
   return <Workday careers={careers} />
 }
