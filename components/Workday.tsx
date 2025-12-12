@@ -3,16 +3,16 @@
 import React from "react"
 import { OpportunitiesCard } from "@/components/card/OpportunitiesCard"
 
-interface PositionProps {
+export interface Position {
   title: string
   externalPath: string
 }
 
-export function Workday({ careers }: { careers: any[] }) {
+export function Workday({ careers }: { careers: Position[] }) {
   return (
-    <div>
+    <>
       {careers?.length > 0 ? (
-        careers.map((position: PositionProps) => (
+        careers.map((position: Position) => (
           <div key={position.externalPath} className="mb-4 last:mb-0">
             <OpportunitiesCard position={position} />
           </div>
@@ -23,6 +23,6 @@ export function Workday({ careers }: { careers: any[] }) {
           future. We appreciate your interest!
         </p>
       )}
-    </div>
+    </>
   )
 }
