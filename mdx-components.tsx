@@ -13,6 +13,7 @@ import { CardGroup } from "@/components/card/CardGroup"
 import { PeopleSection } from "@/components/PeopleSection"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
 import { CopyableEmail } from "@/components/CopyableEmail"
+import { CareerData } from "@/components/CareerData"
 
 const withNotProse = <T extends { className?: string }>(
   Component: React.ComponentType<T>
@@ -63,6 +64,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <MDXContentSection {...props} />
     ),
     PeopleSection: withNotProse(PeopleSection),
+    CareerData,
     img: (props) => (
       <Image
         {...props}
