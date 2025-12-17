@@ -1,4 +1,6 @@
+import React from "react"
 import type { MDXComponents } from "mdx/types"
+import { cn } from "@/lib/utils"
 import Image from "next/image"
 import {
   ContentSection,
@@ -8,9 +10,9 @@ import {
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
+import { PeopleSection } from "@/components/PeopleSection"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
-import React from "react"
-import { cn } from "@/lib/utils"
+import { CopyableEmail } from "@/components/CopyableEmail"
 
 const withNotProse = <T extends { className?: string }>(
   Component: React.ComponentType<T>
@@ -46,18 +48,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Button: (props) => (
       <ButtonLink
         variant="primary_filled"
-        size="lg"
-        className="my-4 not-prose"
+        size="md"
+        className="not-prose my-2"
         external
         {...props}
       />
     ),
     ButtonGroup,
+    CopyableEmail,
     StyledCard: withNotProse(StyledCard),
     CardGroup,
     ContentSection: (props: { title: string; children: React.ReactNode }) => (
       <MDXContentSection {...props} />
     ),
+    PeopleSection: withNotProse(PeopleSection),
     img: (props) => (
       <Image
         {...props}
