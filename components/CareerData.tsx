@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import { Position, Workday } from "@/components/Workday"
 import Spinner from "@/components/assets/Spinner"
 
-export default function CareerData() {
+export function CareerData() {
   const [careers, setCareers] = useState<Position[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)

@@ -64,12 +64,12 @@ export const routes: NavSection[] = [
             href: "/about",
           },
           {
-            name: "Mission",
-            href: "/about/#mission",
+            name: "Our Mission",
+            href: "/about/#our-mission",
           },
           {
-            name: "People",
-            href: "/about/#people",
+            name: "Our Team",
+            href: "/about/#our-team",
           },
           {
             name: "Careers",
