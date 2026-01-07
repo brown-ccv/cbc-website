@@ -15,10 +15,8 @@ interface FeaturedCarouselProps {
   filepath: string
 }
 
-async function FeaturedCarouselAsync({
-  filepath,
-}: FeaturedCarouselProps) {
-    // Load featured carousel data from YAML
+async function FeaturedCarouselAsync({ filepath }: FeaturedCarouselProps) {
+  // Load featured carousel data from YAML
   const parsedFile = await readContentFile<StyledCarouselItem[]>(filepath)
 
   return (
