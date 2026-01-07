@@ -14,6 +14,7 @@ import { PeopleSection } from "@/components/PeopleSection"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
 import { CopyableEmail } from "@/components/CopyableEmail"
 import { CareerData } from "@/components/CareerData"
+import { FeaturedCarousel } from "./components/carousel/FeaturedCarousel"
 
 const withNotProse = <T extends { className?: string }>(
   Component: React.ComponentType<T>
@@ -57,14 +58,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     ButtonGroup,
+    CareerData,
     CopyableEmail,
-    StyledCard: withNotProse(StyledCard),
     CardGroup,
     ContentSection: (props: { title: string; children: React.ReactNode }) => (
       <MDXContentSection {...props} />
     ),
+    FeaturedCarousel,
     PeopleSection: withNotProse(PeopleSection),
-    CareerData,
+    StyledCard: withNotProse(StyledCard),
     img: (props) => (
       <Image
         {...props}
