@@ -1,16 +1,40 @@
-import { StyledCarousel, StyledCarouselProps } from "./StyledCarousel"
+import { StyledCarousel, StyledCarouselItem } from "./StyledCarousel"
 import { SwipeCarousel } from "@/components/carousel/SwipeCarousel"
-import React from "react"
+import { readContentFile } from "@/lib/content-utils"
+import React, { Suspense } from "react"
+import Spinner from "@/components/assets/Spinner"
 
-export const FeaturedCarousel: React.FC<StyledCarouselProps> = ({
-  carouselData,
-}) => {
+function FeaturedCarouselLoading() {
+  return (
+    <div className="flex min-h-[400px] items-center justify-center">
+      <Spinner />
+    </div>
+  )
+}
+interface FeaturedCarouselProps {
+  filepath: string
+}
+
+async function FeaturedCarouselAsync({
+  filepath,
+}: FeaturedCarouselProps) {
+    // Load featured carousel data from YAML
+  const parsedFile = await readContentFile<StyledCarouselItem[]>(filepath)
+
   return (
     <>
       <div className="px-page hidden py-8 lg:block">
-        <StyledCarousel carouselData={carouselData} />
+        <StyledCarousel carouselData={parsedFile.data} />
       </div>
-      <SwipeCarousel className="lg:hidden" carouselData={carouselData} />
+      <SwipeCarousel className="lg:hidden" carouselData={parsedFile.data} />
     </>
+  )
+}
+
+export function FeaturedCarousel(props: FeaturedCarouselProps) {
+  return (
+    <Suspense fallback={<FeaturedCarouselLoading />}>
+      <FeaturedCarouselAsync {...props} />
+    </Suspense>
   )
 }
