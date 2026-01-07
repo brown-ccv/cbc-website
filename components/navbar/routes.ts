@@ -30,8 +30,8 @@ export const routes: NavSection[] = [
         name: "",
         routes: [
           {
-            name: "Collaborations",
-            href: "/portfolio/collaborations",
+            name: "Featured Projects",
+            href: "/portfolio",
             description: "*Coming soon*",
           },
           {
@@ -40,8 +40,13 @@ export const routes: NavSection[] = [
             description: "*Coming soon*",
           },
           {
-            name: "Workshops and Talks",
-            href: "/portfolio/workshops-and-talks",
+            name: "Workshops",
+            href: "/portfolio/workshops",
+            description: "*Coming soon*",
+          },
+          {
+            name: "Tutorials",
+            href: "/portfolio/tutorials",
             description: "*Coming soon*",
           },
           {
