@@ -197,13 +197,15 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
               {route.groups.map((group, index) => (
                 <React.Fragment key={`${index}-${group.name}`}>
                   {group.routes.map((route) => (
-                    <React.Fragment key={route.name}>
-                      <NavLink href={route.href} asChild>
-                        <Link href={route.href} onClick={handleNavigation}>
-                          {route.name}
-                        </Link>
-                      </NavLink>
-                    </React.Fragment>
+                    <NavigationMenu.Link key={route.name} asChild>
+                      <Link 
+                        href={route.href} 
+                        onClick={handleNavigation}
+                        className="focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                      >
+                        {route.name}
+                      </Link>
+                    </NavigationMenu.Link>
                   ))}
                 </React.Fragment>
               ))}
@@ -214,21 +216,5 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
     </NavigationMenu.Root>
   )
 }
-
-const NavLink = React.forwardRef<
-  React.ElementRef<typeof NavigationMenu.Link>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenu.Link>
->(({ className, ...props }, ref) => (
-  <NavigationMenu.Link
-    {...props}
-    className={cn(
-      "focus-visible:ring-ring focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400",
-      className
-    )}
-    ref={ref}
-  />
-))
-
-NavLink.displayName = "NavigationLink"
 
 export default Navbar
