@@ -135,29 +135,27 @@ const NavigationSectionContent: React.FC<{
                   key={route.href}
                   className="p-1 hover:bg-slate-100 sm:p-1.5 md:p-2"
                 >
-                  <NavigationMenu.Link
-                    href={route.href}
-                    {...(route.href.startsWith("http") && {
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    })}
-                    className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
-                  >
-                    {route.icon && (
-                      <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
-                        <route.icon className="h-1/2 w-1/2" />
-                      </div>
-                    )}
-                    <div className="flex flex-col">
-                      <span className="sm:pb-0.75 pb-0.5 text-lg font-semibold sm:text-lg md:pb-1">
-                        {route.name}
-                      </span>
-                      {route.description && (
-                        <span className="mb-1 max-w-[425px] text-sm italic text-slate-500 sm:mb-1.5 sm:text-sm md:mb-3">
-                          {route.description}
-                        </span>
+                  <NavigationMenu.Link asChild>
+                    <Link
+                      href={route.href}
+                      className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                    >
+                      {route.icon && (
+                        <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
+                          <route.icon className="h-1/2 w-1/2" />
+                        </div>
                       )}
-                    </div>
+                      <div className="flex flex-col">
+                        <span className="sm:pb-0.75 pb-0.5 text-lg font-semibold sm:text-lg md:pb-1">
+                          {route.name}
+                        </span>
+                        {route.description && (
+                          <span className="mb-1 max-w-[425px] text-sm italic text-slate-500 sm:mb-1.5 sm:text-sm md:mb-3">
+                            {route.description}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
                   </NavigationMenu.Link>
                 </li>
               ))}
@@ -198,8 +196,8 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
                 <React.Fragment key={`${index}-${group.name}`}>
                   {group.routes.map((route) => (
                     <NavigationMenu.Link key={route.name} asChild>
-                      <Link 
-                        href={route.href} 
+                      <Link
+                        href={route.href}
                         onClick={handleNavigation}
                         className="focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
                       >
