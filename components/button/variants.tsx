@@ -7,76 +7,69 @@ export const ButtonVariants = cva(
       variant: {
         // ————————————————————— Primary Filled —————————————————————
         primary_filled: [
-          "bg-blue-600 text-white shadow-sm",
+          "bg-blue-600 text-white",
           "hover:bg-blue-300",
-          "focus-visible:ring-2 focus-visible:ring-blue-500",
+          "focus-visible:ring-blue-500",
           "active:bg-blue-500",
         ].join(" "),
         // ————————————————————— Secondary Filled ————————————————————
         secondary_filled: [
-          "bg-sunglow-400 text-black shadow-sm",
+          "bg-sunglow-400 text-black",
           "hover:bg-sunglow-200",
-          "focus-visible:ring-2 focus-visible:ring-sunglow-300",
+          "focus-visible:ring-sunglow-300",
           "active:bg-sunglow-300",
         ].join(" "),
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
-          "bg-transparent border-2 border-blue-cbc text-blue-cbc",
-          "hover:bg-blue-300 hover:border-blue-300 hover:text-white",
-          "focus-visible:ring-2 focus-visible:ring-blue-500",
-          "active:bg-blue-50 active:border-blue-500 active:text-blue-500",
+          "bg-transparent text-blue-cbc",
+          "border-2 border-blue-cbc",
+          "hover:bg-blue-600 hover:text-white",
+          "focus-visible:ring-blue-500",
+          "active:bg-blue-500",
         ].join(" "),
         // ————————————————————— Secondary Outlined ———————————————————
         secondary_outlined: [
-          "bg-transparent border-2 border-sunglow-400 text-sunglow-400",
-          "hover:bg-sunglow-200 hover:border-sunglow-200 hover:text-black",
-          "focus-visible:ring-2 focus-visible:ring-sunglow-400",
-          "active:bg-sunglow-50 active:border-sunglow-300 active:text-sunglow-300",
+          "bg-transparent text-sunglow-400",
+          "border-2 border-sunglow-400",
+          "hover:bg-sunglow-400 hover:text-black",
+          "focus-visible:ring-sunglow-300",
+          "active:bg-sunglow-300",
         ].join(" "),
         // ————————————————————— Red Outlined ————————————————————
         red_outlined: [
-          "items-center justify-center text-md sm:text-lg font-semibold",
-          "rounded-none border-2 border-red-university text-red-university",
+          "bg-transparent text-red-university",
+          "border-2 border-red-university",
           "hover:bg-red-university hover:text-white",
-          "focus-visible:bg-red-university focus:text-white focus-visible:border-red-university whitespace-nowrap",
+          "focus-visible:ring-sunglow-300",
+          "active:bg-red-university/80",
+          "rounded-none",
         ].join(" "),
         // ————————————————————— Black Filled ——————————————————————
         black_filled: [
-          "bg-neutral-900 text-white shadow-sm",
+          "bg-neutral-900 text-white",
           "hover:bg-neutral-700",
-          "focus-visible:ring-2 focus-visible:ring-neutral-900",
+          "focus-visible:ring-neutral-900",
           "active:bg-neutral-800",
         ].join(" "),
         // ——————————————————— Icon Only (filled, for black icon buttons) ———————————————————
         icon_only: [
-          "inline-flex items-center justify-center rounded-full",
-          "bg-neutral-900 text-white shadow-sm",
-          "hover:bg-neutral-700",
-          "focus-visible:ring-2 focus-visible:ring-neutral-900",
-          "active:bg-neutral-800",
+          "bg-transparent",
+          "hover:bg-white hover:text-black active:bg-neutral-50",
         ].join(" "),
         unstyled: "",
-        // —————————————————— icon only, outlined ——————————————————
-        icon_only_outlined: [
-          "bg-transparent",
-          "border-2 border-neutral-900 text-neutral-900",
-          "hover:border-neutral-700 hover:text-neutral-700",
-          "focus-visible:ring-2 focus-visible:ring-neutral-900",
-          "active:bg-neutral-50 active:border-neutral-700 active:text-neutral-700",
-        ].join(" "),
       },
 
       size: {
-        default: "h-9 px-6 py-6 text-xl",
-        sm: "h-8 px-3 py-3 text-xs",
-        md: "h-8 px-6 py-6 text-md",
-        lg: "h-10 px-8 py-8 text-2xl",
-        xl: "h-14 px-8 py-8 text-2xl",
-        xxl: "h-16 px-10 py-10 text-3xl",
-        // big circle for icon-only
-        icon: "h-12 w-12 p-0 text-xl",
+        sm: "h-8 px-4 py-2 text-sm",
+        md: "h-10 px-5 py-2.5 text-md",
+        lg: "h-12 px-6 py-3 text-lg",
+        xl: "h-14 px-8 py-4 text-xl",
+        xxl: "h-16 px-10 py-5 text-2xl",
+
+        // large icon-only
+        icon: "w-8 h-8 sm:w-10 sm:h-10",
         // small circle for icon-only
-        "icon-sm": "h-8 w-8 p-0",
+        "icon-sm": "h-6 w-6",
       },
 
       iconPosition: {
@@ -94,8 +87,9 @@ export const ButtonVariants = cva(
 
     defaultVariants: {
       variant: "primary_filled",
-      size: "default",
+      size: "md",
       iconPosition: "none",
+      align: "center",
     },
   }
 )
