@@ -1,7 +1,7 @@
 import CBCLogo from "@/components/assets/CBCLogo"
 import { FaArrowRight } from "react-icons/fa"
 import { MdEmail, MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import { CopyableEmail } from "@/components/CopyableEmail"
 
 // Footer link component
