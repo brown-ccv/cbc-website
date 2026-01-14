@@ -52,7 +52,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         variant="primary_filled"
         size="md"
         className="not-prose my-2"
-        external
         {...props}
       />
     ),
