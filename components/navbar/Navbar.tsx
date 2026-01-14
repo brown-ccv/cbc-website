@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/button/Button"
 import CBCLogo from "@/components/assets/CBCLogo"
-import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   Dialog,
@@ -18,6 +17,7 @@ import { FaBars, FaChevronDown } from "react-icons/fa"
 import { routes } from "@/components/navbar/routes"
 import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/20/solid"
+import { Link } from "@/components/Link"
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -198,22 +198,11 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
                 <React.Fragment key={`${index}-${group.name}`}>
                   {group.routes.map((route) => (
                     <React.Fragment key={route.name}>
-                      {route.href.startsWith("http") ? (
-                        <NavLink
-                          href={route.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={handleNavigation}
-                        >
+                      <NavLink href={route.href} asChild>
+                        <Link href={route.href} onClick={handleNavigation}>
                           {route.name}
-                        </NavLink>
-                      ) : (
-                        <NavLink href={route.href} asChild>
-                          <Link href={route.href} onClick={handleNavigation}>
-                            {route.name}
-                          </Link>
-                        </NavLink>
-                      )}
+                        </Link>
+                      </NavLink>
                     </React.Fragment>
                   ))}
                 </React.Fragment>
