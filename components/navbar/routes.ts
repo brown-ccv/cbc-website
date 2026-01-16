@@ -35,15 +35,15 @@ export const routes: NavSection[] = [
           },
           {
             name: "Software",
-            href: "/portfolio/software",
+            href: "/portfolio/#software",
           },
           {
             name: "Workshops",
-            href: "/portfolio/workshops",
+            href: "/portfolio/#workshops",
           },
           {
             name: "Tutorials",
-            href: "/portfolio/tutorials",
+            href: "/portfolio/#tutorials",
           },
           {
             name: "Publications",
