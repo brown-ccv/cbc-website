@@ -1,6 +1,6 @@
 import React from "react"
 import { StyledCard } from "@/components/card/StyledCard"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import Icon from "@/components/ui/RenderIcon"
 
 interface PositionProps {
@@ -17,7 +17,6 @@ export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({
 }) => {
   return (
     <ButtonLink
-      external
       href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
       className="w-full"
       size="md"

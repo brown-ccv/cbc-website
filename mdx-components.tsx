@@ -14,6 +14,7 @@ import { PeopleSection } from "@/components/PeopleSection"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
 import { CopyableEmail } from "@/components/CopyableEmail"
 import { CareerData } from "@/components/CareerData"
+import { Link } from "@/components/Link"
 import { FeaturedCarousel } from "./components/carousel/FeaturedCarousel"
 
 const withNotProse = <T extends { className?: string }>(
@@ -47,13 +48,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <div className="prose prose-sm max-w-none lg:prose-base">{children}</div>
     ),
 
+    // Override default tags
+    a: Link,
+
     // Global MDX components
     Button: (props) => (
       <ButtonLink
         variant="primary_filled"
         size="md"
         className="not-prose my-2"
-        external
         {...props}
       />
     ),
@@ -67,6 +70,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     FeaturedCarousel,
     PeopleSection: withNotProse(PeopleSection),
     StyledCard: withNotProse(StyledCard),
+    Link: Link,
     img: (props) => (
       <Image
         {...props}
