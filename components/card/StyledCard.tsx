@@ -34,18 +34,20 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   children,
   footer,
   headerColor,
-  url
+  url,
 }) => {
   const IconComponent = iconName ? Icon : null
-  const TitleComponent = <>
-    {IconComponent && (
-      <IconComponent
-        iconName={iconName}
-        className="mt-1 flex-shrink-0 text-2xl"
-      />
-    )}
-    {title}
-  </>
+  const TitleComponent = (
+    <>
+      {IconComponent && (
+        <IconComponent
+          iconName={iconName}
+          className="mt-1 flex-shrink-0 text-2xl"
+        />
+      )}
+      {title}
+    </>
+  )
 
   const headerColorClass: Record<HeaderColor, string> = {
     basic: "bg-gray-200",
@@ -72,7 +74,10 @@ export const StyledCard: React.FC<StyledCardProps> = ({
         <CardHeader className="flex-shrink-0">
           <CardTitle className={titleClassName}>
             {url ? (
-              <Link href={url} className="flex items-center justify-center gap-4">
+              <Link
+                href={url}
+                className="flex items-center justify-center gap-4"
+              >
                 {TitleComponent}
               </Link>
             ) : (
