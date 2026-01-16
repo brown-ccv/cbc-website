@@ -10,6 +10,7 @@ import React from "react"
 import { cn } from "@/lib/utils"
 import { CardVariants } from "@/components/card/variants"
 import { VariantProps } from "class-variance-authority"
+import { Link } from "@/components/Link"
 
 type HeaderColor = "basic" | "plus" | "premium"
 
@@ -21,6 +22,7 @@ export interface StyledCardProps extends VariantProps<typeof CardVariants> {
   children: React.ReactNode
   footer?: React.ReactNode
   headerColor?: HeaderColor
+  url?: string
 }
 
 export const StyledCard: React.FC<StyledCardProps> = ({
@@ -32,8 +34,18 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   children,
   footer,
   headerColor,
+  url
 }) => {
   const IconComponent = iconName ? Icon : null
+  const TitleComponent = <>
+    {IconComponent && (
+      <IconComponent
+        iconName={iconName}
+        className="mt-1 flex-shrink-0 text-2xl"
+      />
+    )}
+    {title}
+  </>
 
   const headerColorClass: Record<HeaderColor, string> = {
     basic: "bg-gray-200",
@@ -59,13 +71,13 @@ export const StyledCard: React.FC<StyledCardProps> = ({
       {title && (
         <CardHeader className="flex-shrink-0">
           <CardTitle className={titleClassName}>
-            {IconComponent && (
-              <IconComponent
-                iconName={iconName}
-                className="mt-1 flex-shrink-0 text-2xl"
-              />
+            {url ? (
+              <Link href={url} className="flex items-center justify-center gap-4">
+                {TitleComponent}
+              </Link>
+            ) : (
+              TitleComponent
             )}
-            {title}
           </CardTitle>
         </CardHeader>
       )}
