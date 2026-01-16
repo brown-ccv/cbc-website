@@ -3,6 +3,7 @@
 import React, { use } from "react"
 import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
 import { Card, CardContent } from "@/components/ui/Card"
+import { Link } from "@/components/Link"
 
 interface PositionProps {
   title: string
@@ -19,11 +20,9 @@ export function Opportunities({ data }: { data: Promise<any> }) {
     <>
       {opportunities.jobPostings.length > 0 &&
         opportunities.jobPostings.map((position: PositionProps) => (
-          <a
+          <Link
             key={position.externalPath}
             href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
-            target="_blank"
-            rel="noopener noreferrer"
             className="block m-4"
           >
             <Card className="hover:shadow-lg transition-shadow">
@@ -43,7 +42,7 @@ export function Opportunities({ data }: { data: Promise<any> }) {
                 </div>
               </CardContent>
             </Card>
-          </a>
+          </Link>
         ))}
     </>
   )

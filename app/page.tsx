@@ -25,7 +25,6 @@ export default async function Home() {
           variant="secondary_filled"
           className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
           href="mailto:cbc-help@brown.edu"
-          external={true}
         >
           Work with Us
         </ButtonLink>
@@ -51,7 +50,6 @@ export default async function Home() {
                   variant="primary_filled"
                   size="lg"
                   href="https://events.brown.edu/ccv/all"
-                  external={true}
                 >
                   View All Events
                 </ButtonLink>

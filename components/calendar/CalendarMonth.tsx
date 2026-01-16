@@ -24,7 +24,7 @@ import {
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import { Button } from "@/components/button/Button"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
@@ -117,7 +117,6 @@ const CalendarMonth: React.FC<CalendarProps> = ({ events, currentDate }) => {
               <p className="pb-2 font-semibold">{event.date}</p>
               <ButtonLink
                 href={event.url}
-                external={true}
                 className="flex gap-1 text-blue-500"
                 isCalendarEvent={true}
               >
@@ -153,7 +152,6 @@ const CalendarMonth: React.FC<CalendarProps> = ({ events, currentDate }) => {
           <div className="flex-auto">
             <ButtonLink
               href={event.url}
-              external={true}
               className="flex gap-1 text-blue-500"
               isCalendarEvent={true}
             >
