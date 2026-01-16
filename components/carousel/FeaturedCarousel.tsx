@@ -1,4 +1,4 @@
-import { StyledCarousel, StyledCarouselItem } from "./StyledCarousel"
+import { StyledCarousel, StyledCarouselItem } from "@/components/carousel/StyledCarousel"
 import { SwipeCarousel } from "@/components/carousel/SwipeCarousel"
 import { readContentFile } from "@/lib/content-utils"
 import React, { Suspense } from "react"
