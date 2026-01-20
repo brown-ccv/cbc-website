@@ -15,7 +15,7 @@ import { ButtonGroup } from "@/components/button/ButtonGroup"
 import { CopyableEmail } from "@/components/CopyableEmail"
 import { CareerData } from "@/components/CareerData"
 import { Link } from "@/components/Link"
-import { FeaturedCarousel } from "./components/carousel/FeaturedCarousel"
+import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 
 const withNotProse = <T extends { className?: string }>(
   Component: React.ComponentType<T>
