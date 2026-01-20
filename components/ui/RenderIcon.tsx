@@ -1,11 +1,9 @@
 import React from "react"
 import * as Fa from "react-icons/fa"
-import * as Fi from "react-icons/fi"
 // utility component to map icon names as strings in content folder to icon components from react-icons
 
 const iconLibraries: Record<string, Record<string, React.ComponentType>> = {
   Fa: Fa,
-  Fi: Fi,
 }
 
 interface IconProps {
@@ -22,8 +20,7 @@ const Icon: React.FC<IconProps> = ({ iconName, size, className }) => {
   // Attempt to find the icon in the specified libraries
   for (const prefix in iconLibraries) {
     if (iconName.startsWith(prefix)) {
-      const iconKey = iconName
-      const IconComponent = iconLibraries[prefix][iconKey]
+      const IconComponent = iconLibraries[prefix][iconName]
 
       if (IconComponent) {
         const props: Record<string, any> = {}
