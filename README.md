@@ -60,8 +60,8 @@ npm run dev
 
 Hosting created from [CCV Hosting Preview Repo](https://github.com/brown-ccv/test-app-hosting-preview)
 
-Containerized in Docker, stored in an image on Google Container Registry, and run via Google Cloud run (Project
-ID: `ccv-website-next`).
+Containerized in Docker, stored in an image on Google Artifact Registry, and run via Google Cloud run (Project
+ID: `cbc-website-next`).
 Secrets are in [Google Cloud Secret Manager](https://console.cloud.google.com/security/secret-manager).
 
 ## Learn More
