@@ -1,9 +1,12 @@
 import React from "react"
-const BrownLogo: React.FC<{
+
+interface BrownLogoProps {
   className?: string
   width?: number
-  height?: number
-}> = ({ className = "", width = 200, height = "auto" }) => {
+  height?: number | string
+}
+
+export function BrownLogo({ width = 200 }: BrownLogoProps) {
   return (
     <svg
       version="1.1"

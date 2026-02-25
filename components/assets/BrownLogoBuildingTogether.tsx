@@ -1,7 +1,7 @@
 import Image from "next/image"
 import BrownLogoBuildingTogetherImage from "@/assets/BrownLogoBuildingTogether.png"
 
-export default function BrownLogoBuildingTogether() {
+export function BrownLogoBuildingTogether() {
   return (
     <Image
       src={BrownLogoBuildingTogetherImage}
