@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/button/Button"
-import CBCLogo from "@/components/assets/CBCLogo"
+import { CBCLogo } from "@/components/assets/CBCLogo"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   Dialog,
@@ -15,12 +15,11 @@ import {
 import { RouteGroup } from "@/components/navbar/navbar-types"
 import { FaBars, FaChevronDown } from "react-icons/fa"
 import { routes } from "@/components/navbar/routes"
-import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/20/solid"
 import { Link } from "@/components/Link"
 import { usePathname } from "next/navigation"
 
-export const Navbar: React.FC = () => {
+export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const pathname = usePathname()
@@ -100,9 +99,7 @@ export const Navbar: React.FC = () => {
   )
 }
 
-const NavigationSectionContent: React.FC<{
-  groups: RouteGroup[]
-}> = ({ groups }) => {
+function NavigationSectionContent({ groups }: { groups: RouteGroup[] }) {
   const hasMultipleGroups = groups.length > 1
 
   return (
@@ -169,9 +166,7 @@ interface MobileMenuContentProps {
   onNavigate?: () => void
 }
 
-const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
-  onNavigate,
-}) => {
+function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
   const handleNavigation = () => {
     // Close the dialog when navigating
     onNavigate?.()
@@ -212,5 +207,3 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
     </NavigationMenu.Root>
   )
 }
-
-export default Navbar
