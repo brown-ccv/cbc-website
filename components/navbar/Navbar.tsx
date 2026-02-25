@@ -18,22 +18,16 @@ import { routes } from "@/components/navbar/routes"
 import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/20/solid"
 import { Link } from "@/components/Link"
+import { usePathname } from "next/navigation"
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-    // Prevent body scrolling when mobile menu is open
-    document.body.style.overflow = isMobileMenuOpen ? "auto" : "hidden"
-  }
+  const pathname = usePathname()
 
-  // Effect to clean up body overflow style when component unmounts
   useEffect(() => {
-    return () => {
-      document.body.style.overflow = "auto" // ensures body scrolling is re-enabled
-    }
-  }, [])
+    setIsMobileMenuOpen(false)
+  }, [pathname])
 
   return (
     <div className="sticky top-0 z-50">
