@@ -19,9 +19,9 @@ export const BrownBanner: React.FC = () => {
         <div className="sm:text-xl lg:text-2xl font-semibold hidden lg:flex items-center lg:visible space-x-4">
           <CBCLogo width={60} />
           <div className="flex flex-col">
-            <h1 className="text-2xl lg:text-3xl font-semibold">
+            <h2 className="text-2xl lg:text-3xl font-semibold">
               Computational Biology Core
-            </h1>
+            </h2>
             <Link
               href="https://sites.brown.edu/computational-biology-of-human-disease/"
               className="text-base lg:text-lg font-semibold hover:underline mt-1"
@@ -34,7 +34,7 @@ export const BrownBanner: React.FC = () => {
           href="mailto:ccv-support@brown.edu"
           variant="red_outlined"
           size="sm"
-          className={"px-2 py-6 sm:px-4"}
+          className={"px-2 py-6 sm:px-4 hidden md:flex"}
         >
           <FaComments className="text-xl sm:text-2xl mr-2" />
           Work with Us
