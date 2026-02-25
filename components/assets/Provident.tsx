@@ -1,7 +1,7 @@
 import Image from "next/image"
 import ProvidentImage from "@/assets/FeaturedCarousel/Provident.png"
 
-export default function Provident() {
+export function Provident() {
   return (
     <Image
       src={ProvidentImage}

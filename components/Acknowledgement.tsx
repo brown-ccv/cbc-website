@@ -13,5 +13,3 @@ export function Acknowledgement({}): JSX.Element {
     </section>
   )
 }
-
-export default Acknowledgement

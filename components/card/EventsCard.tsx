@@ -5,14 +5,14 @@ import Icon from "@/components/ui/RenderIcon"
 import { StyledCard } from "@/components/card/StyledCard"
 import { Link } from "@/components/Link"
 
-export const EventsCard: React.FC<DataProps> = ({
+export function EventsCard({
   date_time,
   title,
   url,
   date,
   date_utc,
   description_long,
-}) => {
+}: DataProps) {
   const descriptionLong = sanitizeHtml(description_long, {
     allowedTags: [],
     allowedAttributes: {},
