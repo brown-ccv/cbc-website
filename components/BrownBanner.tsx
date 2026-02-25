@@ -3,7 +3,7 @@ import { FaComments } from "react-icons/fa"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import Image from "next/image"
 import OITLogo from "@/assets/oit-logo.png"
-import CBCLogo from "@/components/assets/CBCLogo"
+import { CBCLogo } from "@/components/assets/CBCLogo"
 import { Link } from "@/components/Link"
 
 export function BrownBanner() {

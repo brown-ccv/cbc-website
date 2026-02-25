@@ -372,5 +372,3 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
     </div>
   )
 }
-
-export default CalendarMonth

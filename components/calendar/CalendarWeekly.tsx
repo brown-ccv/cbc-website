@@ -245,4 +245,3 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
     </div>
   )
 }
-export default CalendarWeekly

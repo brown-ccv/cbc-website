@@ -1,7 +1,7 @@
 // app/page.tsx
 import { MainHero } from "@/components/Hero"
 import { HeroCard } from "@/components/card/HeroCard"
-import EventSectionClient from "@/components/EventsSectionClient"
+import { EventSectionClient } from "@/components/EventsSectionClient"
 import React from "react"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { ButtonLink } from "@/components/button/ButtonLink"
