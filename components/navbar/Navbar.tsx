@@ -18,22 +18,16 @@ import { routes } from "@/components/navbar/routes"
 import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/20/solid"
 import { Link } from "@/components/Link"
+import { usePathname } from "next/navigation"
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-    // Prevent body scrolling when mobile menu is open
-    document.body.style.overflow = isMobileMenuOpen ? "auto" : "hidden"
-  }
+  const pathname = usePathname()
 
-  // Effect to clean up body overflow style when component unmounts
   useEffect(() => {
-    return () => {
-      document.body.style.overflow = "auto" // ensures body scrolling is re-enabled
-    }
-  }, [])
+    setIsMobileMenuOpen(false)
+  }, [pathname])
 
   return (
     <div className="sticky top-0 z-50">
@@ -64,7 +58,7 @@ export const Navbar: React.FC = () => {
         </NavigationMenu.Root>
 
         {/* Mobile Menu */}
-        <Dialog open={isMobileMenuOpen} onOpenChange={toggleMobileMenu}>
+        <Dialog open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <DialogTrigger asChild className="lg:hidden">
             <Button
               aria-label="Main Menu"
@@ -76,24 +70,28 @@ export const Navbar: React.FC = () => {
               className="rounded-2xl p-2 text-blue-navbar"
             />
           </DialogTrigger>
-          <DialogContent className="h-screen bg-slate-700 w-screen max-w-none p-0 sm:h-screen sm:max-w-none [&>button]:hidden">
-            <DialogHeader className="flex-row justify-end px-2">
+          <DialogContent className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden">
+            <DialogHeader className="flex-row items-center justify-between bg-blue-navbar p-4 sm:px-8">
               <DialogTitle className="sr-only text-white">
                 Navigation Menu
               </DialogTitle>
+              <CBCLogo width={70} fillColor="white" />
               <DialogClose asChild>
                 <Button
-                  variant="icon_only"
-                  size="icon"
                   aria-label="Close Navigation"
+                  aria-controls="main-menu"
+                  variant="secondary_filled"
                   iconOnly={
-                    <XMarkIcon aria-hidden="true" className="h-5 w-5" />
+                    <XMarkIcon
+                      aria-hidden
+                      focusable={false}
+                      className="h-6 w-6"
+                    />
                   }
-                  className="focus-visible:ring-sunglow-400 bg-transparent text-sunglow-400"
+                  className="rounded-2xl p-2 text-blue-navbar"
                 />
               </DialogClose>
             </DialogHeader>
-
             <MobileMenuContent onNavigate={() => setIsMobileMenuOpen(false)} />
           </DialogContent>
         </Dialog>
