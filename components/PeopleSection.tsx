@@ -115,8 +115,6 @@ async function PeopleSectionData({
 /**
  * Component wrapper for MDX compatibility
  */
-export const PeopleSection = (
-  props: PeopleSectionProps
-): React.ReactElement => {
+export function PeopleSection(props: PeopleSectionProps) {
   return <PeopleSectionData {...props} />
 }
