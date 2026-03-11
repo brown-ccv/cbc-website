@@ -1,11 +1,7 @@
 import React from "react"
 import { LogoProps } from "@/components/assets/types"
 
-const CBCLogo: React.FC<LogoProps> = ({
-  width = 75,
-  fillColor,
-  ...restProps
-}) => {
+export function CBCLogo({ width = 75, fillColor, ...restProps }: LogoProps) {
   const fillStyle = fillColor ? { fill: fillColor } : {}
 
   return (
@@ -52,5 +48,3 @@ const CBCLogo: React.FC<LogoProps> = ({
     </>
   )
 }
-
-export default CBCLogo

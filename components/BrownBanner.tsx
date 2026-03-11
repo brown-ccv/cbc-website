@@ -3,10 +3,10 @@ import { FaComments } from "react-icons/fa"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import Image from "next/image"
 import OITLogo from "@/assets/oit-logo.png"
-import CBCLogo from "@/components/assets/CBCLogo"
+import { CBCLogo } from "@/components/assets/CBCLogo"
 import { Link } from "@/components/Link"
 
-export const BrownBanner: React.FC = () => {
+export function BrownBanner() {
   return (
     <header className="flex flex-row items-center justify-between bg-white px-4 py-2 lg:py-4">
       <Link
@@ -43,5 +43,3 @@ export const BrownBanner: React.FC = () => {
     </header>
   )
 }
-
-export default BrownBanner

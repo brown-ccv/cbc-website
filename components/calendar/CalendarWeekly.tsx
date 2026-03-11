@@ -29,11 +29,7 @@ export interface weekProps {
   num: number
 }
 
-const CalendarWeekly: React.FC<CalendarProps> = ({
-  events,
-  currentDate,
-  today,
-}) => {
+export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const container = useRef<HTMLDivElement>(null)
   const containerNav = useRef<HTMLDivElement>(null)
   const containerOffset = useRef<HTMLDivElement>(null)
@@ -249,4 +245,3 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
     </div>
   )
 }
-export default CalendarWeekly

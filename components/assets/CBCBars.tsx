@@ -2,7 +2,7 @@ import Image from "next/image"
 import CBCBarsImage from "@/assets/CBCBars.png"
 import { cn } from "@/lib/utils"
 
-export default function CCVBars({ className }: { className?: string }) {
+export function CBCBars({ className }: { className?: string }) {
   return (
     <Image
       className={cn("my-4 py-4", className)}
