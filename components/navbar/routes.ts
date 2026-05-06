@@ -30,24 +30,24 @@ export const routes: NavSection[] = [
         name: "",
         routes: [
           {
-            name: "Collaborations",
-            href: "/portfolio/collaborations",
-            description: "*Coming soon*",
+            name: "Featured Projects",
+            href: "/portfolio",
           },
           {
             name: "Software",
-            href: "/portfolio/software",
-            description: "*Coming soon*",
+            href: "/portfolio/#software",
           },
           {
-            name: "Workshops and Talks",
-            href: "/portfolio/workshops-and-talks",
-            description: "*Coming soon*",
+            name: "Workshops",
+            href: "/portfolio/#workshops",
+          },
+          {
+            name: "Tutorials",
+            href: "/portfolio/#tutorials",
           },
           {
             name: "Publications",
             href: "https://publications.ccv.brown.edu",
-            description: "*Coming soon*",
           },
         ],
       },
