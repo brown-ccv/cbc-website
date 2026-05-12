@@ -15,12 +15,103 @@ import {
 import { RouteGroup } from "@/components/navbar/navbar-types"
 import { FaBars, FaChevronDown } from "react-icons/fa"
 import { routes } from "@/components/navbar/routes"
-import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/20/solid"
 import { Link } from "@/components/Link"
 import { usePathname } from "next/navigation"
 
-export const Navbar: React.FC = () => {
+/**
+ * Desktop navigation menu.
+ */
+function DesktopNavigation() {
+  return (
+    <NavigationMenu.Root className="relative z-10 hidden w-full items-stretch justify-between lg:flex">
+      <NavigationMenu.List className="flex h-full items-center">
+        {routes.map((section) => (
+          <NavigationMenu.Item key={section.name}>
+            <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-sunglow-400 xl:px-6">
+              {section.name}
+              <FaChevronDown
+                className="relative top-[1px] h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180 xl:ml-1"
+                aria-hidden="true"
+              />
+            </NavigationMenu.Trigger>
+            <NavigationSectionContent
+              groups={section.groups}
+              parentTitle={section.name}
+            />
+          </NavigationMenu.Item>
+        ))}
+      </NavigationMenu.List>
+    </NavigationMenu.Root>
+  )
+}
+
+interface MobileMenuHeaderProps {
+  onClose: () => void
+}
+
+/**
+ * Mobile menu dialog header.
+ */
+function MobileMenuHeader({ onClose }: MobileMenuHeaderProps) {
+  return (
+    <DialogHeader className="h-20 flex-row items-center justify-between bg-blue-navbar p-4 sm:px-8">
+      <DialogTitle className="sr-only text-white">Navigation Menu</DialogTitle>
+      <CBCLogo fillColor="white" width={60} />
+      <DialogClose asChild>
+        <Button
+          aria-label="Close Navigation"
+          aria-controls="main-menu"
+          variant="secondary_filled"
+          iconOnly={
+            <XMarkIcon aria-hidden focusable={false} className="h-6 w-6" />
+          }
+          className="rounded-2xl p-2 text-blue-navbar"
+          onClick={onClose}
+        />
+      </DialogClose>
+    </DialogHeader>
+  )
+}
+
+interface MobileMenuDialogProps {
+  isOpen: boolean
+  onOpenChange: (open: boolean) => void
+}
+
+/**
+ * Mobile menu dialog.
+ */
+function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
+  return (
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+      <DialogTrigger asChild className="lg:hidden">
+        <Button
+          aria-label="Main Menu"
+          aria-controls="main-menu"
+          variant="secondary_filled"
+          iconOnly={
+            <FaBars aria-hidden focusable={false} className="h-6 w-6" />
+          }
+          className="rounded-2xl p-2 text-blue-navbar"
+        />
+      </DialogTrigger>
+      <DialogContent
+        className="left-0 top-0 flex h-screen w-screen max-w-none translate-x-0 translate-y-0 flex-col border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden"
+        aria-describedby={"main-menu-description"}
+        aria-labelledby={"main-menu"}
+      >
+        <MobileMenuHeader onClose={() => onOpenChange(false)} />
+        <MobileMenuContent onNavigate={() => onOpenChange(false)} />
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+/**
+ * Navbar component.
+ */
+export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const pathname = usePathname()
@@ -30,79 +121,42 @@ export const Navbar: React.FC = () => {
   }, [pathname])
 
   return (
-    <div className="sticky top-0 z-50">
-      <div className="flex items-center justify-between bg-blue-navbar px-6 sm:px-8">
-        <div className="flex items-center px-6 py-4 sm:px-8 xl:px-10">
-          <Link href="/">
-            <span className="sr-only text-white">CBC Home</span>
-            <CBCLogo width={75} fillColor="white" />
-          </Link>
-        </div>
+    <header className="sticky top-0 z-50">
+      <div className="flex h-20 items-center justify-between bg-blue-navbar p-4 sm:px-8">
+        <Link href="/">
+          <span className="sr-only">CBC Home</span>
+          <CBCLogo fillColor="white" width={60} />
+        </Link>
 
         {/* Navigation Menu for Desktop */}
-        <NavigationMenu.Root className="relative z-10 hidden w-full items-stretch justify-between lg:flex">
-          <NavigationMenu.List className="flex h-full items-center">
-            {routes.map((section) => (
-              <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-sunglow-400 xl:px-6">
-                  {section.name}
-                  <FaChevronDown
-                    className="relative top-[1px] h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180 xl:ml-1"
-                    aria-hidden="true"
-                  />
-                </NavigationMenu.Trigger>
-                <NavigationSectionContent groups={section.groups} />
-              </NavigationMenu.Item>
-            ))}
-          </NavigationMenu.List>
-        </NavigationMenu.Root>
+        <DesktopNavigation />
 
-        {/* Mobile Menu */}
-        <Dialog open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-          <DialogTrigger asChild className="lg:hidden">
-            <Button
-              aria-label="Main Menu"
-              aria-controls="main-menu"
-              variant="secondary_filled"
-              iconOnly={
-                <FaBars aria-hidden focusable={false} className="h-6 w-6" />
-              }
-              className="rounded-2xl p-2 text-blue-navbar"
-            />
-          </DialogTrigger>
-          <DialogContent className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden">
-            <DialogHeader className="flex-row items-center justify-between bg-blue-navbar p-4 sm:px-8">
-              <DialogTitle className="sr-only text-white">
-                Navigation Menu
-              </DialogTitle>
-              <CBCLogo width={70} fillColor="white" />
-              <DialogClose asChild>
-                <Button
-                  aria-label="Close Navigation"
-                  aria-controls="main-menu"
-                  variant="secondary_filled"
-                  iconOnly={
-                    <XMarkIcon
-                      aria-hidden
-                      focusable={false}
-                      className="h-6 w-6"
-                    />
-                  }
-                  className="rounded-2xl p-2 text-blue-navbar"
-                />
-              </DialogClose>
-            </DialogHeader>
-            <MobileMenuContent onNavigate={() => setIsMobileMenuOpen(false)} />
-          </DialogContent>
-        </Dialog>
+        <div className="flex items-center justify-between gap-8 md:pl-4">
+          {/*{<DialogSearch searchTitle="Search CCV" />}*/}
+
+          {/* Mobile Menu */}
+          <MobileMenuDialog
+            isOpen={isMobileMenuOpen}
+            onOpenChange={setIsMobileMenuOpen}
+          />
+        </div>
       </div>
-    </div>
+    </header>
   )
 }
 
-const NavigationSectionContent: React.FC<{
+interface NavigationSectionContentProps {
   groups: RouteGroup[]
-}> = ({ groups }) => {
+  parentTitle: string
+}
+
+/**
+ * Navigation menu section content.
+ */
+function NavigationSectionContent({
+  groups,
+  parentTitle,
+}: NavigationSectionContentProps) {
   const hasMultipleGroups = groups.length > 1
 
   return (
@@ -110,10 +164,11 @@ const NavigationSectionContent: React.FC<{
       <div
         tabIndex={-1}
         className={`flex max-h-[80vh] flex-col overflow-y-auto p-2 sm:p-4 md:p-6 xl:flex-row ${hasMultipleGroups ? "space-x-8" : ""}`}
+        aria-label={parentTitle}
       >
         {groups.map((group, index) => (
-          <div
-            key={`${index}-${group.name}`}
+          <section
+            key={group.name}
             className={`${
               hasMultipleGroups && index > 0
                 ? "border-t border-slate-700 py-1 xl:border-l xl:border-t-0 xl:py-0 xl:pl-6"
@@ -158,7 +213,7 @@ const NavigationSectionContent: React.FC<{
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         ))}
       </div>
     </NavigationMenu.Content>
@@ -169,9 +224,10 @@ interface MobileMenuContentProps {
   onNavigate?: () => void
 }
 
-const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
-  onNavigate,
-}) => {
+/**
+ * Mobile menu content.
+ */
+function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
   const handleNavigation = () => {
     // Close the dialog when navigating
     onNavigate?.()
@@ -180,14 +236,17 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
   return (
     <NavigationMenu.Root
       orientation="vertical"
-      className="h-full w-full overflow-y-auto pb-40"
+      className="no-scrollbar h-full w-full overflow-y-auto bg-slate-700 pb-12"
     >
       <NavigationMenu.List>
         {routes.map((route) => (
-          <NavigationMenu.Item key={route.name}>
+          <NavigationMenu.Item
+            key={route.name}
+            className="border-b border-slate-500"
+          >
             <NavigationMenu.Trigger className="focus-visible:ring-ring group flex w-full items-center justify-between px-6 py-7 text-xl font-semibold text-sunglow-400 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sunglow-400 data-[state=open]:bg-sunglow-500 data-[state=open]:text-black">
               {route.name}
-              <FaChevronDown className="h-8 w-8 transition-transform group-data-[state=open]:rotate-180" />
+              <FaChevronDown className="h-6 w-6 transition-transform group-data-[state=open]:rotate-180" />
             </NavigationMenu.Trigger>
             <NavigationMenu.Content className="ml-12 mr-3 flex flex-col gap-4 py-3 text-lg text-white">
               {route.groups.map((group, index) => (
@@ -197,7 +256,7 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
                       <Link
                         href={route.href}
                         onClick={handleNavigation}
-                        className="focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                        className="focus-visible:ring-ring focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
                       >
                         {route.name}
                       </Link>
@@ -212,5 +271,3 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
     </NavigationMenu.Root>
   )
 }
-
-export default Navbar
