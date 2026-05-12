@@ -2,10 +2,10 @@ import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
 import { ReactNode } from "react"
 import Script from "next/script"
-import BrownBanner from "@/components/BrownBanner"
-import Navbar from "@/components/navbar/Navbar"
-import Acknowledgement from "@/components/Acknowledgement"
-import Footer from "@/components/Footer"
+import { BrownBanner } from "@/components/BrownBanner"
+import { Navbar } from "@/components/navbar/Navbar"
+import { Acknowledgement } from "@/components/Acknowledgement"
+import { Footer } from "@/components/Footer"
 
 const inter = Inter({ subsets: ["latin"] })
 const sourceSans = Source_Sans_3({

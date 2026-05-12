@@ -12,9 +12,7 @@ interface OpportunitiesCardProps {
   position: PositionProps
 }
 
-export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({
-  position,
-}) => {
+export function OpportunitiesCard({ position }: OpportunitiesCardProps) {
   return (
     <ButtonLink
       href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
