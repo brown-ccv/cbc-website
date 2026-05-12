@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/button/Button"
-import CBCLogo from "@/components/assets/CBCLogo"
+import { CBCLogo } from "@/components/assets/CBCLogo"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   Dialog,
@@ -111,7 +111,7 @@ function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
 /**
  * Navbar component.
  */
-export default function Navbar() {
+export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const pathname = usePathname()
