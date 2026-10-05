@@ -45,11 +45,11 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const ALL_DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
 
   const TIMES_ARRAY = Array.from(Array(24), (_, i) => ({
-    key: Math.random(),
+    key: `time-${i}`,
     time: `${((i + 11) % 12) + 1}${i <= 11 ? "AM" : "PM"}`,
   }))
   const DAY_COLUMN_ARRAY = Array.from(Array(8), (_, i) => ({
-    key: Math.random(),
+    key: `day-${i}`,
     day: i,
   }))
 
