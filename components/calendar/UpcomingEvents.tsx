@@ -1,10 +1,9 @@
-import { JSX, Key } from "react"
-import { DataProps } from "@/components/EventSection"
+import { EventDataProps } from "@/components/EventSection"
 import { EventsCard } from "@/components/card/EventsCard"
-import React from "react"
+import React, { JSX, Key } from "react"
 
 interface UpcomingEventsViewProps {
-  events: DataProps[]
+  events: EventDataProps[]
   limit?: number
 }
 
@@ -14,7 +13,10 @@ export function UpcomingEvents({ events, limit = 4 }: UpcomingEventsViewProps) {
   return (
     <div className="flex flex-wrap justify-center gap-6 lg:justify-end">
       {displayedEvents?.map(
-        (e: JSX.IntrinsicAttributes & DataProps, i: Key | null | undefined) => (
+        (
+          e: JSX.IntrinsicAttributes & EventDataProps,
+          i: Key | null | undefined
+        ) => (
           <React.Fragment key={i}>
             <EventsCard {...e} />
           </React.Fragment>
