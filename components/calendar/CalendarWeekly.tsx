@@ -5,19 +5,19 @@ import { PopoverEvent } from "@/components/calendar/PopoverEvent"
 import type { EventDataProps } from "@/components/EventSection"
 import { cn } from "@/lib/utils"
 import {
-    addDays,
-    differenceInMinutes,
-    format,
-    getDate,
-    getDay,
-    getMonth,
-    getYear,
-    isAfter,
-    isBefore,
-    isSameDay,
-    isSameMonth,
-    startOfWeek,
-    subDays,
+  addDays,
+  differenceInMinutes,
+  format,
+  getDate,
+  getDay,
+  getMonth,
+  getYear,
+  isAfter,
+  isBefore,
+  isSameDay,
+  isSameMonth,
+  startOfWeek,
+  subDays,
 } from "date-fns"
 import React, { useEffect, useRef, useState } from "react"
 import { CalendarProps } from "./types"

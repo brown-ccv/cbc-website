@@ -223,9 +223,7 @@ export async function getEventData(startDate: string, endDate?: string) {
   const response = await fetch(url)
   const responsePromise = await response.json()
   return responsePromise.sort(compareDates)
-  
 }
-
 
 function compareDates(a: EventDataProps, b: EventDataProps): number {
   const timeA = new Date(a.date_iso ?? "").getTime()

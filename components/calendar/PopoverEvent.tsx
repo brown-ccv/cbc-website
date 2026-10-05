@@ -3,9 +3,9 @@
 import { ButtonLink } from "@/components/button/ButtonLink"
 import type { EventDataProps } from "@/components/EventSection"
 import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
 } from "@/components/ui/Popover"
 import { ArrowTopRightOnSquareIcon, ClockIcon } from "@heroicons/react/20/solid"
 import { format } from "date-fns"

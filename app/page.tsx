@@ -3,10 +3,10 @@ import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { HeroCard } from "@/components/card/HeroCard"
 import {
-    ContentHeader,
-    ContentSection,
-    ContentSubHeader,
-    ContentTitle,
+  ContentHeader,
+  ContentSection,
+  ContentSubHeader,
+  ContentTitle,
 } from "@/components/ContentSection"
 import { EventSection } from "@/components/EventSection"
 import { MainHero } from "@/components/Hero"
