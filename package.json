@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "tsx lib/build-utils.ts && next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "format": "prettier . --write",
     "typecheck": "tsc --noEmit",
     "copy-images": "tsx lib/build-utils.ts",
@@ -17,8 +17,8 @@
     "@headlessui/react": "^2.1.10",
     "@heroicons/react": "^2.2.0",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^15.5.4",
-    "@next/third-parties": "^15.5.4",
+    "@next/mdx": "16.3.8",
+    "@next/third-parties": "16.3.8",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-popover": "^1.1.15",
@@ -37,11 +37,11 @@
     "lucide-react": "^0.545.0",
     "markdown-it": "^14.1.0",
     "motion": "^12.23.22",
-    "next": "^15.5.9",
+    "next": "16.3.8",
     "pa11y-ci": "^4.0.1",
     "prismjs": "^1.30.0",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
     "react-swipeable": "^7.0.2",
@@ -55,7 +55,6 @@
     "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.39.1",
     "@mdx-js/loader": "^3.1.1",
     "@tailwindcss/typography": "^0.5.19",
@@ -64,11 +63,11 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdx": "^2.0.13",
     "@types/node": "^24",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "@types/sanitize-html": "^2.16.0",
-    "eslint": "^9.37.0",
-    "eslint-config-next": "15.5.4",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.8",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "fs-extra": "^11.3.2",
@@ -81,7 +80,7 @@
     "typescript-eslint": "^8.46.0"
   },
   "overrides": {
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.1"
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0"
   }
 }
