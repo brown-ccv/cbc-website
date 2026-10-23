@@ -1,31 +1,27 @@
 "use client"
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/Popover"
-import { ClockIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid"
-import React, { useState } from "react"
-import { CalendarProps } from "@/components/calendar/types"
+import { PopoverEvent } from "@/components/calendar/PopoverEvent"
+
+import { ButtonLink } from "@/components/button/ButtonLink"
+import { CalendarHeading } from "@/components/calendar/CalendarHeading"
+import { EventDataProps } from "@/components/EventSection"
+import { ArrowTopRightOnSquareIcon, ClockIcon } from "@heroicons/react/20/solid"
 import {
   addDays,
-  getDay,
   addMonths,
-  isToday,
-  subMonths,
-  subDays,
-  startOfMonth,
   endOfMonth,
-  getDaysInMonth,
   getDate,
-  isSameDay,
+  getDay,
+  getDaysInMonth,
   getWeeksInMonth,
+  isSameDay,
+  isToday,
+  startOfMonth,
+  subDays,
+  subMonths,
 } from "date-fns"
-import { CalendarHeading } from "@/components/calendar/CalendarHeading"
-import { DataProps } from "@/components/EventSection"
-import { ButtonLink } from "@/components/button/ButtonLink"
-import { Button } from "@/components/button/Button"
+import { useState } from "react"
+import { CalendarProps } from "./types"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -91,7 +87,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
   const generateEventsForCurrentDay = (day: Date, isMobile = false) => {
     let sameDayEvents = events.filter((event) => isSameDay(event.date_utc, day))
     const dayEvents = sameDayEvents.filter(
-      (item: DataProps, index: number, self: DataProps[]) =>
+      (item: EventDataProps, index: number, self: EventDataProps[]) =>
         item.id !== undefined &&
         index === self.findIndex((t) => t.id === item.id)
     )
@@ -99,46 +95,13 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
       (event) => event.date_time !== undefined
     )
 
-    const formattedCalEvents = validDayEvents.map((event: DataProps) => {
+    const formattedCalEvents = validDayEvents.map((event: EventDataProps) => {
       return (
         <li key={self.crypto.randomUUID()}>
-          <Popover>
-            <PopoverTrigger
-              asChild
-              className="max-w-full rounded-md px-2 hover:bg-neutral-50"
-            >
-              <Button variant="unstyled">
-                <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
-                  {event.title}
-                </p>
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="bg-neutral-50">
-              <p className="pb-2 font-semibold">{event.date}</p>
-              <ButtonLink
-                href={event.url}
-                className="flex gap-1 text-blue-500"
-                isCalendarEvent={true}
-              >
-                <p className="font-semibold hover:underline">{event.title}</p>
-                <ArrowTopRightOnSquareIcon
-                  className="mr-2 h-3 w-3"
-                  aria-hidden="true"
-                />
-              </ButtonLink>
-
-              <time
-                dateTime={event.date_utc}
-                className="hidden flex-none text-keppel-700 group-hover:font-semibold group-hover:text-keppel-700 xl:flex xl:items-center"
-              >
-                <ClockIcon
-                  className="mr-1 h-4 w-4 text-keppel-700"
-                  aria-hidden="true"
-                />
-                {event.date_time}
-              </time>
-            </PopoverContent>
-          </Popover>
+          <PopoverEvent
+            className={`max-w-full border-l-2 pl-2 text-left tracking-tight hover:bg-slate-100 ${event.is_canceled == 1 ? "border-red-university opacity-60" : "border-sunglow-400"}`}
+            event={event}
+          />
         </li>
       )
     })
@@ -169,7 +132,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
                 className="mr-2 h-5 w-5 text-keppel-700"
                 aria-hidden="true"
               />
-              {event.date_time}
+              {event.is_all_day ? "All Day" : event.date_time}
             </time>
           </div>
         </li>
@@ -220,7 +183,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
         isSameDay(event.date_utc, day.date)
       )
       const dayEvents = sameDayEvents.filter(
-        (item: DataProps, index: number, self: DataProps[]) =>
+        (item: EventDataProps, index: number, self: EventDataProps[]) =>
           item.id !== undefined &&
           index === self.findIndex((t) => t.id === item.id)
       )

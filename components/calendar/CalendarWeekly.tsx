@@ -1,33 +1,26 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
-import { ALL_DAYS_OF_WEEK } from "@/components/calendar/utils"
+import { CalendarHeading } from "@/components/calendar/CalendarHeading"
+import { PopoverEvent } from "@/components/calendar/PopoverEvent"
+import type { EventDataProps } from "@/components/EventSection"
+import { cn } from "@/lib/utils"
 import {
-  format,
-  startOfWeek,
   addDays,
-  differenceInHours,
-  isSameMonth,
-  isSameDay,
-  subDays,
-  isBefore,
-  isAfter,
-  getDay,
   differenceInMinutes,
+  format,
   getDate,
+  getDay,
   getMonth,
   getYear,
+  isAfter,
+  isBefore,
+  isSameDay,
+  isSameMonth,
+  startOfWeek,
+  subDays,
 } from "date-fns"
-
-import { CalendarProps } from "@/components/calendar/types"
-import { CalendarHeading } from "@/components/calendar/CalendarHeading"
-import { ClockIcon } from "@heroicons/react/20/solid"
-import { ButtonLink } from "@/components/button/ButtonLink"
-
-export interface weekProps {
-  id: string
-  num: number
-}
+import React, { useEffect, useRef, useState } from "react"
+import { CalendarProps } from "./types"
 
 export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const container = useRef<HTMLDivElement>(null)
@@ -35,6 +28,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const containerOffset = useRef<HTMLDivElement>(null)
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [activeDate, setActiveDate] = useState(new Date())
+
   // Tailwind cannot handle template literals within their styles, so I am creating an array that I will then use
   // when mapping over the vertical columns later
   const CAL_STYLE_ARRAY = [
@@ -48,12 +42,14 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
     "col-start-8",
   ]
 
+  const ALL_DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+
   const TIMES_ARRAY = Array.from(Array(24), (_, i) => ({
-    key: Math.random(),
+    key: `time-${i}`,
     time: `${((i + 11) % 12) + 1}${i <= 11 ? "AM" : "PM"}`,
   }))
   const DAY_COLUMN_ARRAY = Array.from(Array(8), (_, i) => ({
-    key: Math.random(),
+    key: `day-${i}`,
     day: i,
   }))
 
@@ -63,22 +59,70 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
     // Set the container scroll position based on the current time.
     const currentMinute = new Date().getHours() * 60
 
-    container.current!.scrollTop =
-      ((container.current!.scrollHeight -
-        containerNav.current!.offsetHeight -
-        containerOffset.current!.offsetHeight) *
+    if (!container.current || !containerNav.current || !containerOffset.current)
+      return
+
+    container.current.scrollTop =
+      ((container.current.scrollHeight -
+        containerNav.current.offsetHeight -
+        containerOffset.current.offsetHeight) *
         currentMinute) /
       1440
   }, [])
 
+  /**
+   * Returns events in the active week split into all-day and timed groups.
+   */
+  const getWeekEvents = (date: Date) => {
+    const startDate = startOfWeek(date)
+    const weekEvents = (events as EventDataProps[]).filter((event) => {
+      const eventDate = new Date(event.date_utc)
+      return (
+        isAfter(eventDate, startDate) &&
+        isBefore(eventDate, addDays(startDate, 7))
+      )
+    })
+
+    return {
+      allDay: weekEvents.filter((event) => event.is_all_day),
+      timed: weekEvents.filter((event) => !event.is_all_day),
+    }
+  }
+
+  /**
+   * Groups all-day events by weekday index so each day column can stack events.
+   */
+  const getAllDayByWeekday = (allDayEvents: EventDataProps[]) => {
+    const byDay: Record<number, EventDataProps[]> = {
+      0: [],
+      1: [],
+      2: [],
+      3: [],
+      4: [],
+      5: [],
+      6: [],
+    }
+
+    allDayEvents.forEach((event) => {
+      const day = getDay(new Date(event.date_iso))
+      byDay[day].push(event)
+    })
+
+    return byDay
+  }
+
+  /**
+   * Renders the weekday/date header row for the current week.
+   */
   const generateDatesForCurrentWeek = (
     date: Date,
-    selectedDate: Date,
-    activeDate: Date
+    selected: Date,
+    active: Date
   ) => {
     let thisDate = date
     const startDate = startOfWeek(thisDate)
-    const week = ALL_DAYS_OF_WEEK.map((day, i) => {
+
+    return ALL_DAYS_OF_WEEK.map((day, i) => {
       thisDate = addDays(startDate, i)
       const cloneDate = thisDate
 
@@ -86,8 +130,12 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
         <div
           key={day}
           className={`flex items-center justify-center py-3 lg:py-4 ${
-            isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
-          } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""} ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-50" : "bg-white"}`}
+            isSameMonth(thisDate, active) ? "" : "inactiveDay"
+          } ${isSameDay(thisDate, selected) ? "selectedDay" : ""} ${
+            isSameDay(thisDate, currentDate)
+              ? "today bg-sunglow-50"
+              : "bg-white"
+          }`}
           onClick={() => {
             setSelectedDate(cloneDate)
           }}
@@ -101,63 +149,10 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
         </div>
       )
     })
-
-    return <>{week}</>
   }
 
-  const generateEventsForCurrentWeek = (activeDate: Date) => {
-    let thisDate = activeDate
-    const startDate = startOfWeek(thisDate)
-    const weekEvents = events.filter(
-      (event) =>
-        isAfter(event.date_utc, startDate) &&
-        isBefore(event.date_utc, addDays(startDate, 7))
-    )
-
-    const formattedWeekEvents = weekEvents.map((event, i) => {
-      thisDate = addDays(startDate, i)
-      const lengthOfTime =
-        event.date2_utc && event.date_utc
-          ? differenceInHours(event.date2_utc, event.date_utc)
-          : 1
-      const dayOfWeek = getDay(addDays(event.date_iso, 1))
-      const yearEvent = getYear(event.date_utc)
-      const monthEvent = getMonth(event.date_utc)
-      const dateEvent = getDate(event.date_utc)
-      const durationIntoDay = differenceInMinutes(
-        event.date_iso,
-        new Date(yearEvent, monthEvent, dateEvent)
-      )
-
-      const calColor = "bg-sunglow-300 hover:bg-sunglow-200"
-
-      return (
-        <li
-          key={self.crypto.randomUUID()}
-          className={`relative mt-px col-start-${dayOfWeek} sm:flex`}
-          style={{
-            gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
-          }}
-        >
-          <ButtonLink
-            href={event.url}
-            className={`${calColor} group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg p-2 text-xs leading-tight lg:text-base`}
-            isCalendarEvent={true}
-          >
-            <p className="font-semibold text-blue-navbar">{event.title}</p>
-            <p className="flex items-center gap-2 text-keppel-800">
-              <ClockIcon
-                className="hidden h-3 w-3 flex-shrink-0 lg:block"
-                aria-hidden="true"
-              />
-              <time dateTime={event.date_utc}>{event.date_time}</time>
-            </p>
-          </ButtonLink>
-        </li>
-      )
-    })
-    return <>{formattedWeekEvents}</>
-  }
+  const { allDay, timed } = getWeekEvents(activeDate)
+  const allDayByWeekday = getAllDayByWeekday(allDay)
 
   return (
     <div className="flex h-full w-full flex-grow flex-col">
@@ -178,7 +173,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
         <div className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
           <div
             ref={containerNav}
-            className="bg-gray sticky top-0 z-30 flex-none border-white bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
+            className="bg-gray sticky top-0 z-40 flex-none border-white bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
           >
             <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-700 sm:grid">
               <div className="col-end-1 w-14 bg-white" />
@@ -188,7 +183,31 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                 activeDate
               )}
             </div>
+
+            {Object.values(allDayByWeekday).some(
+              (eventsForDay) => eventsForDay.length > 0
+            ) && (
+              <div className="hidden border-t border-gray-100 sm:block">
+                <div className="ml-14 grid grid-cols-7 gap-1 px-1 py-1">
+                  {ALL_DAYS_OF_WEEK.map((_, dayIndex) => (
+                    <div key={dayIndex} className="min-w-0 space-y-1">
+                      {allDayByWeekday[dayIndex].map((event) => (
+                        <PopoverEvent
+                          className={cn(
+                            "rounded-lg bg-sunglow-300 py-2 text-xs leading-tight hover:bg-sunglow-200",
+                            event.is_canceled == 1 ? "opacity-60" : ""
+                          )}
+                          event={event}
+                          key={self.crypto.randomUUID()}
+                        />
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+
           <div className="flex flex-auto">
             <div className="bg-gray sticky left-0 z-10 w-14 flex-none ring-1 ring-gray-100" />
             <div className="grid flex-auto grid-cols-1 grid-rows-1">
@@ -215,7 +234,13 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}
-                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-sunglow-100 bg-opacity-30" : ""}`}
+                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${
+                      day === 7 ? "w-8" : ""
+                    } ${
+                      day === todayRow && isSameDay(activeDate, currentDate)
+                        ? "bg-sunglow-100 bg-opacity-30"
+                        : ""
+                    }`}
                   />
                 ))}
               </div>
@@ -227,7 +252,6 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                / span N corresponds to the height of the event -- every
               6 units is 30 min
               */}
-
               <ol
                 className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8"
                 style={{
@@ -236,7 +260,46 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                 role="grid"
                 aria-label="Calendar events"
               >
-                {generateEventsForCurrentWeek(activeDate)}
+                {timed.map((event) => {
+                  const eventStart = new Date(event.date_iso)
+                  const eventUtc = new Date(event.date_utc)
+                  const eventEnd = event.date2_utc
+                    ? new Date(event.date2_utc)
+                    : null
+
+                  const spanBlocks = getEventSpanInFiveMinuteBlocks(
+                    eventUtc,
+                    eventEnd
+                  )
+
+                  const dayOfWeek = getDay(eventStart)
+                  const yearEvent = getYear(eventUtc)
+                  const monthEvent = getMonth(eventUtc)
+                  const dateEvent = getDate(eventUtc)
+
+                  const durationIntoDay = differenceInMinutes(
+                    eventStart,
+                    new Date(yearEvent, monthEvent, dateEvent)
+                  )
+
+                  return (
+                    <li
+                      key={self.crypto.randomUUID()}
+                      className={`relative mt-px ${CAL_STYLE_ARRAY[dayOfWeek]} sm:flex`}
+                      style={{
+                        gridRow: `${Math.floor(durationIntoDay / 5) + 2} / span ${spanBlocks}`,
+                      }}
+                    >
+                      <PopoverEvent
+                        className={`absolute inset-1 flex flex-col items-center rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200 ${
+                          spanBlocks > 6 ? "gap-2" : ""
+                        } ${event.is_canceled == 1 ? "opacity-60" : ""}`}
+                        event={event}
+                        includeTime
+                      />
+                    </li>
+                  )
+                })}
               </ol>
             </div>
           </div>
@@ -244,4 +307,20 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
       </div>
     </div>
   )
+}
+
+/**
+ * Converts an event duration to 5-minute grid blocks and clamps to at least one block.
+ */
+const getEventSpanInFiveMinuteBlocks = (
+  eventStartUtc: Date,
+  eventEndUtc: Date | null
+): number => {
+  if (!eventEndUtc) return 12
+
+  const durationMinutes = differenceInMinutes(eventEndUtc, eventStartUtc)
+  const safeDurationMinutes = Math.max(durationMinutes, 5)
+  const spanBlocks = Math.ceil(safeDurationMinutes / 5)
+
+  return Math.max(spanBlocks, 1)
 }
