@@ -7,18 +7,18 @@ import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { EventDataProps } from "@/components/EventSection"
 import { ArrowTopRightOnSquareIcon, ClockIcon } from "@heroicons/react/20/solid"
 import {
-    addDays,
-    addMonths,
-    endOfMonth,
-    getDate,
-    getDay,
-    getDaysInMonth,
-    getWeeksInMonth,
-    isSameDay,
-    isToday,
-    startOfMonth,
-    subDays,
-    subMonths,
+  addDays,
+  addMonths,
+  endOfMonth,
+  getDate,
+  getDay,
+  getDaysInMonth,
+  getWeeksInMonth,
+  isSameDay,
+  isToday,
+  startOfMonth,
+  subDays,
+  subMonths,
 } from "date-fns"
 import { useState } from "react"
 import { CalendarProps } from "./types"
