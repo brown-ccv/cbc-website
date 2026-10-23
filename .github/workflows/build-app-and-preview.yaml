@@ -52,7 +52,7 @@ jobs:
           service: ${{ env.image }}
           project_id: ${{ env.gcp_project_id }}
           image: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_artifact_registry }}/${{ env.image }}
-          flags: "--allow-unauthenticated"
+          flags: "--no-invoker-iam-check"
 
       - name: Extract Git SHA for Comment
         id: vars
