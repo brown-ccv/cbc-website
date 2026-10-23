@@ -111,7 +111,7 @@ function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
 /**
  * Navbar component.
  */
-export default function Navbar() {
+export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const pathname = usePathname()
