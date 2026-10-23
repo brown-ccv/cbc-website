@@ -1,6 +1,5 @@
-import { StyledCarousel, StyledCarouselProps } from "./StyledCarousel"
 import { SwipeCarousel } from "@/components/carousel/SwipeCarousel"
-import React from "react"
+import { StyledCarousel, StyledCarouselProps } from "./StyledCarousel"
 
 export function FeaturedCarousel({ carouselData }: StyledCarouselProps) {
   return (
