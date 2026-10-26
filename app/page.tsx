@@ -1,16 +1,15 @@
 // app/page.tsx
-import { MainHero } from "@/components/Hero"
-import { HeroCard } from "@/components/card/HeroCard"
-import { EventSectionClient } from "@/components/EventsSectionClient"
-import React from "react"
-import { ScrollButton } from "@/components/button/ScrollButton"
 import { ButtonLink } from "@/components/button/ButtonLink"
+import { ScrollButton } from "@/components/button/ScrollButton"
+import { HeroCard } from "@/components/card/HeroCard"
 import {
-  ContentSection,
   ContentHeader,
-  ContentTitle,
+  ContentSection,
   ContentSubHeader,
+  ContentTitle,
 } from "@/components/ContentSection"
+import { EventSection } from "@/components/EventSection"
+import { MainHero } from "@/components/Hero"
 import { FaCalendarAlt } from "react-icons/fa"
 
 export default async function Home() {
@@ -56,7 +55,7 @@ export default async function Home() {
               </>
             </ContentSubHeader>
           </ContentHeader>
-          <EventSectionClient />
+          <EventSection />
         </ContentSection>
       </div>
     </>
